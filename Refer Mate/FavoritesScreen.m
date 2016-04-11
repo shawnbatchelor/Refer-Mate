@@ -1,5 +1,4 @@
 //
-//  SecondViewController.m
 //  Refer Mate
 //
 //  Created by Shawn Batchelor on 4/4/16.
