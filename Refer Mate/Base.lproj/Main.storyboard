@@ -176,7 +176,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-sn-b99">
                                                     <rect key="frame" x="152" y="0.0" width="166" height="44"/>
                                                     <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="36"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-gJ-beO">
@@ -185,7 +185,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="supporters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-C7-Oic">
                                                     <rect key="frame" x="152" y="52" width="166" height="38"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -930,6 +930,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="fDB-CV-bke" eventType="touchUpInside" id="lgg-8E-sHR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXm-ci-zn7">
                                 <rect key="frame" x="136" y="629" width="137" height="30"/>
@@ -959,6 +962,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="twitterLogin:" destination="fDB-CV-bke" eventType="touchUpInside" id="aOn-ck-YVK"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook.png" translatesAutoresizingMaskIntoConstraints="NO" id="NJb-s9-l6Z">
                                 <rect key="frame" x="110" y="530" width="8" height="30"/>
@@ -973,10 +979,12 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="emailText" destination="Ifn-3X-m6Q" id="mxu-o6-15Q"/>
+                        <outlet property="facebookButton" destination="x7m-s6-dmv" id="a6B-2S-H33"/>
                         <outlet property="loginButton" destination="EdC-Gc-b2Z" id="Kdq-WA-AvT"/>
                         <outlet property="passwordText" destination="oZP-2q-jwg" id="076-Ou-nS6"/>
                         <outlet property="rememberSwitch" destination="X8p-4k-ycn" id="PDG-rc-3EK"/>
                         <outlet property="signupButton" destination="4dY-Tr-Qey" id="8Xt-yd-d2Q"/>
+                        <outlet property="twitterButton" destination="5Rb-BL-XHh" id="l9f-oP-oaO"/>
                         <segue destination="9GU-pO-jUC" kind="presentation" identifier="segueToSignup" id="B7g-Yu-cfH"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="segueToTabControl" id="c3L-8R-Pc8"/>
                     </connections>

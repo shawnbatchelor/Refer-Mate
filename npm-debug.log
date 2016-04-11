@@ -1,0 +1,42 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'firebase-tools' ]
+2 info using npm@1.3.2
+3 info using node@v0.10.13
+4 verbose cache add [ 'firebase-tools', null ]
+5 verbose cache add name=undefined spec="firebase-tools" args=["firebase-tools",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'firebase-tools',
+6 verbose parsed url   path: 'firebase-tools',
+6 verbose parsed url   href: 'firebase-tools' }
+7 silly lockFile 3fa4b23e-firebase-tools firebase-tools
+8 verbose lock firebase-tools /Users/TOPSWATTASHAWN/.npm/3fa4b23e-firebase-tools.lock
+9 silly lockFile 3fa4b23e-firebase-tools firebase-tools
+10 verbose addNamed [ 'firebase-tools', '' ]
+11 verbose addNamed [ null, '*' ]
+12 silly lockFile 59c4bcc4-firebase-tools firebase-tools@
+13 verbose lock firebase-tools@ /Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock
+14 silly lockFile 59c4bcc4-firebase-tools firebase-tools@
+15 error Error: EACCES, open '/Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock'
+15 error  { [Error: EACCES, open '/Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock']
+15 error   errno: 3,
+15 error   code: 'EACCES',
+15 error   path: '/Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock' }
+16 error Please try running this command again as root/Administrator.
+17 error System Darwin 15.4.0
+18 error command "node" "/usr/local/bin/npm" "install" "-g" "firebase-tools"
+19 error cwd /Users/TOPSWATTASHAWN/Desktop/FSU/Working Docs/Courses/31-Integrated Product Deployment/Refer Mate
+20 error node -v v0.10.13
+21 error npm -v 1.3.2
+22 error path /Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock
+23 error code EACCES
+24 error errno 3
+25 error stack Error: EACCES, open '/Users/TOPSWATTASHAWN/.npm/59c4bcc4-firebase-tools.lock'
+26 verbose exit [ 3, true ]

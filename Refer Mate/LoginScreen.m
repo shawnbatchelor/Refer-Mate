@@ -7,11 +7,14 @@
 //
 
 #import "LoginScreen.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "TwitterAuthHelper.h"
+
 
 @implementation LoginScreen
 
 - (void)viewDidLoad {
-    
     
     [super viewDidLoad];
     
@@ -19,7 +22,7 @@
 
 
 
-
+//Manual Authentication
 - (void)loginUser {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
     [ref authUser:emailText.text password:passwordText.text
@@ -36,6 +39,69 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
 }
 
+//Facebook Authentication
+-(void)facebookUserAuth {
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
+    
+    [facebookLogin logInWithReadPermissions:@[@"email"]
+                                    handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+                                        
+                                        if (facebookError) {
+                                            NSLog(@"Facebook login failed. Error: %@", facebookError);
+                                        } else if (facebookResult.isCancelled) {
+                                            NSLog(@"Facebook login got cancelled.");
+                                        } else {
+                                            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+                                            
+                                            [ref authWithOAuthProvider:@"facebook" token:accessToken
+                                                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
+                                                       
+                                                       if (error) {
+                                                           NSLog(@"Login failed. %@", error);
+                                                       } else {
+                                                           NSLog(@"Logged in! %@", authData);
+                                                           [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+                                                       }
+                                                   }];
+                                        }
+                                    }];
+}
+
+
+//Twitter Authentication
+-(void)twitterUserAuth {
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    TwitterAuthHelper *twitterAuthHelper = [[TwitterAuthHelper alloc] initWithFirebaseRef:ref
+                                                                                   apiKey:@"iKUxdxzv2SQJzxt1VM5aJzzAH"];
+    [twitterAuthHelper selectTwitterAccountWithCallback:^(NSError *error, NSArray *accounts) {
+        if (error) {
+            // Error retrieving Twitter accounts
+            NSLog(@"Error retrieving Twitter accounts");
+
+        } else if ([accounts count] == 0) {
+            // No Twitter accounts found on device
+            NSLog(@"No Twitter accounts found on device");
+
+        } else {
+            // Select an account. Here we pick the first one for simplicity
+            ACAccount *account = [accounts firstObject];
+            [twitterAuthHelper authenticateAccount:account withCallback:^(NSError *error, FAuthData *authData) {
+                if (error) {
+                    // Error authenticating account
+                    NSLog(@"Error authenticating account");
+
+                } else {
+                    // User logged in!
+                    [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+                }
+            }];
+        }
+    }];
+}
+
+
+
 
 
 //Actions for buttons
@@ -45,6 +111,14 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 
 - (IBAction)loadSignupScreen:(id)sender {
     [self performSegueWithIdentifier:@"segueToSignup" sender:nil];
+}
+
+- (IBAction)facebookLogin:(id)sender {
+    [self facebookUserAuth];
+}
+
+- (IBAction)twitterLogin:(id)sender {
+    [self twitterUserAuth];
 }
 
 
