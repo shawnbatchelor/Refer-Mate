@@ -29,8 +29,15 @@
 withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     if (error) {
-        // There was an error logging in to this account
-        NSLog(@"There was an logging in to this account");
+        //Check textfield contents
+        if([emailText.text length] == 0 || emailText.text == nil || ![self validateEmail:[emailText text]])
+        {
+            [self invalidEmailAlert];
+        }
+        else
+        {
+            [self invalidAccountAlert];
+        }
     } else {
         // We are now logged in
         [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
@@ -38,6 +45,8 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 }];
     
 }
+
+
 
 //Facebook Authentication
 -(void)facebookUserAuth {
@@ -48,9 +57,11 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                     handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
                                         
                                         if (facebookError) {
-                                            NSLog(@"Facebook login failed. Error: %@", facebookError);
+                                           // NSLog(@"Facebook login failed. Error: %@", facebookError);
+                                            [self facebookFailAlert];
                                         } else if (facebookResult.isCancelled) {
-                                            NSLog(@"Facebook login got cancelled.");
+                                            //NSLog(@"Facebook login got cancelled.");
+                                            [self facebookFailAlert];
                                         } else {
                                             NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
                                             
@@ -58,15 +69,16 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                    withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                        
                                                        if (error) {
-                                                           NSLog(@"Login failed. %@", error);
+                                                           //NSLog(@"Login failed. %@", error);
+                                                           [self facebookFailAlert];
                                                        } else {
-                                                           NSLog(@"Logged in! %@", authData);
                                                            [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
                                                        }
                                                    }];
                                         }
                                     }];
 }
+
 
 
 //Twitter Authentication
@@ -76,23 +88,19 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                                                    apiKey:@"iKUxdxzv2SQJzxt1VM5aJzzAH"];
     [twitterAuthHelper selectTwitterAccountWithCallback:^(NSError *error, NSArray *accounts) {
         if (error) {
-            // Error retrieving Twitter accounts
-            NSLog(@"Error retrieving Twitter accounts");
-
+            //NSLog(@"Error retrieving Twitter accounts");
+            [self twitterFailAlert];
         } else if ([accounts count] == 0) {
-            // No Twitter accounts found on device
-            NSLog(@"No Twitter accounts found on device");
-
+            //NSLog(@"No Twitter accounts found on device");
+            [self twitterFailAlert];
         } else {
             // Select an account. Here we pick the first one for simplicity
             ACAccount *account = [accounts firstObject];
             [twitterAuthHelper authenticateAccount:account withCallback:^(NSError *error, FAuthData *authData) {
                 if (error) {
-                    // Error authenticating account
-                    NSLog(@"Error authenticating account");
-
+                    //NSLog(@"Error authenticating account");
+                    [self twitterFailAlert];
                 } else {
-                    // User logged in!
                     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
                 }
             }];
@@ -102,8 +110,38 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 
 
 
+//Password Reset
+-(void)resetUser {
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    [ref resetPasswordForUser:emailText.text withCompletionBlock:^(NSError *error) {
+        if (error) {
+            //Check textfield contents
+            if([emailText.text length] == 0 || emailText.text == nil || ![self validateEmail:[emailText text]])
+            {
+                [self invalidEmailAlert];
+            } else {
+                [self invalidAccountAlert];
+            }
+            
+        } else {
+            //NSLog(@"We sent an email with reset instructions.");
+            // Password reset sent successfully
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                                                           message:@"We sent an email to your address on file. Please follow the instructions in order to reset your password."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
+}
 
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Actions for buttons
 - (IBAction)loginAction:(id)sender {
     [self loginUser];
@@ -121,99 +159,82 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     [self twitterUserAuth];
 }
 
+- (IBAction)resetPassword:(id)sender {
+    [self resetUser];
+}
 
-/*
- 
- 
- //Custom login method
- - (void)loginParse {
- [PFUser logInWithUsernameInBackground:usernameText.text password:passwordText.text
- block:^(PFUser *user, NSError *error) {
- if ([usernameText.text length] <= 0 || [passwordText.text length] <= 0)
- {
- //Custom Alert for no email entered
- UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
- message:@"You must enter both a username and password to log in."
- preferredStyle:UIAlertControllerStyleAlert];
- 
- UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
- handler:^(UIAlertAction * action) {}];
- 
- [alert addAction:defaultAction];
- [self presentViewController:alert animated:YES completion:nil];
- }
- else
- {
- //Check if user parameters are correct and load DataInput, else inform user of error
- if (user) {
- [self performSegueWithIdentifier:@"SegueToInputs" sender:nil];
- [self resetLoginParameters];
- } else {
- errorString = [error userInfo][@"error"];
- [self generalError];
- }
- }
- }];
- }
- 
- 
- //Generate Error Alert with custom message from server error
- - (void) generalError {
- //Error alert with error string
- UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
- message:errorString
- preferredStyle:UIAlertControllerStyleAlert];
- 
- UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
- handler:^(UIAlertAction * action) {}];
- 
- [alert addAction:defaultAction];
- [self presentViewController:alert animated:YES completion:nil];
- }
- 
- 
- //Actions for buttons
- - (IBAction)signupAction:(id)sender {
- [self signupParse];
- }
- 
- - (IBAction)loginAction:(id)sender {
- [self loginParse];
- }
- 
- - (IBAction)forgotAction:(id)sender {
- 
- if ([emailText.text length] > 0)
- {
- [PFUser requestPasswordResetForEmailInBackground:emailText.text];
- }
- else
- {
- //Custom Alert for no email entered
- UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
- message:@"Please enter your email address in order to reset your password."
- preferredStyle:UIAlertControllerStyleAlert];
- 
- UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
- handler:^(UIAlertAction * action) {}];
- 
- [alert addAction:defaultAction];
- [self presentViewController:alert animated:YES completion:nil];
- }
- }
- 
- 
- - (IBAction)logoutAction:(UIStoryboardSegue *)unwinder {
- [PFUser logOut];
- //PFUser *currentUser = [PFUser currentUser];
- }
- 
- - (void) resetLoginParameters {
- usernameText.text = @"";
- usernameText.text = @"";
- usernameText.text = @"";
- }
- */
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Dismiss keyboard on tap
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+//Validate correct email address format
+- (BOOL)validateEmail:(NSString *)emailAddr
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *checkEmail = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [checkEmail evaluateWithObject:emailAddr];
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Custom alerts
+-(void) invalidEmailAlert {
+    //User intered invalid email address
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"Please enter an email address in the format xx@yy.zzz."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) invalidAccountAlert {
+    //Couldn't find that account
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"We couldn't find an account with the email address provided. Please retype your email address or try creating a new account."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) facebookFailAlert {
+    //Couldn't find that account
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"We couldn't log you in using your Facebook credentials. Please try again or use another login method."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) twitterFailAlert {
+    //Couldn't find that account
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"We couldn't log you in using your Twitter credentials. Please try again or use another login method."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 
 

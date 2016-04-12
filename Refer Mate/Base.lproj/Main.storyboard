@@ -848,12 +848,6 @@
                                 <color key="backgroundColor" red="0.0082048846410000004" green="0.017373863480000001" blue="0.18891402709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="enter your email address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ifn-3X-m6Q">
-                                <rect key="frame" x="100" y="218" width="220" height="30"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="_____________________________" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk9-23-ISm">
                                 <rect key="frame" x="100" y="234" width="220" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -946,6 +940,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="fDB-CV-bke" eventType="touchUpInside" id="c3H-AU-bsv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rb-BL-XHh">
                                 <rect key="frame" x="100" y="577" width="209" height="36"/>
@@ -972,6 +969,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitter.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Om-Gb-l2t">
                                 <rect key="frame" x="114" y="580" width="16" height="30"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="enter your email address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ifn-3X-m6Q">
+                                <rect key="frame" x="100" y="218" width="220" height="30"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -980,6 +983,7 @@
                     <connections>
                         <outlet property="emailText" destination="Ifn-3X-m6Q" id="mxu-o6-15Q"/>
                         <outlet property="facebookButton" destination="x7m-s6-dmv" id="a6B-2S-H33"/>
+                        <outlet property="forgotButton" destination="cXm-ci-zn7" id="cHX-7T-v9R"/>
                         <outlet property="loginButton" destination="EdC-Gc-b2Z" id="Kdq-WA-AvT"/>
                         <outlet property="passwordText" destination="oZP-2q-jwg" id="076-Ou-nS6"/>
                         <outlet property="rememberSwitch" destination="X8p-4k-ycn" id="PDG-rc-3EK"/>
