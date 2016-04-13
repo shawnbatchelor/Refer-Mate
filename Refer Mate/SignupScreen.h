@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SignupScreen : UIViewController
+@interface SignupScreen : UIViewController<CLLocationManagerDelegate>
 
 {
     IBOutlet UITextField *usernameText;
@@ -24,6 +25,8 @@
     IBOutlet UISwitch *rememberSwitch;
     NSString *errorString;
 }
+@property(nonatomic)CLLocationManager *locationManager;
+
 
 
 @end

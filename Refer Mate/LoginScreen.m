@@ -10,6 +10,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "TwitterAuthHelper.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
 
 
 @implementation LoginScreen
@@ -143,24 +145,44 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Actions for buttons
-- (IBAction)loginAction:(id)sender {
-    [self loginUser];
-}
-
 - (IBAction)loadSignupScreen:(id)sender {
     [self performSegueWithIdentifier:@"segueToSignup" sender:nil];
 }
 
+- (IBAction)loginAction:(id)sender {
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        [self loginUser];
+    }
+}
+
 - (IBAction)facebookLogin:(id)sender {
-    [self facebookUserAuth];
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        [self facebookUserAuth];
+    }
 }
 
 - (IBAction)twitterLogin:(id)sender {
-    [self twitterUserAuth];
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        [self twitterUserAuth];
+    }
 }
 
 - (IBAction)resetPassword:(id)sender {
-    [self resetUser];
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        [self resetUser];
+    }
 }
 
 
@@ -177,6 +199,14 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *checkEmail = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [checkEmail evaluateWithObject:emailAddr];
+}
+
+//Check Internet connection
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
 }
 
 
@@ -226,6 +256,19 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     //Couldn't find that account
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
                                                                    message:@"We couldn't log you in using your Twitter credentials. Please try again or use another login method."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void) noInternetAlert {
+    //Not connected to the Intenet
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"Looks like you have no Internet connection. Connect and try again"
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault

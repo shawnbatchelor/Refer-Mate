@@ -7,14 +7,23 @@
 //
 
 #import "SignupScreen.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
+
+
 
 @implementation SignupScreen
 
+CLLocationManager *locationManager;
+CLGeocoder *geocoder;
+CLPlacemark *placemark;
+NSString *zipCode;
+NSString *city;
+
+
+
 - (void)viewDidLoad {
-    
-    
     [super viewDidLoad];
-    
 }
 
 
@@ -78,9 +87,20 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         [self presentViewController:alert animated:YES completion:nil];
         
     } else {
-        NSString *uid = [result objectForKey:@"uid"];
-        NSLog(@"Successfully created user account with uid: %@", uid);
-        [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
+        [self logUser];
+        
+        //Signup successful
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Hooray!"
+                                                                       message:@"Your signup was successful. Please login with the credentials you just created."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
+                                                              }];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }];
     }
@@ -92,7 +112,12 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Actions for buttons
 - (IBAction)signupAction:(id)sender {
-    [self signupUser];
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        [self signupUser];
+    }
 }
 
 - (IBAction)cancelSignup:(id)sender {
@@ -114,5 +139,135 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
     NSPredicate *checkEmail = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [checkEmail evaluateWithObject:emailAddr];
 }
+
+//Check Internet connection
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
+}
+
+//No Internet Alert
+-(void) noInternetAlert {
+    //Not connected to the Intenet
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"Looks like you have no Internet connection. Connect and try again"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Create user entry into Firebase database
+-(void)logUser{
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    NSDictionary *userDictionary = @{
+                                    @"firstname" : firstnameText.text,
+                                    @"lastname" : lastnameText.text,
+                                    @"username" : usernameText.text,
+                                    @"email_address" : emailText.text,
+                                    @"zip_code" : zipCode
+                                    //@"city" : city
+                                    };
+    Firebase *usersRef = [ref childByAppendingPath: @"users"];
+    Firebase *setUser = [usersRef childByAppendingPath: usernameText.text];
+    [setUser setValue: userDictionary];
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Get users location for reverse zip code, city lookup
+- (void)getCurrentLocation{
+    
+    if ([CLLocationManager /*locationServicesEnabled*/authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        [self.locationManager startUpdatingLocation];
+        NSLog(@"Location services ARE enabled");
+
+    } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
+        [self alertForNoGeolocation];
+    } else {
+        NSLog(@"Location services are not enabled");
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *location = [locations lastObject];
+    // Reverse Geocoding city and zip code
+    NSLog(@"Resolving the Address");
+    geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        if (error == nil && [placemarks count] > 0) {
+            placemark = [placemarks lastObject];
+            zipCode = [NSString stringWithFormat:@"%@",placemark.postalCode];
+            NSLog(@"Zip Code is %.@", zipCode);
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    } ];
+    // Stop Location Manager
+    [self.locationManager stopUpdatingLocation];
+}
+
+
+
+
+
+-(void)alertForNoGeolocation{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Location Required!"
+                                                                   message:@"Looks like your location service is not enabled. We need your location in order to provide you with location specific referrals."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         textField.placeholder = NSLocalizedString(@"Enter Zip Code", @"ZipCode");
+         textField.keyboardType = UIKeyboardTypeNumberPad;
+         [textField addTarget:self
+                       action:@selector(alertTextFieldDidChange:)
+             forControlEvents:UIControlEventEditingChanged];
+     }];
+    
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    defaultAction.enabled = NO;
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (void)alertTextFieldDidChange:(UITextField *)sender
+{
+    UIAlertController *alert = (UIAlertController *)self.presentedViewController;
+    if (alert)
+    {
+        UITextField *zipField = alert.textFields.firstObject;
+        UIAlertAction *defaultAction = alert.actions.lastObject;
+        defaultAction.enabled = zipField.text.length == 5;
+        zipCode = zipField.text;
+        NSLog(@"Zip Code is %.@", zipCode);
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self getCurrentLocation];
+}
+
 
 @end
