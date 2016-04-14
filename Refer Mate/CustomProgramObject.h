@@ -15,11 +15,15 @@
     
 }
 
+
 @property (nonatomic, strong)NSString *referralProgramName;
-@property (nonatomic, strong)NSString *referralProgramSupporters;
+@property (nonatomic, strong)NSString *referralProgramFaves;
 @property (nonatomic, strong)NSString *referralProgramCategory;
+@property (nonatomic, strong)NSString *referralProgramYouGet;
+@property (nonatomic, strong)NSString *referralProgramTheyGet;
+@property (nonatomic, strong)NSString *referralProgramDescription;
 @property (nonatomic, strong)UIImage *referralProgramLogo;
 
-
+//-(id)initWithJSONData:(NSDictionary*)data;
 
 @end

@@ -14,6 +14,8 @@
     IBOutlet UILabel *programLabel;
     IBOutlet UILabel *supporterLabel;
     IBOutlet UIImageView *programLogo;
+    IBOutlet UIButton *faveButton;
+
 }
 
 -(void) refreshCustomCell: (NSString*)programName supporterNumber:(NSString*)supporterNumber programLogo:(UIImage*)programPic;

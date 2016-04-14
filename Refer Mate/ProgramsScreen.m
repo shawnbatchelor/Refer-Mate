@@ -18,35 +18,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    topBox.layer.borderWidth = 3.0f;
+    topBox.layer.borderColor = [UIColor colorWithRed:255/255.0 green:166/255.0 blue:38/255.0 alpha: 1.0].CGColor;
     
+    // Get a reference to our posts
+    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/services"];
+    
+    // Attach a block to read the data at our posts reference
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        servicesString = snapshot.value;
+        servicesArray = [[NSMutableArray alloc] initWithObjects:servicesString, nil];
+        NSLog(@"SERVICES ARRAY ::::: %@", servicesArray);
+
+    }];
+    
+    
+
+    // Do any additional setup after loading the view, typically from a nib.
     CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
     program1.referralProgramName = @"Uber";
-    program1.referralProgramSupporters = @"1234";
-    program1.referralProgramCategory = @"Entertainment";
+    program1.referralProgramFaves = @"1234";
     program1.referralProgramLogo = [UIImage imageNamed:@"uber.png"];
     
     CustomProgramObject *program2 = [[CustomProgramObject alloc] init];
     program2.referralProgramName = @"Xfinity";
-    program2.referralProgramSupporters = @"5678";
-    program2.referralProgramCategory = @"Entertainment";
+    program2.referralProgramFaves = @"5678";
     program2.referralProgramLogo = [UIImage imageNamed:@"XFINITY_r.png"];
 
     
     CustomProgramObject *program3 = [[CustomProgramObject alloc] init];
     program3.referralProgramName = @"Regions";
-    program3.referralProgramSupporters = @"9876";
-    program3.referralProgramCategory = @"Banking";
+    program3.referralProgramFaves = @"9876";
     
     CustomProgramObject *program4 = [[CustomProgramObject alloc] init];
     program4.referralProgramName = @"Chase";
-    program4.referralProgramSupporters = @"5432";
-    program4.referralProgramCategory = @"Banking";
+    program4.referralProgramFaves = @"5432";
     
-    
-    entertainmentArray = [[NSArray alloc] initWithObjects:program1, program2, nil];
-    bankingArray = [[NSArray alloc] initWithObjects:program3, program4, nil];
-    
+    //shoppingArray = [[NSMutableArray alloc] initWithObjects:program3, program4, nil];
     
     
 }
@@ -87,7 +95,7 @@
     {
         CustomProgramObject *currentProgram = [entertainmentArray objectAtIndex:indexPath.row];
         
-        [programCell refreshCustomCell:currentProgram.referralProgramName supporterNumber:currentProgram.referralProgramSupporters programLogo:currentProgram.referralProgramLogo];
+        [programCell refreshCustomCell:currentProgram.referralProgramName supporterNumber:currentProgram.referralProgramFaves programLogo:currentProgram.referralProgramLogo];
         //programCell.textLabel.text = currentProgram.referralProgramName;
         //programCell.detailTextLabel.text = currentProgram.referralProgramSupporters;
     }

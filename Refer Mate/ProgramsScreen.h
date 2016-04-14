@@ -6,6 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
+
 
 @interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -15,8 +17,14 @@
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *forwardButton;
     IBOutlet UILabel *categoryLabel;
-    NSArray *entertainmentArray;
-    NSArray *bankingArray;
+    IBOutlet UIView *topBox;
+    
+    NSMutableArray *servicesArray;
+    NSString *servicesString;
+
+    NSMutableArray *shoppingArray;
+    NSString *shoppingString;
+
 }
 
 @end
