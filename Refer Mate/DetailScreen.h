@@ -19,4 +19,10 @@
     IBOutlet UIButton *backButton;
 }
 
+@property(nonatomic, strong)NSString *programLabelSegueString;
+@property(nonatomic, strong)NSString *supporterLabelSegueString;
+@property(nonatomic, strong)NSString *detailTextViewSegueString;
+@property(nonatomic, strong)NSString *youGetSegueInt;
+@property(nonatomic, strong)NSString *theyGetSegueInt;
+
 @end

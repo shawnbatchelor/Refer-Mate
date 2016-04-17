@@ -20,8 +20,20 @@
     [self performSegueWithIdentifier:@"segueToLinkReceive" sender:nil];
 }
 
+/*
 - (IBAction)goBack:(id)sender {
     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+}
+ */
+
+- (IBAction)unwindToDetails:(UIStoryboardSegue *)unwindSegue
+{
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    programLabel.text = self.programLabelSegueString;
+    supporterLabel.text = self.supporterLabelSegueString;
+    detailTextView.text = self.detailTextViewSegueString;
 }
 
 @end

@@ -50,8 +50,6 @@
 		FFD019061CBB2C6A00FB5E6E /* LinkReceiveScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD019051CBB2C6A00FB5E6E /* LinkReceiveScreen.m */; };
 		FFD019091CBB3F2400FB5E6E /* CustomCellClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD019081CBB3F2400FB5E6E /* CustomCellClass.m */; };
 		FFD0190C1CBB445000FB5E6E /* CustomProgramObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD0190B1CBB445000FB5E6E /* CustomProgramObject.m */; };
-		FFD0190F1CBB4B6D00FB5E6E /* uber.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD0190D1CBB4B6D00FB5E6E /* uber.png */; };
-		FFD019101CBB4B6D00FB5E6E /* XFINITY_r.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD0190E1CBB4B6D00FB5E6E /* XFINITY_r.png */; };
 		FFD019171CBB7B0300FB5E6E /* FacebookSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FFD019111CBB7B0300FB5E6E /* FacebookSDKStrings.bundle */; };
 		FFD019181CBB7B0300FB5E6E /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD019121CBB7B0300FB5E6E /* FBAudienceNetwork.framework */; };
 		FFD019191CBB7B0300FB5E6E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD019131CBB7B0300FB5E6E /* FBSDKCoreKit.framework */; };
@@ -65,6 +63,8 @@
 		FFF565A51CB85C7200137858 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF565A41CB85C7200137858 /* QuartzCore.framework */; };
 		FFF565A81CB860C500137858 /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF565A61CB860C500137858 /* hamburger.png */; };
 		FFF565A91CB860C500137858 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF565A71CB860C500137858 /* search.png */; };
+		FFF89ED81CC134820001F12C /* rmlike-bw.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF89ED61CC134820001F12C /* rmlike-bw.png */; };
+		FFF89ED91CC134820001F12C /* rmlike-c.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF89ED71CC134820001F12C /* rmlike-c.png */; };
 		FFFFEDAB1CBB8657007BBCBB /* TwitterAuthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFFEDAA1CBB8657007BBCBB /* TwitterAuthHelper.m */; };
 		FFFFEDAC1CBB8889007BBCBB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD018D61CBAE3A600FB5E6E /* Accounts.framework */; };
 		FFFFEDAE1CBB8A11007BBCBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFFEDAD1CBB8A11007BBCBB /* UIKit.framework */; };
@@ -149,8 +149,6 @@
 		FFD019081CBB3F2400FB5E6E /* CustomCellClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellClass.m; sourceTree = "<group>"; };
 		FFD0190A1CBB445000FB5E6E /* CustomProgramObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProgramObject.h; sourceTree = "<group>"; };
 		FFD0190B1CBB445000FB5E6E /* CustomProgramObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProgramObject.m; sourceTree = "<group>"; };
-		FFD0190D1CBB4B6D00FB5E6E /* uber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uber.png; sourceTree = "<group>"; };
-		FFD0190E1CBB4B6D00FB5E6E /* XFINITY_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XFINITY_r.png; sourceTree = "<group>"; };
 		FFD019111CBB7B0300FB5E6E /* FacebookSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKStrings.bundle; sourceTree = "<group>"; };
 		FFD019121CBB7B0300FB5E6E /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		FFD019131CBB7B0300FB5E6E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -165,6 +163,8 @@
 		FFF565A41CB85C7200137858 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FFF565A61CB860C500137858 /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburger.png; sourceTree = "<group>"; };
 		FFF565A71CB860C500137858 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		FFF89ED61CC134820001F12C /* rmlike-bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rmlike-bw.png"; sourceTree = "<group>"; };
+		FFF89ED71CC134820001F12C /* rmlike-c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rmlike-c.png"; sourceTree = "<group>"; };
 		FFFFEDA91CBB8657007BBCBB /* TwitterAuthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAuthHelper.h; sourceTree = "<group>"; };
 		FFFFEDAA1CBB8657007BBCBB /* TwitterAuthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAuthHelper.m; sourceTree = "<group>"; };
 		FFFFEDAD1CBB8A11007BBCBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -331,8 +331,8 @@
 		FFAC54361CB7329700DF4EF5 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				FFD0190D1CBB4B6D00FB5E6E /* uber.png */,
-				FFD0190E1CBB4B6D00FB5E6E /* XFINITY_r.png */,
+				FFF89ED61CC134820001F12C /* rmlike-bw.png */,
+				FFF89ED71CC134820001F12C /* rmlike-c.png */,
 				FFAC54611CB73AFD00DF4EF5 /* 50-c-noun_13006_cc.png */,
 				FFAC54621CB73AFD00DF4EF5 /* 50-c-noun_49693_cc.png */,
 				FFAC54631CB73AFD00DF4EF5 /* 50-c-noun_59948_cc.png */,
@@ -459,18 +459,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD019101CBB4B6D00FB5E6E /* XFINITY_r.png in Resources */,
 				FF26A3051CB95B8C001544EA /* Harabara.ttf in Resources */,
 				FFAC546C1CB73AFD00DF4EF5 /* 50-c-noun_101501.png in Resources */,
 				FF98DF511CB332E80085163D /* LaunchScreen.storyboard in Resources */,
 				FFAC54701CB73AFD00DF4EF5 /* 50-noun_101501.png in Resources */,
 				FFD019171CBB7B0300FB5E6E /* FacebookSDKStrings.bundle in Resources */,
 				FFF565A91CB860C500137858 /* search.png in Resources */,
-				FFD0190F1CBB4B6D00FB5E6E /* uber.png in Resources */,
+				FFF89ED81CC134820001F12C /* rmlike-bw.png in Resources */,
 				FFEE53881CB778920062CA39 /* facebook.png in Resources */,
 				FFAC546D1CB73AFD00DF4EF5 /* 50-noun_13006_cc.png in Resources */,
 				FF98DF4E1CB332E80085163D /* Assets.xcassets in Resources */,
 				FFAC546E1CB73AFD00DF4EF5 /* 50-noun_49693_cc.png in Resources */,
+				FFF89ED91CC134820001F12C /* rmlike-c.png in Resources */,
 				FFD0191E1CBB7B1B00FB5E6E /* DocSets in Resources */,
 				FFAC54381CB7333E00DF4EF5 /* ReferMate-logo.png in Resources */,
 				FFAC54751CB741F100DF4EF5 /* ReferMate-smile.png in Resources */,

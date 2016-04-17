@@ -55,6 +55,34 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
     FBSDKLoginManager *facebookLogin = [[FBSDKLoginManager alloc] init];
     
+    
+    [facebookLogin logInWithReadPermissions:@[@"email"] fromViewController:self
+                                    handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError){
+                                        
+                                        if (facebookError) {
+                                            // NSLog(@"Facebook login failed. Error: %@", facebookError);
+                                            [self facebookFailAlert];
+                                        } else if (facebookResult.isCancelled) {
+                                            //NSLog(@"Facebook login got cancelled.");
+                                            [self facebookFailAlert];
+                                        } else {
+                                            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+                                            
+                                            [ref authWithOAuthProvider:@"facebook" token:accessToken
+                                                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
+                                                       
+                                                       if (error) {
+                                                           //NSLog(@"Login failed. %@", error);
+                                                           [self facebookFailAlert];
+                                                       } else {
+                                                           [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+                                                       }
+                                                   }];
+                                        }
+                                    }];
+
+
+  /* Depricated method. 
     [facebookLogin logInWithReadPermissions:@[@"email"]
                                     handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
                                         
@@ -78,7 +106,7 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                        }
                                                    }];
                                         }
-                                    }];
+                                    }];*/
 }
 
 

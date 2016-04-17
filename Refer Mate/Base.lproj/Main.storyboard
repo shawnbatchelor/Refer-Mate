@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fDB-CV-bke">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Harabara.ttf">
+            <string>Harabara-Bold</string>
+            <string>Harabara-Bold</string>
             <string>Harabara-Bold</string>
             <string>Harabara-Bold</string>
             <string>Harabara-Bold</string>
@@ -47,17 +49,21 @@
                                 <rect key="frame" x="-17" y="109" width="458" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jv3-g6-ChO">
-                                        <rect key="frame" x="50" y="26" width="19" height="27"/>
-                                        <state key="normal" title="Button" image="nav_arrow.png"/>
+                                        <rect key="frame" x="17" y="26" width="87" height="27"/>
+                                        <color key="tintColor" red="0.074509803920000006" green="0.14117647059999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
+                                        <state key="normal" image="nav_arrow.png"/>
                                         <connections>
-                                            <action selector="categoryBack:" destination="9pv-A4-QxB" eventType="touchUpInside" id="3cX-gl-Miw"/>
+                                            <action selector="categoryBack:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Rd0-Br-KJX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wre-Xd-jQV">
-                                        <rect key="frame" x="384" y="26" width="19" height="27"/>
-                                        <state key="normal" title="Button" image="nav_arrow-r.png"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wre-Xd-jQV">
+                                        <rect key="frame" x="349" y="26" width="83" height="27"/>
+                                        <color key="tintColor" red="0.074509803920000006" green="0.14117647059999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="nav_arrow-r.png"/>
                                         <connections>
-                                            <action selector="categoryForward:" destination="9pv-A4-QxB" eventType="touchUpInside" id="HdP-CZ-YWW"/>
+                                            <action selector="categoryForward:" destination="9pv-A4-QxB" eventType="touchUpInside" id="0GA-tK-C1d"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -74,7 +80,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-zF-EnD">
                                         <rect key="frame" x="8" y="18" width="234" height="51"/>
-                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="28"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -105,50 +111,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhH-7e-zl5">
-                                <rect key="frame" x="0.0" y="637" width="207" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.50980392156862742" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="ADD">
-                                    <color key="titleColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addToFavorites:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nq9-M8-iDL"/>
-                                    <segue destination="cMF-nN-tcY" kind="presentation" identifier="segueToProgramDetail" id="jhy-Yq-hfV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-Sw-pfc">
-                                <rect key="frame" x="207" y="637" width="207" height="50"/>
-                                <color key="backgroundColor" red="0.074509803921568626" green="0.14117647058823529" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="CONNECT">
-                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="connectToReferral:" destination="9pv-A4-QxB" eventType="touchUpInside" id="3mH-vd-x8q"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="add selected to favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-aG-1GB">
-                                <rect key="frame" x="54" y="651" width="145" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
-                                <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="share or find codes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nf-eW-fkb">
-                                <rect key="frame" x="303" y="651" width="105" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
-                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
-                                <rect key="frame" x="0.0" y="210" width="414" height="414"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
+                                <rect key="frame" x="0.0" y="210" width="414" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="referralProgramCell" rowHeight="98" id="01l-Nm-Tf3" customClass="CustomCellClass">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="98" id="01l-Nm-Tf3" customClass="CustomCellClass">
                                         <rect key="frame" x="0.0" y="28" width="414" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01l-Nm-Tf3" id="M1Z-Th-WhU">
@@ -156,32 +125,37 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-sn-b99">
-                                                    <rect key="frame" x="152" y="0.0" width="166" height="44"/>
+                                                    <rect key="frame" x="152" y="0.0" width="262" height="44"/>
                                                     <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="36"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="0.70328663793103452" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-gJ-beO">
                                                     <rect key="frame" x="8" y="0.0" width="125" height="90"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-C7-Oic">
-                                                    <rect key="frame" x="152" y="52" width="102" height="38"/>
+                                                    <rect key="frame" x="270" y="53" width="102" height="38"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mates sharing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHo-l6-dio">
-                                                    <rect key="frame" x="233" y="52" width="135" height="38"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mates sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHo-l6-dio">
+                                                    <rect key="frame" x="152" y="52" width="113" height="38"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-xL-nVq">
+                                                    <rect key="frame" x="351" y="56" width="35" height="30"/>
+                                                    <state key="normal" image="rmlike-c.png"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="programLabel" destination="Af0-sn-b99" id="FD9-uK-vTP"/>
-                                            <outlet property="programLogo" destination="J0B-gJ-beO" id="Ojc-Su-uk5"/>
-                                            <outlet property="supporterLabel" destination="TFe-C7-Oic" id="bYd-KU-vxZ"/>
+                                            <outlet property="faveButton" destination="cgw-xL-nVq" id="ZlR-XB-0Aw"/>
+                                            <outlet property="programFavesCount" destination="TFe-C7-Oic" id="6Ei-V3-vWa"/>
+                                            <outlet property="programLogoURL" destination="J0B-gJ-beO" id="PAl-XL-L2h"/>
+                                            <outlet property="programNameString" destination="Af0-sn-b99" id="iwk-1Y-e3E"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,6 +164,23 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="bA5-mw-RGU"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-Sw-pfc">
+                                <rect key="frame" x="0.0" y="623" width="414" height="64"/>
+                                <color key="backgroundColor" red="0.074509803921568626" green="0.14117647058823529" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="CONNECT TO A REFER MATE">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectToReferral:" destination="9pv-A4-QxB" eventType="touchUpInside" id="kCj-nB-fYb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="share your code or find a code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nf-eW-fkb">
+                                <rect key="frame" x="87" y="661" width="250" height="18"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -197,17 +188,18 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
-                        <outlet property="addButton" destination="nhH-7e-zl5" id="2rS-mQ-EWK"/>
                         <outlet property="backButton" destination="jv3-g6-ChO" id="oPQ-bf-1uI"/>
                         <outlet property="categoryLabel" destination="4pb-zF-EnD" id="Cqp-Ik-FH9"/>
                         <outlet property="connectButton" destination="gfO-Sw-pfc" id="NG7-uL-0Dg"/>
                         <outlet property="forwardButton" destination="wre-Xd-jQV" id="dIe-6u-eP0"/>
+                        <outlet property="myTableView" destination="XXm-Jf-hEI" id="GAu-gQ-hBX"/>
                         <outlet property="topBox" destination="2dV-qQ-0zd" id="JrM-ee-sEL"/>
+                        <segue destination="cMF-nN-tcY" kind="presentation" identifier="segueToProgramDetail" id="Fvh-45-Ub8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="184" y="-216"/>
+            <point key="canvasLocation" x="185" y="-216"/>
         </scene>
         <!--Program Detail Scene-->
         <scene sceneID="pbC-W4-Cwd">
@@ -260,17 +252,10 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VNN-Q9-WTQ">
                                 <rect key="frame" x="82" y="86" width="250" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-8l-wdu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-8l-wdu">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="81"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="program name">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="24" name="Harabara-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
+                                        <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
@@ -278,17 +263,10 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-zX-gj2">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="supporters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-zX-gj2">
                                         <rect key="frame" x="0.0" y="82" width="250" height="50"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="supporters">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="24" name="Harabara-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
+                                        <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
@@ -373,7 +351,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="goBack:" destination="cMF-nN-tcY" eventType="touchUpInside" id="OcH-aS-TRT"/>
+                                    <segue destination="hRO-VX-cgZ" kind="unwind" unwindAction="unwindToPrograms:" id="ffN-bw-K7g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -393,6 +371,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb7-ia-clX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hRO-VX-cgZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="687" y="-216"/>
         </scene>
@@ -534,7 +513,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="goBack:" destination="CTo-yl-ReX" eventType="touchUpInside" id="0hp-FS-4Ua"/>
+                                    <segue destination="jdH-NS-Zyd" kind="unwind" unwindAction="unwindToDetails:" id="QfJ-ZS-bLA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -553,6 +532,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3t-ZR-KqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jdH-NS-Zyd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1259" y="-216"/>
         </scene>
@@ -729,7 +709,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="goBack:" destination="nf5-yd-zcb" eventType="touchUpInside" id="FuJ-yw-ojV"/>
+                                    <segue destination="aDP-Vo-aaQ" kind="unwind" unwindAction="unwindToDetails:" id="hRr-ON-tpv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -743,6 +723,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYE-Qf-Mg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aDP-Vo-aaQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1847" y="-216"/>
         </scene>
@@ -1394,10 +1375,11 @@
         <image name="hamburger.png" width="35" height="29"/>
         <image name="nav_arrow-r.png" width="15" height="27"/>
         <image name="nav_arrow.png" width="15" height="27"/>
+        <image name="rmlike-c.png" width="35" height="30"/>
         <image name="search.png" width="35" height="35"/>
         <image name="twitter.png" width="37" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3L-8R-Pc8"/>
+        <segue reference="5QS-3Y-oSW"/>
     </inferredMetricsTieBreakers>
 </document>

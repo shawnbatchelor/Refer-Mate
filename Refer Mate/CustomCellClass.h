@@ -11,12 +11,15 @@
 @interface CustomCellClass : UITableViewCell
 
 {
-    IBOutlet UILabel *programLabel;
-    IBOutlet UILabel *supporterLabel;
-    IBOutlet UIImageView *programLogo;
-    IBOutlet UIButton *faveButton;
-
+    //IBOutlet UIButton *faveButton;
 }
 
--(void) refreshCustomCell: (NSString*)programName supporterNumber:(NSString*)supporterNumber programLogo:(UIImage*)programPic;
+@property (nonatomic, strong) IBOutlet UILabel *programNameString;
+@property (nonatomic, strong) NSString *programDescriptionString;
+@property (nonatomic, strong) IBOutlet UILabel *programFavesCount;
+@property (nonatomic, strong) NSString *youGetAmount;
+@property (nonatomic, strong) NSString *theyGetAmount;
+@property (nonatomic, strong) IBOutlet UIImageView *programLogoURL;
+@property (nonatomic, strong) IBOutlet UIButton *faveButton;
+
 @end

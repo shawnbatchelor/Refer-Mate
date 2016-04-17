@@ -11,8 +11,10 @@
 @implementation LinkReceiveScreen
 
 //Actions for buttons
+/*
 - (IBAction)goBack:(id)sender {
     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
 }
+*/
 
 @end

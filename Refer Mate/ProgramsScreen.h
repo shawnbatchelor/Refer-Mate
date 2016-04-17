@@ -18,13 +18,14 @@
     IBOutlet UIButton *forwardButton;
     IBOutlet UILabel *categoryLabel;
     IBOutlet UIView *topBox;
+    NSArray *resultArray;
+    IBOutlet UITableView *myTableView;
     
     NSMutableArray *servicesArray;
-    NSString *servicesString;
-
     NSMutableArray *shoppingArray;
-    NSString *shoppingString;
-
+    NSMutableArray *bankingArray;
+    NSMutableArray *fitnessArray;
+    NSArray *categoriesArray;
 }
 
 @end
