@@ -87,6 +87,7 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         [self presentViewController:alert animated:YES completion:nil];
         
     } else {
+        uid = [result objectForKey:@"uid"];
         [self logUser];
         
         //Signup successful
@@ -168,17 +169,16 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
 //Create user entry into Firebase database
 -(void)logUser{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
-    NSDictionary *userDictionary = @{
+    NSDictionary *usersDictionary = @{
                                     @"firstname" : firstnameText.text,
                                     @"lastname" : lastnameText.text,
-                                    @"username" : usernameText.text,
-                                    @"email_address" : emailText.text,
+                                    @"displayName" : usernameText.text,
+                                    @"email" : emailText.text,
                                     @"zip_code" : zipCode
-                                    //@"city" : city
                                     };
     Firebase *usersRef = [ref childByAppendingPath: @"users"];
-    Firebase *setUser = [usersRef childByAppendingPath: usernameText.text];
-    [setUser setValue: userDictionary];
+    Firebase *setUser = [usersRef childByAppendingPath: uid];//usernameText.text];
+    [setUser setValue: usersDictionary];
 }
 
 

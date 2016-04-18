@@ -10,7 +10,7 @@
 #import <Firebase/Firebase.h>
 
 
-@interface LoginScreen : UIViewController
+@interface LoginScreen : UIViewController 
 
 {
     IBOutlet UITextField *emailText;
@@ -22,6 +22,8 @@
     IBOutlet UIButton *twitterButton;
     IBOutlet UISwitch *rememberSwitch;
     NSString *errorString;
+    NSString *userID;
+
 }
 
 

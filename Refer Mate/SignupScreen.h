@@ -24,6 +24,7 @@
     IBOutlet UIButton *cancelButton;
     IBOutlet UISwitch *rememberSwitch;
     NSString *errorString;
+    NSString *uid;
 }
 @property(nonatomic)CLLocationManager *locationManager;
 

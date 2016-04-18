@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
 
 @interface LinkSubmitScreen : UIViewController
 
@@ -17,6 +18,10 @@
     IBOutlet UIButton *twitterButton;
     IBOutlet UIButton *backButton;
     IBOutlet UITextField *linkText;
+    NSString *userAutoID;
+    NSDictionary *linkDictionary;
 }
+
+@property(nonatomic, strong)NSString *toProgramLabelSegueString;
 
 @end

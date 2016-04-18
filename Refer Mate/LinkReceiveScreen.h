@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Firebase/Firebase.h>
+
 
 @interface LinkReceiveScreen : UIViewController
 
@@ -16,7 +18,14 @@
     IBOutlet UILabel *usernameLabel;
     IBOutlet UIImageView *userImage;
     IBOutlet UIButton *backButton;
-    IBOutlet UITextField *linkText;
+    IBOutlet UILabel *linkText;
+    
+    NSArray *programLinksArray;
+    NSArray * allLinksArray;
+    NSString *userAutoID;
+
 }
+
+@property(nonatomic, strong)NSString *fromProgramLabelSegueString;
 
 @end

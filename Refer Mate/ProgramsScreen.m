@@ -31,6 +31,7 @@ int currentIndex;
     categoriesArray = [[NSArray alloc] initWithObjects:@"services", @"shopping", @"banking", @"fitness", nil];
     categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
     
+    
     [self callFirebase];
     
     // Initialize the refresh control.
@@ -76,11 +77,7 @@ int currentIndex;
     if (currentIndex < [categoriesArray count]-1) {
         currentIndex++;
         categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
-        servicesArray = [[NSMutableArray alloc] init];
-        shoppingArray = [[NSMutableArray alloc] init];
-        bankingArray = [[NSMutableArray alloc] init];
-        fitnessArray = [[NSMutableArray alloc] init];
-        //NSLog(@"CURRENT INDEX ::::: %d", currentIndex);
+        [self callFirebase];
     }
 }
 
@@ -89,11 +86,7 @@ int currentIndex;
     if (currentIndex > 0){
         currentIndex--;
         categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
-        servicesArray = [[NSMutableArray alloc] init];
-        shoppingArray = [[NSMutableArray alloc] init];
-        bankingArray = [[NSMutableArray alloc] init];
-        fitnessArray = [[NSMutableArray alloc] init];
-        //NSLog(@"CURRENT INDEX ::::: %d", currentIndex);
+        [self callFirebase];
     }
 }
 
@@ -103,130 +96,22 @@ int currentIndex;
 }
 
 
-//Query Firebase database and handle JSON for tableview
--(void) callFirebase {
-    if (currentIndex == 0) {
-        // Handle services category
-        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/services"];
-        
-        // Query Firebase database
-        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
-            resultArray = [[firstResults objectAtIndex:0] allObjects];
-            
-            NSLog(@"RESULTS ARRAY COUNT ::::: %lu", (unsigned long)[resultArray count]);
-            
-            for (int i=0; i < [resultArray count]; i++){
-                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
-                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
-                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
-                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
-                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
-                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
-                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
-                
-                [servicesArray addObject:program1];
-            }
-            [myTableView reloadData];
-        }];
-    }else if (currentIndex == 1){
-        // Handle shopping category
-        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/shopping"];
-        
-        // Query Firebase database
-        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
-            resultArray = [[firstResults objectAtIndex:0] allObjects];
-            
-            NSLog(@"RESULTS ARRAY COUNT ::::: %lu", (unsigned long)[resultArray count]);
-            
-            for (int i=0; i < [resultArray count]; i++){
-                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
-                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
-                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
-                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
-                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
-                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
-                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
-                
-                [shoppingArray addObject:program1];
-            }
-            [myTableView reloadData];
-        }];
-    }else if (currentIndex == 2){
-        // Handle shopping category
-        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/banking"];
-        
-        // Query Firebase database
-        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
-            resultArray = [[firstResults objectAtIndex:0] allObjects];
-            
-            NSLog(@"RESULTS ARRAY COUNT ::::: %lu", (unsigned long)[resultArray count]);
-            
-            for (int i=0; i < [resultArray count]; i++){
-                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
-                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
-                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
-                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
-                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
-                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
-                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
-                
-                [bankingArray addObject:program1];
-            }
-            [myTableView reloadData];
-        }];
-
-    }else if (currentIndex == 3){
-        // Handle shopping category
-        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/fitness"];
-        
-        // Query Firebase database
-        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
-            resultArray = [[firstResults objectAtIndex:0] allObjects];
-            
-            NSLog(@"RESULTS ARRAY COUNT ::::: %lu", (unsigned long)[resultArray count]);
-            
-            for (int i=0; i < [resultArray count]; i++){
-                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
-                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
-                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
-                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
-                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
-                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
-                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
-                
-                [fitnessArray addObject:program1];
-            }
-            [myTableView reloadData];
-        }];
-
-    }
-}
-
 
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     switch (currentIndex)
     {
         case 0:
             return [servicesArray count];
-            NSLog(@"case 0");
             break;
         case 1:
             return [shoppingArray count];
-            NSLog(@"case 1");
             break;
         case 2:
             return [bankingArray count];
-            NSLog(@"case 2");
             break;
         case 3:
             return [fitnessArray count];
-            NSLog(@"case 3");
             break;
         default:
             return [servicesArray count];
@@ -237,14 +122,12 @@ int currentIndex;
 
 //Load cells with content from custom object
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CustomCellClass *programCell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-   
+    CustomCellClass *programCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     
     if(programCell != nil)
     {
         CustomProgramObject *currentProgram;
-        NSLog(@"program cell NOT nil");
-
+        
         switch (currentIndex)
         {
             case 0:
@@ -259,10 +142,11 @@ int currentIndex;
                     programCell.youGetAmount = currentProgram.referralProgramYouGet;
                     programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
                     
+                    /*
                     {
                         programCell.faveButton.tag = indexPath.row;
                         [programCell.faveButton addTarget:programCell action:@selector(setFave:) forControlEvents:UIControlEventTouchUpInside];
-                    }
+                    }*/
                     
                 }
                 break;
@@ -327,6 +211,118 @@ int currentIndex;
 }
 
 
+
+//Query Firebase database and handle JSON for tableview
+-(void) callFirebase {
+    if (currentIndex == 0) {
+        servicesArray = [[NSMutableArray alloc] init];
+        
+        // Handle services category
+        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/services"];
+        
+        // Query Firebase database
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
+            resultArray = [[firstResults objectAtIndex:0] allObjects];
+            
+            
+            for (int i=0; i < [resultArray count]; i++){
+                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
+                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
+                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
+                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
+                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
+                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
+                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
+                
+                [servicesArray addObject:program1];
+            }
+            [myTableView reloadData];
+        }];
+    }else if (currentIndex == 1){
+        shoppingArray = [[NSMutableArray alloc] init];
+        
+        // Handle shopping category
+        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/shopping"];
+        
+        // Query Firebase database
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
+            resultArray = [[firstResults objectAtIndex:0] allObjects];
+            
+            
+            for (int i=0; i < [resultArray count]; i++){
+                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
+                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
+                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
+                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
+                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
+                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
+                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
+                
+                [shoppingArray addObject:program1];
+            }
+            [myTableView reloadData];
+        }];
+    }else if (currentIndex == 2){
+        bankingArray = [[NSMutableArray alloc] init];
+
+        // Handle shopping category
+        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/banking"];
+        
+        // Query Firebase database
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
+            resultArray = [[firstResults objectAtIndex:0] allObjects];
+            
+            
+            for (int i=0; i < [resultArray count]; i++){
+                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
+                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
+                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
+                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
+                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
+                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
+                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
+                
+                [bankingArray addObject:program1];
+            }
+            [myTableView reloadData];
+        }];
+        
+    }else if (currentIndex == 3){
+        fitnessArray = [[NSMutableArray alloc] init];
+
+        // Handle shopping category
+        ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/fitness"];
+        
+        // Query Firebase database
+        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
+            resultArray = [[firstResults objectAtIndex:0] allObjects];
+            
+            
+            for (int i=0; i < [resultArray count]; i++){
+                CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
+                program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
+                program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
+                program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
+                program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
+                program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
+                program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
+                
+                [fitnessArray addObject:program1];
+            }
+            [myTableView reloadData];
+        }];
+        
+    }
+}
+
+
+
+
+
 //Pass data to details screen from cell clicked
  -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      DetailScreen *detailController = segue. destinationViewController;
@@ -335,7 +331,7 @@ int currentIndex;
          NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
          
          detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
-         NSLog (@"RESULT ROW %ld", (long)clickedIndex.row);
+         //NSLog (@"RESULT ROW %ld", (long)clickedIndex.row);
 
          detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
          detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];

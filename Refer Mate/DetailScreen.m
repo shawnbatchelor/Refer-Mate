@@ -7,24 +7,22 @@
 //
 
 #import "DetailScreen.h"
+#import "LinkSubmitScreen.h"
+#import "LinkReceiveScreen.h"
+
 
 @implementation DetailScreen
 
 
 //Actions for buttons
 - (IBAction)addLink:(id)sender {
+    
     [self performSegueWithIdentifier:@"segueToLinkSubmit" sender:nil];
 }
 
 - (IBAction)connectLink:(id)sender {
     [self performSegueWithIdentifier:@"segueToLinkReceive" sender:nil];
 }
-
-/*
-- (IBAction)goBack:(id)sender {
-    [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
-}
- */
 
 - (IBAction)unwindToDetails:(UIStoryboardSegue *)unwindSegue
 {
@@ -34,6 +32,26 @@
     programLabel.text = self.programLabelSegueString;
     supporterLabel.text = self.supporterLabelSegueString;
     detailTextView.text = self.detailTextViewSegueString;
+}
+
+
+//Pass data to link submit screen from cell clicked
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    if ([[segue identifier] isEqualToString:@"segueToLinkSubmit"]){
+        LinkSubmitScreen *linkController = segue.destinationViewController;
+        if (linkController != nil){
+            linkController.toProgramLabelSegueString = self.programLabelSegueString;
+        }
+    }else if ([[segue identifier] isEqualToString:@"segueToLinkReceive"]){
+        LinkReceiveScreen *getController = segue.destinationViewController;
+        if (getController != nil){
+            getController.fromProgramLabelSegueString = self.programLabelSegueString;
+        }
+    }
+    
+    
 }
 
 @end

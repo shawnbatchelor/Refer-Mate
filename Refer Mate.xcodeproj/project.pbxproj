@@ -10,6 +10,8 @@
 		FF26A3051CB95B8C001544EA /* Harabara.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3041CB95B8C001544EA /* Harabara.ttf */; };
 		FF26A3071CB9678F001544EA /* nav_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3061CB9678F001544EA /* nav_arrow.png */; };
 		FF26A3091CB9685C001544EA /* nav_arrow-r.png in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3081CB9685C001544EA /* nav_arrow-r.png */; };
+		FF45EEC91CC404DB00B4C3BE /* SuggestProgramScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF45EEC81CC404DB00B4C3BE /* SuggestProgramScreen.m */; };
+		FF45EECC1CC4629800B4C3BE /* UserProfileScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF45EECB1CC4629800B4C3BE /* UserProfileScreen.m */; };
 		FF933DA01CBDA614009739D7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FF933D9F1CBDA614009739D7 /* Reachability.m */; };
 		FF98DF401CB332E80085163D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF3F1CB332E80085163D /* main.m */; };
 		FF98DF431CB332E80085163D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF421CB332E80085163D /* AppDelegate.m */; };
@@ -92,6 +94,10 @@
 		FF26A3041CB95B8C001544EA /* Harabara.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Harabara.ttf; sourceTree = "<group>"; };
 		FF26A3061CB9678F001544EA /* nav_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_arrow.png; sourceTree = "<group>"; };
 		FF26A3081CB9685C001544EA /* nav_arrow-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_arrow-r.png"; sourceTree = "<group>"; };
+		FF45EEC71CC404DB00B4C3BE /* SuggestProgramScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestProgramScreen.h; sourceTree = "<group>"; };
+		FF45EEC81CC404DB00B4C3BE /* SuggestProgramScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestProgramScreen.m; sourceTree = "<group>"; };
+		FF45EECA1CC4629800B4C3BE /* UserProfileScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileScreen.h; sourceTree = "<group>"; };
+		FF45EECB1CC4629800B4C3BE /* UserProfileScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileScreen.m; sourceTree = "<group>"; };
 		FF933D9E1CBDA614009739D7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FF933D9F1CBDA614009739D7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		FF98DF3B1CB332E70085163D /* Refer Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Refer Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +284,10 @@
 				FF98DF451CB332E80085163D /* ProgramsScreen.m */,
 				FF98DF471CB332E80085163D /* FavoritesScreen.h */,
 				FF98DF481CB332E80085163D /* FavoritesScreen.m */,
+				FF45EEC71CC404DB00B4C3BE /* SuggestProgramScreen.h */,
+				FF45EEC81CC404DB00B4C3BE /* SuggestProgramScreen.m */,
+				FF45EECA1CC4629800B4C3BE /* UserProfileScreen.h */,
+				FF45EECB1CC4629800B4C3BE /* UserProfileScreen.m */,
 				FF98DF4A1CB332E80085163D /* Main.storyboard */,
 				FF98DF4D1CB332E80085163D /* Assets.xcassets */,
 				FF98DF4F1CB332E80085163D /* LaunchScreen.storyboard */,
@@ -516,10 +526,12 @@
 				FFD0190C1CBB445000FB5E6E /* CustomProgramObject.m in Sources */,
 				FF98DF491CB332E80085163D /* FavoritesScreen.m in Sources */,
 				FFFFEDAB1CBB8657007BBCBB /* TwitterAuthHelper.m in Sources */,
+				FF45EECC1CC4629800B4C3BE /* UserProfileScreen.m in Sources */,
 				FF98DF431CB332E80085163D /* AppDelegate.m in Sources */,
 				FF98DF461CB332E80085163D /* ProgramsScreen.m in Sources */,
 				FF98DF401CB332E80085163D /* main.m in Sources */,
 				FFD019031CBB2C5700FB5E6E /* LinkSubmitScreen.m in Sources */,
+				FF45EEC91CC404DB00B4C3BE /* SuggestProgramScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

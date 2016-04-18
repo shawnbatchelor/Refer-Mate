@@ -83,11 +83,6 @@
                                         <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="28"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
-                                                <integer key="value" value="70"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.65098039215686276" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,17 +106,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
-                                <rect key="frame" x="0.0" y="210" width="414" height="405"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="30" sectionFooterHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
+                                <rect key="frame" x="0.0" y="194" width="414" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="98" id="01l-Nm-Tf3" customClass="CustomCellClass">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="98"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="myCell" rowHeight="100" id="01l-Nm-Tf3" customClass="CustomCellClass">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01l-Nm-Tf3" id="M1Z-Th-WhU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-sn-b99">
@@ -131,7 +127,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-gJ-beO">
-                                                    <rect key="frame" x="8" y="0.0" width="125" height="90"/>
+                                                    <rect key="frame" x="10" y="0.0" width="125" height="90"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-C7-Oic">
                                                     <rect key="frame" x="270" y="53" width="102" height="38"/>
@@ -160,12 +156,12 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="v7j-7D-ki4"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="bA5-mw-RGU"/>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="7wz-cS-b3p"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="R26-6i-ETO"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-Sw-pfc">
-                                <rect key="frame" x="0.0" y="623" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="622" width="414" height="65"/>
                                 <color key="backgroundColor" red="0.074509803921568626" green="0.14117647058823529" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="CONNECT TO A REFER MATE">
@@ -192,7 +188,7 @@
                         <outlet property="categoryLabel" destination="4pb-zF-EnD" id="Cqp-Ik-FH9"/>
                         <outlet property="connectButton" destination="gfO-Sw-pfc" id="NG7-uL-0Dg"/>
                         <outlet property="forwardButton" destination="wre-Xd-jQV" id="dIe-6u-eP0"/>
-                        <outlet property="myTableView" destination="XXm-Jf-hEI" id="GAu-gQ-hBX"/>
+                        <outlet property="myTableView" destination="XXm-Jf-hEI" id="5Xl-mF-d5M"/>
                         <outlet property="topBox" destination="2dV-qQ-0zd" id="JrM-ee-sEL"/>
                         <segue destination="cMF-nN-tcY" kind="presentation" identifier="segueToProgramDetail" id="Fvh-45-Ub8"/>
                     </connections>
@@ -351,7 +347,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="hRO-VX-cgZ" kind="unwind" unwindAction="unwindToPrograms:" id="ffN-bw-K7g"/>
+                                    <segue destination="hRO-VX-cgZ" kind="unwind" unwindAction="unwindToPrograms:" id="NXM-8g-42s"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -367,7 +363,6 @@
                         <outlet property="supporterLabel" destination="VMG-zX-gj2" id="Fcd-XF-cuQ"/>
                         <segue destination="CTo-yl-ReX" kind="presentation" identifier="segueToLinkSubmit" id="B9k-Rz-xLw"/>
                         <segue destination="nf5-yd-zcb" kind="presentation" identifier="segueToLinkReceive" id="dC4-RV-2qe"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="segueToTabControl" id="5QS-3Y-oSW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb7-ia-clX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,7 +428,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="submitLink:" destination="CTo-yl-ReX" eventType="touchUpInside" id="zvU-DP-IJI"/>
+                                    <action selector="setLink:" destination="CTo-yl-ReX" eventType="touchUpInside" id="Wnp-hw-Wkp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-AY-xIH">
@@ -449,7 +444,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="cancelLink:" destination="CTo-yl-ReX" eventType="touchUpInside" id="jrL-8O-CaH"/>
+                                    <segue destination="jdH-NS-Zyd" kind="unwind" unwindAction="unwindToDetails:" id="un4-E7-Ph7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMH-ky-hE2">
@@ -513,7 +508,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="jdH-NS-Zyd" kind="unwind" unwindAction="unwindToDetails:" id="QfJ-ZS-bLA"/>
+                                    <segue destination="jdH-NS-Zyd" kind="unwind" unwindAction="unwindToDetails:" id="Io7-5C-JBn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -528,7 +523,6 @@
                         <outlet property="linkText" destination="xkH-cd-g1T" id="85Q-qR-Uq2"/>
                         <outlet property="submitButton" destination="L6X-Iw-Oti" id="b3V-Uq-JfV"/>
                         <outlet property="twitterButton" destination="fvY-9R-2Dy" id="AzR-HX-Kgn"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="segueToTabControl" id="qX9-NC-31t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3t-ZR-KqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -570,7 +564,7 @@
                                 <rect key="frame" x="20" y="175" width="374" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-zP-VE9">
-                                        <rect key="frame" x="248" y="60" width="118" height="23"/>
+                                        <rect key="frame" x="257" y="60" width="109" height="23"/>
                                         <attributedString key="attributedText">
                                             <fragment content="1">
                                                 <attributes>
@@ -658,7 +652,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="http://link%20that%20was%20shared" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEv-hJ-Anu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="http://link%20that%20was%20shared" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEv-hJ-Anu">
                                 <rect key="frame" x="60" y="444" width="277" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -719,7 +713,11 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="backButton" destination="1sL-q0-ii9" id="ROF-lB-0Rq"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="segueToTabControl" id="qK2-TQ-faJ"/>
+                        <outlet property="linkText" destination="VEv-hJ-Anu" id="6sQ-aS-qLc"/>
+                        <outlet property="savedLabel" destination="3ZD-ye-mdU" id="lyQ-kz-3JR"/>
+                        <outlet property="sharedLabel" destination="6HF-zP-VE9" id="Qfy-jz-FGj"/>
+                        <outlet property="userImage" destination="Jg9-Fm-aEK" id="TRn-6Y-pCg"/>
+                        <outlet property="usernameLabel" destination="2Dx-x7-gB8" id="3eK-Rr-aBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYE-Qf-Mg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1119,10 +1117,10 @@
             </objects>
             <point key="canvasLocation" x="313.5" y="-1280.5"/>
         </scene>
-        <!--Profile-->
+        <!--userProfileViewController-->
         <scene sceneID="358-s1-3Gv">
             <objects>
-                <viewController id="uGB-VB-W7G" sceneMemberID="viewController">
+                <viewController title="userProfileViewController" id="uGB-VB-W7G" customClass="UserProfileScreen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ap4-MU-RyY"/>
                         <viewControllerLayoutGuide type="bottom" id="jJh-dE-a5n"/>
@@ -1166,7 +1164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xx-wT-CB7">
-                                <rect key="frame" x="107" y="296" width="200" height="21"/>
+                                <rect key="frame" x="41" y="296" width="333" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1193,7 +1191,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzx-ee-0Pe">
-                                <rect key="frame" x="41" y="399" width="333" height="21"/>
+                                <rect key="frame" x="41" y="399" width="159" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1216,12 +1214,28 @@
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFp-Pi-MMF">
+                                <rect key="frame" x="215" y="399" width="159" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="50-noun_49693_cc.png" selectedImage="50-c-noun_49693_cc.png" id="Xax-KW-eAH"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="editButton" destination="pBz-9N-sK6" id="9k1-ht-4V7"/>
+                        <outlet property="emailLabel" destination="ynb-U8-3RR" id="84M-51-RVn"/>
+                        <outlet property="firstnameLabel" destination="Jzx-ee-0Pe" id="HoY-eq-tWn"/>
+                        <outlet property="lastnameLabel" destination="gFp-Pi-MMF" id="gLs-V5-ViA"/>
+                        <outlet property="locationLabel" destination="t5q-6S-2ge" id="MMz-iH-gc2"/>
+                        <outlet property="profilePic" destination="mS6-3T-tmK" id="663-r3-3lf"/>
+                        <outlet property="username" destination="2xx-wT-CB7" id="gTT-5n-2xR"/>
+                        <outlet property="usernameLabel" destination="Nkl-9T-2kU" id="0Xd-Qp-YYY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkX-BF-tsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1251,7 +1265,7 @@
         <!--Add-->
         <scene sceneID="Sbb-5T-dFK">
             <objects>
-                <viewController id="QUJ-6m-5Pz" sceneMemberID="viewController">
+                <viewController id="QUJ-6m-5Pz" customClass="SuggestProgramScreen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Oz-M9-Rwq"/>
                         <viewControllerLayoutGuide type="bottom" id="71I-Bx-why"/>
@@ -1314,6 +1328,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="14t-VJ-VYp" kind="unwind" unwindAction="unwindToPrograms:" id="Hxy-lL-ewi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="now, tell us what you know about it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDC-cp-ewj">
                                 <rect key="frame" x="39" y="298" width="233" height="21"/>
@@ -1348,6 +1365,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setSuggestion:" destination="QUJ-6m-5Pz" eventType="touchUpInside" id="NmJ-no-MqJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
@@ -1355,8 +1375,16 @@
                     <tabBarItem key="tabBarItem" title="Add" image="50-noun_13006_cc.png" selectedImage="50-c-noun_13006_cc.png" id="k1W-PY-amO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="SnD-SK-8v7" id="PPo-0f-PZ2"/>
+                        <outlet property="submitButton" destination="xUz-pg-rLd" id="7gr-yd-bua"/>
+                        <outlet property="suggestedDescription" destination="uL3-rv-5jE" id="KfQ-90-I3k"/>
+                        <outlet property="suggestedName" destination="DyB-Mc-U2s" id="KVZ-yO-U6M"/>
+                        <segue destination="14t-VJ-VYp" kind="unwind" identifier="unwindToProgramScreen" unwindAction="unwindToPrograms:" id="eq4-AZ-is2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssh-gv-RJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="14t-VJ-VYp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="196" y="1437"/>
         </scene>
@@ -1379,7 +1407,4 @@
         <image name="search.png" width="35" height="35"/>
         <image name="twitter.png" width="37" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="5QS-3Y-oSW"/>
-    </inferredMetricsTieBreakers>
 </document>

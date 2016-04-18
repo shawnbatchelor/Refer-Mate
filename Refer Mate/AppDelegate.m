@@ -16,6 +16,7 @@
 @end
 
 @implementation AppDelegate
+@synthesize authenticatedUser;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

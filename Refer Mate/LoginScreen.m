@@ -12,7 +12,8 @@
 #import "TwitterAuthHelper.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "Reachability.h"
-
+#import "UserProfileScreen.h"
+#import "AppDelegate.h"
 
 @implementation LoginScreen
 
@@ -42,6 +43,9 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
         }
     } else {
         // We are now logged in
+        userID = authData.uid;
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        appDelegate.authenticatedUser = userID;
         [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
     }
 }];
@@ -80,33 +84,33 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                    }];
                                         }
                                     }];
-
-
-  /* Depricated method. 
-    [facebookLogin logInWithReadPermissions:@[@"email"]
-                                    handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
-                                        
-                                        if (facebookError) {
-                                           // NSLog(@"Facebook login failed. Error: %@", facebookError);
-                                            [self facebookFailAlert];
-                                        } else if (facebookResult.isCancelled) {
-                                            //NSLog(@"Facebook login got cancelled.");
-                                            [self facebookFailAlert];
-                                        } else {
-                                            NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
-                                            
-                                            [ref authWithOAuthProvider:@"facebook" token:accessToken
-                                                   withCompletionBlock:^(NSError *error, FAuthData *authData) {
-                                                       
-                                                       if (error) {
-                                                           //NSLog(@"Login failed. %@", error);
-                                                           [self facebookFailAlert];
-                                                       } else {
-                                                           [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
-                                                       }
-                                                   }];
-                                        }
-                                    }];*/
+    
+    
+    /* Depricated method.
+     [facebookLogin logInWithReadPermissions:@[@"email"]
+     handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
+     
+     if (facebookError) {
+     // NSLog(@"Facebook login failed. Error: %@", facebookError);
+     [self facebookFailAlert];
+     } else if (facebookResult.isCancelled) {
+     //NSLog(@"Facebook login got cancelled.");
+     [self facebookFailAlert];
+     } else {
+     NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+     
+     [ref authWithOAuthProvider:@"facebook" token:accessToken
+     withCompletionBlock:^(NSError *error, FAuthData *authData) {
+     
+     if (error) {
+     //NSLog(@"Login failed. %@", error);
+     [self facebookFailAlert];
+     } else {
+     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+     }
+     }];
+     }
+     }];*/
 }
 
 
@@ -305,8 +309,5 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
-
-
-
 
 @end
