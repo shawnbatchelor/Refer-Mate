@@ -148,7 +148,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="faveButton" destination="cgw-xL-nVq" id="ZlR-XB-0Aw"/>
+                                            <outlet property="faveButton" destination="cgw-xL-nVq" id="ebJ-7V-HIB"/>
                                             <outlet property="programFavesCount" destination="TFe-C7-Oic" id="6Ei-V3-vWa"/>
                                             <outlet property="programLogoURL" destination="J0B-gJ-beO" id="PAl-XL-L2h"/>
                                             <outlet property="programNameString" destination="Af0-sn-b99" id="iwk-1Y-e3E"/>

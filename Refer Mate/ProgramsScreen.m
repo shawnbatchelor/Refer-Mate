@@ -68,7 +68,12 @@ int currentIndex;
 
 - (IBAction)unwindToPrograms:(UIStoryboardSegue *)unwindSegue{
 }
-
+/*
+- (IBAction)toggleFaveButton{
+     programCell.faveButton.tag = indexPath.row;
+     [programCell.faveButton addTarget:programCell action:@selector(setFave:) forControlEvents:UIControlEventTouchUpInside];
+}
+*/
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,11 +147,7 @@ int currentIndex;
                     programCell.youGetAmount = currentProgram.referralProgramYouGet;
                     programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
                     
-                    /*
-                    {
-                        programCell.faveButton.tag = indexPath.row;
-                        [programCell.faveButton addTarget:programCell action:@selector(setFave:) forControlEvents:UIControlEventTouchUpInside];
-                    }*/
+                    
                     
                 }
                 break;

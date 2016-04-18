@@ -12,7 +12,6 @@
 @interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 {
-    IBOutlet UIButton *addButton;
     IBOutlet UIButton *connectButton;
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *forwardButton;
@@ -20,6 +19,8 @@
     IBOutlet UIView *topBox;
     NSArray *resultArray;
     IBOutlet UITableView *myTableView;
+    IBOutlet UIButton *faveButton;
+
     
     NSMutableArray *servicesArray;
     NSMutableArray *shoppingArray;

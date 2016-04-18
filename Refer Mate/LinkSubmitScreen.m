@@ -29,25 +29,24 @@
 }
 
 - (IBAction)facebookShare:(id)sender {
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        SLComposeViewController *sendPost = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    if([linkText.text length] == 0 || linkText.text == nil)
+    {
+        //All fields are not completed
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
+                                                                       message:@"You must complete all fields before continuing."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
         
-        if([linkText.text length] == 0 || linkText.text == nil)
-        {
-            //All fields are not completed
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
-                                                                           message:@"You must complete all fields before continuing."
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        } else{
-        [sendPost setInitialText:linkText.text];
-        }
-        [self presentViewController:sendPost animated:YES completion:Nil];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else{
+        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+        content.contentURL = [NSURL URLWithString:linkText.text];
+        [FBSDKShareDialog showFromViewController:self
+                                     withContent:content
+                                        delegate:nil];
     }
 }
 
@@ -55,7 +54,7 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         SLComposeViewController *sendTweet = [SLComposeViewController
-                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+                                              composeViewControllerForServiceType:SLServiceTypeTwitter];
         if([linkText.text length] == 0 || linkText.text == nil)
         {
             //All fields are not completed
@@ -69,9 +68,9 @@
             [alert addAction:defaultAction];
             [self presentViewController:alert animated:YES completion:nil];
         } else{
-        [sendTweet setInitialText:linkText.text];
+            [sendTweet setInitialText:linkText.text];
+            [self presentViewController:sendTweet animated:YES completion:nil];
         }
-        [self presentViewController:sendTweet animated:YES completion:nil];
     }
 }
 
@@ -102,14 +101,14 @@
             //Set dictionary to store link
             if ([ref.authData.provider  isEqual: @"password"]){
                 linkDictionary = @{
-                                                 @"referral_link" : linkText.text,
-                                                 @"user_ID" : ref.authData.providerData[@"email"]
-                                                 };
+                                   @"referral_link" : linkText.text,
+                                   @"user_ID" : ref.authData.providerData[@"email"]
+                                   };
             }else{
                 linkDictionary = @{
-                                                 @"referral_link" : linkText.text,
-                                                 @"user_ID" : ref.authData.providerData[@"displayName"]
-                                                 };
+                                   @"referral_link" : linkText.text,
+                                   @"user_ID" : ref.authData.providerData[@"displayName"]
+                                   };
             }
             
             

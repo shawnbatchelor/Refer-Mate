@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
 #import <Social/Social.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 @interface LinkSubmitScreen : UIViewController
