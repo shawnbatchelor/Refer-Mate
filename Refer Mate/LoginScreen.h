@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
-
+#import <Social/Social.h>
 
 @interface LoginScreen : UIViewController 
 

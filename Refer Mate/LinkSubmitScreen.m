@@ -29,11 +29,50 @@
 }
 
 - (IBAction)facebookShare:(id)sender {
-    
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        SLComposeViewController *sendPost = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        if([linkText.text length] == 0 || linkText.text == nil)
+        {
+            //All fields are not completed
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
+                                                                           message:@"You must complete all fields before continuing."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else{
+        [sendPost setInitialText:linkText.text];
+        }
+        [self presentViewController:sendPost animated:YES completion:Nil];
+    }
 }
 
 - (IBAction)twitterShare:(id)sender {
-    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *sendTweet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+        if([linkText.text length] == 0 || linkText.text == nil)
+        {
+            //All fields are not completed
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Stop!"
+                                                                           message:@"You must complete all fields before continuing."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else{
+        [sendTweet setInitialText:linkText.text];
+        }
+        [self presentViewController:sendTweet animated:YES completion:nil];
+    }
 }
 
 
