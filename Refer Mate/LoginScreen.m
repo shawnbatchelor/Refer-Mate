@@ -23,12 +23,12 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self checkUserAuth];
+    //[self checkUserAuth];
 }
 
 
 
-//Manual Authentication
+//Manual Authenticaon
 - (void)loginUser {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
     [ref authUser:emailText.text password:passwordText.text
@@ -82,6 +82,17 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                            //NSLog(@"Login failed. %@", error);
                                                            [self facebookFailAlert];
                                                        } else {
+                                                           usersDictionary = @{
+                                                                               @"fullname" : [authData.providerData objectForKey:@"displayName"],
+                                                                               @"displayName" : [authData.providerData objectForKey:@"id"],
+                                                                               @"email" : [authData.providerData objectForKey:@"email"],
+                                                                               @"profilePicURL" : [authData.providerData objectForKey:@"profileImageURL"]
+                                                                               };
+                                                           
+                                                           userID = authData.uid;
+                                                           AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+                                                           appDelegate.authenticatedUser = userID;
+                                                           [self logProviderUser];
                                                            [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
                                                        }
                                                    }];
@@ -111,6 +122,16 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                     //NSLog(@"Error authenticating account");
                     [self twitterFailAlert];
                 } else {
+                    usersDictionary = @{
+                                        @"fullname" : [authData.providerData objectForKey:@"displayName"],
+                                        @"displayName" : [authData.providerData objectForKey:@"username"],
+                                        @"email" : [authData.providerData objectForKey:@"id"],
+                                        @"profilePicURL" : [authData.providerData objectForKey:@"profileImageURL"]
+                                        };
+                    userID = authData.uid;
+                    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+                    appDelegate.authenticatedUser = userID;
+                    [self logProviderUser];
                     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
                 }
             }];
@@ -223,12 +244,22 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     if (ref.authData) {
         // user authenticated
-        NSLog(@"%@", ref.authData);
+        //NSLog(@"%@", ref.authData);
+        userID = ref.authData.uid;
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        appDelegate.authenticatedUser = userID;
         [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
     } else {
         // No user is signed in
         NSLog(@"No user is signed in");
     }
+}
+
+-(void)logProviderUser{
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    Firebase *usersRef = [ref childByAppendingPath: @"users"];
+    Firebase *setUser = [usersRef childByAppendingPath: userID];
+    [setUser setValue: usersDictionary];
 }
 
 

@@ -12,6 +12,7 @@
 
 @implementation UserProfileScreen
 @synthesize authenticatedUIDForProfileScreen;
+//@synthesize userPicPic;
 
 -(void)viewDidLoad{
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -32,8 +33,10 @@
         
 
         specifiedUserArray = [firstResults valueForKey:userString];
-        NSLog(@"FIRST RESULTS ARRAY ::: %@", firstResults);
-        NSLog(@"ALL USERS ARRAY ::: %@", allUsersArray);
+        userPicData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[specifiedUserArray valueForKey:@"profilePicURL"]]];
+
+        NSLog(@"USER PIC URL ::: %@", [specifiedUserArray valueForKey:@"profilePicURL"]);
+        //NSLog(@"ALL USERS ARRAY ::: %@", allUsersArray);
 
         usernameLabel.text = [specifiedUserArray valueForKey:@"displayName"];
         firstnameLabel.text = [specifiedUserArray valueForKey:@"firstname"];
@@ -41,6 +44,9 @@
         emailLabel.text = [specifiedUserArray valueForKey:@"email"];
         locationLabel.text = [specifiedUserArray valueForKey:@"zip_code"];
         username.text = usernameLabel.text;
+        profilePic.image = [UIImage imageWithData:userPicData];
     }];
 }
+
+
 @end

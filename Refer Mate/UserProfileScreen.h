@@ -24,8 +24,10 @@
     NSArray *allUsersArray;
     NSArray *specifiedUserArray;
     NSString *userString;
+    NSData * userPicData;
 }
 
 @property(nonatomic, strong)NSString *authenticatedUIDForProfileScreen;
+//@property (nonatomic, strong)NSData *userPicPic;
 
 @end

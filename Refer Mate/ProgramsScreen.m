@@ -51,10 +51,6 @@ int currentIndex;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Actions for buttons
-- (IBAction)addToFavorites:(id)sender {
-    
-}
-
 - (IBAction)connectToReferral:(id)sender {
     [self performSegueWithIdentifier:@"segueToProgramDetail" sender:nil];
 }
@@ -88,6 +84,8 @@ int currentIndex;
     }
 }
 
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Custom methods
 -(void)categoryPlus {
@@ -107,12 +105,16 @@ int currentIndex;
     }
 }
 
+
 - (void)pullRefresher:(UIRefreshControl *)refreshControl {
     [myTableView reloadData];
     [refreshControl endRefreshing];
 }
 
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Tableview delegate methods
 
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -166,9 +168,6 @@ int currentIndex;
                     programCell.programDescriptionString = currentProgram.referralProgramDescription;
                     programCell.youGetAmount = currentProgram.referralProgramYouGet;
                     programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    
-                    
                 }
                 break;
             case 1:
@@ -227,11 +226,13 @@ int currentIndex;
     }else {
         NSLog(@"program cell is nil");
     }
-    
     return programCell;
 }
 
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Database handling
 
 //Query Firebase database and handle JSON for tableview
 -(void) callFirebase {
@@ -288,7 +289,7 @@ int currentIndex;
     }else if (currentIndex == 2){
         bankingArray = [[NSMutableArray alloc] init];
         
-        // Handle shopping category
+        // Handle banking category
         ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/banking"];
         
         // Query Firebase database
@@ -314,7 +315,7 @@ int currentIndex;
     }else if (currentIndex == 3){
         fitnessArray = [[NSMutableArray alloc] init];
         
-        // Handle shopping category
+        // Handle fitness category
         ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/fitness"];
         
         // Query Firebase database
@@ -336,12 +337,8 @@ int currentIndex;
             }
             [myTableView reloadData];
         }];
-        
     }
 }
-
-
-
 
 
 //Pass data to details screen from cell clicked

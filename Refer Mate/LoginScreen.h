@@ -23,7 +23,7 @@
     IBOutlet UISwitch *rememberSwitch;
     NSString *errorString;
     NSString *userID;
-
+    NSDictionary *usersDictionary;
 }
 
 
