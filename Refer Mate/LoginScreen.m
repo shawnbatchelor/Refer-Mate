@@ -20,7 +20,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self checkUserAuth];
 }
 
 
@@ -84,33 +87,6 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                    }];
                                         }
                                     }];
-    
-    
-    /* Depricated method.
-     [facebookLogin logInWithReadPermissions:@[@"email"]
-     handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError) {
-     
-     if (facebookError) {
-     // NSLog(@"Facebook login failed. Error: %@", facebookError);
-     [self facebookFailAlert];
-     } else if (facebookResult.isCancelled) {
-     //NSLog(@"Facebook login got cancelled.");
-     [self facebookFailAlert];
-     } else {
-     NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
-     
-     [ref authWithOAuthProvider:@"facebook" token:accessToken
-     withCompletionBlock:^(NSError *error, FAuthData *authData) {
-     
-     if (error) {
-     //NSLog(@"Login failed. %@", error);
-     [self facebookFailAlert];
-     } else {
-     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
-     }
-     }];
-     }
-     }];*/
 }
 
 
@@ -239,6 +215,20 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     return !(networkStatus == NotReachable);
+}
+
+//Check if user is already logged in for this session
+-(void)checkUserAuth{
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    
+    if (ref.authData) {
+        // user authenticated
+        NSLog(@"%@", ref.authData);
+        [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+    } else {
+        // No user is signed in
+        NSLog(@"No user is signed in");
+    }
 }
 
 
