@@ -141,14 +141,19 @@
                                                     <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-xL-nVq">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-xL-nVq">
                                                     <rect key="frame" x="351" y="56" width="35" height="30"/>
-                                                    <state key="normal" image="rmlike-c.png"/>
+                                                    <state key="normal" image="rmlike-bw.png"/>
+                                                    <state key="selected" image="rmlike-c.png"/>
+                                                    <state key="highlighted" image="rmlike-c.png"/>
+                                                    <connections>
+                                                        <action selector="changeFaveImage:" destination="9pv-A4-QxB" eventType="touchUpInside" id="n8Q-Kj-kbe"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="faveButton" destination="cgw-xL-nVq" id="ebJ-7V-HIB"/>
+                                            <outlet property="faveButton" destination="cgw-xL-nVq" id="OEQ-Va-3WB"/>
                                             <outlet property="programFavesCount" destination="TFe-C7-Oic" id="6Ei-V3-vWa"/>
                                             <outlet property="programLogoURL" destination="J0B-gJ-beO" id="PAl-XL-L2h"/>
                                             <outlet property="programNameString" destination="Af0-sn-b99" id="iwk-1Y-e3E"/>
@@ -1403,6 +1408,7 @@
         <image name="hamburger.png" width="35" height="29"/>
         <image name="nav_arrow-r.png" width="15" height="27"/>
         <image name="nav_arrow.png" width="15" height="27"/>
+        <image name="rmlike-bw.png" width="35" height="30"/>
         <image name="rmlike-c.png" width="35" height="30"/>
         <image name="search.png" width="35" height="35"/>
         <image name="twitter.png" width="37" height="30"/>

@@ -27,7 +27,14 @@
     NSMutableArray *bankingArray;
     NSMutableArray *fitnessArray;
     NSArray *categoriesArray;
+    UIImage *ButtonImage;
+    UIImage *ButtonImageSelected;
+    
+    
 }
+
+- (IBAction)changeFaveImage:(id)sender;
+
 
 @end
 

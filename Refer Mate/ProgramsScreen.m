@@ -30,14 +30,15 @@ int currentIndex;
     topBox.layer.borderColor = [UIColor colorWithRed:255/255.0 green:166/255.0 blue:38/255.0 alpha: 1.0].CGColor;
     categoriesArray = [[NSArray alloc] initWithObjects:@"services", @"shopping", @"banking", @"fitness", nil];
     categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
-    
+    ButtonImage = [UIImage imageNamed:@"rmlike-bw.png"];
+    ButtonImageSelected = [UIImage imageNamed:@"rmlike-c.png"];
     
     [self callFirebase];
     
     // Initialize the refresh control.
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(pullRefresher:) forControlEvents:UIControlEventValueChanged];
-    [myTableView addSubview:refreshControl];                  forControlEvents:UIControlEventValueChanged;    
+    [myTableView addSubview:refreshControl];                  forControlEvents:UIControlEventValueChanged;
 }
 
 
@@ -68,13 +69,24 @@ int currentIndex;
 
 - (IBAction)unwindToPrograms:(UIStoryboardSegue *)unwindSegue{
 }
-/*
-- (IBAction)toggleFaveButton{
-     programCell.faveButton.tag = indexPath.row;
-     [programCell.faveButton addTarget:programCell action:@selector(setFave:) forControlEvents:UIControlEventTouchUpInside];
-}
-*/
 
+- (IBAction)changeFaveImage:(id)sender{
+    CGPoint touchPoint = [sender convertPoint:CGPointZero toView:myTableView];
+    NSIndexPath *clickedButtonIndexPath = [myTableView indexPathForRowAtPoint:touchPoint];
+    CustomCellClass *rowCell = [myTableView cellForRowAtIndexPath:clickedButtonIndexPath];
+    
+    NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
+    if (rowCell.faveButton.isSelected)
+    {
+        [rowCell.faveButton setSelected:false];
+        NSLog(@"selected state %d", rowCell.faveButton.isSelected);
+    }
+    else if (!rowCell.faveButton.isSelected)
+    {
+        [rowCell.faveButton setSelected:true];
+        NSLog(@"selected state %d", rowCell.faveButton.isSelected);
+    }
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Custom methods
@@ -128,6 +140,14 @@ int currentIndex;
 //Load cells with content from custom object
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCellClass *programCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    
+    
+    [programCell.faveButton setImage:ButtonImage forState:UIControlStateNormal];
+    [programCell.faveButton setImage:ButtonImageSelected forState:UIControlStateSelected];
+    programCell.faveButton.tag = indexPath.row;
+    [programCell.faveButton addTarget:self action:@selector(changeFaveImage:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
     if(programCell != nil)
     {
@@ -267,7 +287,7 @@ int currentIndex;
         }];
     }else if (currentIndex == 2){
         bankingArray = [[NSMutableArray alloc] init];
-
+        
         // Handle shopping category
         ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/banking"];
         
@@ -293,7 +313,7 @@ int currentIndex;
         
     }else if (currentIndex == 3){
         fitnessArray = [[NSMutableArray alloc] init];
-
+        
         // Handle shopping category
         ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/programs/fitness"];
         
@@ -325,25 +345,19 @@ int currentIndex;
 
 
 //Pass data to details screen from cell clicked
- -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     DetailScreen *detailController = segue. destinationViewController;
-     if (detailController != nil){
-         //UITableViewCell *clickedCell = (UITableViewCell*)sender;
-         NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
-         
-         detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
-         //NSLog (@"RESULT ROW %ld", (long)clickedIndex.row);
-
-         detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
-         detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];
-         detailController.youGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"you_get"];
-         detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];
-     }
- }
-
-
-
-
-
-
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailScreen *detailController = segue. destinationViewController;
+    if (detailController != nil){
+        //UITableViewCell *clickedCell = (UITableViewCell*)sender;
+        NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
+        
+        detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
+        //NSLog (@"RESULT ROW %ld", (long)clickedIndex.row);
+        
+        detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
+        detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];
+        detailController.youGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"you_get"];
+        detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];
+    }
+}
 @end

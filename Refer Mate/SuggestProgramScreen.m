@@ -63,17 +63,6 @@
                 [self presentViewController:alert animated:YES completion:nil];
             }
         }];
-        
-        /*
-        [ref setValue:@"I'm writing data" withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                NSLog(@"Data could not be saved.");
-            } else {
-                NSLog(@"Data saved successfully.");
-            }
-        }];
-        */
-        
     }
 }
 
