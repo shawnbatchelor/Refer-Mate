@@ -1152,7 +1152,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50980392159999999" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReferMate-smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="mS6-3T-tmK">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReferMate-smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="mS6-3T-tmK">
                                 <rect key="frame" x="107" y="75" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -1174,14 +1174,8 @@
                                 <color key="textColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="verified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8h-lw-xym">
-                                <rect key="frame" x="41" y="325" width="96" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBz-9N-sK6">
-                                <rect key="frame" x="340" y="325" width="34" height="21"/>
+                                <rect key="frame" x="190" y="332" width="34" height="21"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="edit">
@@ -1194,37 +1188,88 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="editProfile:" destination="uGB-VB-W7G" eventType="touchUpInside" id="DBM-hi-og5"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzx-ee-0Pe">
-                                <rect key="frame" x="41" y="399" width="159" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkl-9T-2kU">
-                                <rect key="frame" x="41" y="442" width="333" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynb-U8-3RR">
-                                <rect key="frame" x="41" y="488" width="333" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-6S-2ge">
-                                <rect key="frame" x="41" y="531" width="333" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFp-Pi-MMF">
-                                <rect key="frame" x="215" y="399" width="159" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QaU-fu-OcB">
+                                <rect key="frame" x="41" y="389" width="159" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uGB-VB-W7G" id="Xep-0m-yw6"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pcw-Cm-3y0">
+                                <rect key="frame" x="211" y="389" width="159" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uGB-VB-W7G" id="TVB-tK-63p"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pAW-u9-4ry">
+                                <rect key="frame" x="41" y="435" width="329" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uGB-VB-W7G" id="i3F-Lp-oiT"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="99" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-JD-DcI">
+                                <rect key="frame" x="41" y="480" width="329" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uGB-VB-W7G" id="n3x-fB-I3o"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dHK-Tt-PB4">
+                                <rect key="frame" x="41" y="523" width="329" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uGB-VB-W7G" id="tED-Cc-6kM"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6K-qK-SE3">
+                                <rect key="frame" x="122" y="603" width="166" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50980392159999999" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="SUBMIT CHANGES">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitNewProfile:" destination="uGB-VB-W7G" eventType="touchUpInside" id="a6v-Bq-8au"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-CB-0CB">
+                                <rect key="frame" x="224" y="154" width="50" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="camera.png">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraProfilePic" destination="uGB-VB-W7G" eventType="touchUpInside" id="zhc-pm-bRw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYt-AD-iuG">
+                                <rect key="frame" x="141" y="154" width="50" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="library.png">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="albumProfilePic" destination="uGB-VB-W7G" eventType="touchUpInside" id="9vW-t1-OHR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1232,14 +1277,17 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
+                        <outlet property="cameraProfilePicButton" destination="h7B-CB-0CB" id="eEE-ed-LpZ"/>
                         <outlet property="editButton" destination="pBz-9N-sK6" id="9k1-ht-4V7"/>
-                        <outlet property="emailLabel" destination="ynb-U8-3RR" id="84M-51-RVn"/>
-                        <outlet property="firstnameLabel" destination="Jzx-ee-0Pe" id="HoY-eq-tWn"/>
-                        <outlet property="lastnameLabel" destination="gFp-Pi-MMF" id="gLs-V5-ViA"/>
-                        <outlet property="locationLabel" destination="t5q-6S-2ge" id="MMz-iH-gc2"/>
+                        <outlet property="emailLabel" destination="UbO-JD-DcI" id="51k-SL-mor"/>
+                        <outlet property="firstnameLabel" destination="QaU-fu-OcB" id="8wa-no-YKe"/>
+                        <outlet property="lastnameLabel" destination="pcw-Cm-3y0" id="HZM-TY-Stw"/>
+                        <outlet property="locationLabel" destination="dHK-Tt-PB4" id="1OG-dG-OFE"/>
                         <outlet property="profilePic" destination="mS6-3T-tmK" id="663-r3-3lf"/>
+                        <outlet property="submitChangesButton" destination="g6K-qK-SE3" id="ZNk-2g-kgr"/>
+                        <outlet property="uploadProfilePicButton" destination="WYt-AD-iuG" id="x5M-UU-Q3h"/>
                         <outlet property="username" destination="2xx-wT-CB7" id="gTT-5n-2xR"/>
-                        <outlet property="usernameLabel" destination="Nkl-9T-2kU" id="0Xd-Qp-YYY"/>
+                        <outlet property="usernameLabel" destination="pAW-u9-4ry" id="Mts-0L-ZLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkX-BF-tsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1404,8 +1452,10 @@
         <image name="50-noun_49693_cc.png" width="35" height="35"/>
         <image name="50-noun_59948_cc.png" width="35" height="35"/>
         <image name="ReferMate-smile.png" width="167" height="140"/>
+        <image name="camera.png" width="50" height="41"/>
         <image name="facebook.png" width="16" height="30"/>
         <image name="hamburger.png" width="35" height="29"/>
+        <image name="library.png" width="50" height="41"/>
         <image name="nav_arrow-r.png" width="15" height="27"/>
         <image name="nav_arrow.png" width="15" height="27"/>
         <image name="rmlike-bw.png" width="35" height="30"/>

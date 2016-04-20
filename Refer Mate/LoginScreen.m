@@ -23,7 +23,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    //[self checkUserAuth];
+    [self checkUserAuth];
 }
 
 
