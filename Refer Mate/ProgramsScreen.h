@@ -9,6 +9,7 @@
 #import <Firebase/Firebase.h>
 
 
+
 @interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 {
@@ -20,6 +21,9 @@
     NSArray *resultArray;
     IBOutlet UITableView *myTableView;
     IBOutlet UIButton *faveButton;
+    IBOutlet UIButton *hamburger;
+    IBOutlet UIButton *searchGlass;
+    IBOutlet UISearchBar *searchBar;
 
     
     NSMutableArray *servicesArray;

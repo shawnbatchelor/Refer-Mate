@@ -66,6 +66,11 @@ int currentIndex;
 - (IBAction)unwindToPrograms:(UIStoryboardSegue *)unwindSegue{
 }
 
+- (IBAction)segueToMenu:(id)sender {
+    
+    [self performSegueWithIdentifier:@"segueToMenu" sender:nil];
+}
+
 - (IBAction)changeFaveImage:(id)sender{
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:myTableView];
     NSIndexPath *clickedButtonIndexPath = [myTableView indexPathForRowAtPoint:touchPoint];

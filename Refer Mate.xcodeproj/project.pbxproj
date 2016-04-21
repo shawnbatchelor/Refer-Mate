@@ -22,12 +22,13 @@
 		FF6EA1A61CC6F9B1005D796A /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6EA1A51CC6F9B1005D796A /* PhotosUI.framework */; };
 		FF6EA1A81CC7020C005D796A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6EA1A71CC7020C005D796A /* AVFoundation.framework */; };
 		FF6EA1AA1CC70332005D796A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6EA1A91CC70332005D796A /* AssetsLibrary.framework */; };
+		FF6EA1B61CC7FA01005D796A /* DisplayContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6EA1B51CC7FA01005D796A /* DisplayContentSegue.m */; };
+		FF6EA1B81CC7FE7C005D796A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6EA1B71CC7FE7C005D796A /* Main.storyboard */; };
 		FF933DA01CBDA614009739D7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FF933D9F1CBDA614009739D7 /* Reachability.m */; };
 		FF98DF401CB332E80085163D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF3F1CB332E80085163D /* main.m */; };
 		FF98DF431CB332E80085163D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF421CB332E80085163D /* AppDelegate.m */; };
 		FF98DF461CB332E80085163D /* ProgramsScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF451CB332E80085163D /* ProgramsScreen.m */; };
 		FF98DF491CB332E80085163D /* FavoritesScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF481CB332E80085163D /* FavoritesScreen.m */; };
-		FF98DF4C1CB332E80085163D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF98DF4A1CB332E80085163D /* Main.storyboard */; };
 		FF98DF4E1CB332E80085163D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF98DF4D1CB332E80085163D /* Assets.xcassets */; };
 		FF98DF511CB332E80085163D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF98DF4F1CB332E80085163D /* LaunchScreen.storyboard */; };
 		FF98DF5C1CB332E90085163D /* Refer_MateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF98DF5B1CB332E90085163D /* Refer_MateTests.m */; };
@@ -114,6 +115,9 @@
 		FF6EA1A51CC6F9B1005D796A /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		FF6EA1A71CC7020C005D796A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FF6EA1A91CC70332005D796A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FF6EA1B41CC7FA01005D796A /* DisplayContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayContentSegue.h; sourceTree = "<group>"; };
+		FF6EA1B51CC7FA01005D796A /* DisplayContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayContentSegue.m; sourceTree = "<group>"; };
+		FF6EA1B71CC7FE7C005D796A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FF933D9E1CBDA614009739D7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FF933D9F1CBDA614009739D7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		FF98DF3B1CB332E70085163D /* Refer Mate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Refer Mate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +128,6 @@
 		FF98DF451CB332E80085163D /* ProgramsScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgramsScreen.m; sourceTree = "<group>"; };
 		FF98DF471CB332E80085163D /* FavoritesScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesScreen.h; sourceTree = "<group>"; };
 		FF98DF481CB332E80085163D /* FavoritesScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesScreen.m; sourceTree = "<group>"; };
-		FF98DF4B1CB332E80085163D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF98DF4D1CB332E80085163D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF98DF501CB332E80085163D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF98DF521CB332E80085163D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -308,7 +311,9 @@
 				FF45EEC81CC404DB00B4C3BE /* SuggestProgramScreen.m */,
 				FF45EECA1CC4629800B4C3BE /* UserProfileScreen.h */,
 				FF45EECB1CC4629800B4C3BE /* UserProfileScreen.m */,
-				FF98DF4A1CB332E80085163D /* Main.storyboard */,
+				FF6EA1B41CC7FA01005D796A /* DisplayContentSegue.h */,
+				FF6EA1B51CC7FA01005D796A /* DisplayContentSegue.m */,
+				FF6EA1B71CC7FE7C005D796A /* Main.storyboard */,
 				FF98DF4D1CB332E80085163D /* Assets.xcassets */,
 				FF98DF4F1CB332E80085163D /* LaunchScreen.storyboard */,
 				FF98DF521CB332E80085163D /* Info.plist */,
@@ -498,6 +503,7 @@
 				FFD019171CBB7B0300FB5E6E /* FacebookSDKStrings.bundle in Resources */,
 				FFF565A91CB860C500137858 /* search.png in Resources */,
 				FFEE53881CB778920062CA39 /* facebook.png in Resources */,
+				FF6EA1B81CC7FE7C005D796A /* Main.storyboard in Resources */,
 				FFAC546D1CB73AFD00DF4EF5 /* 50-noun_13006_cc.png in Resources */,
 				FF98DF4E1CB332E80085163D /* Assets.xcassets in Resources */,
 				FFAC546E1CB73AFD00DF4EF5 /* 50-noun_49693_cc.png in Resources */,
@@ -516,7 +522,6 @@
 				FFF565A81CB860C500137858 /* hamburger.png in Resources */,
 				FF45EED71CC69A2100B4C3BE /* 50-c-noun_101501.png in Resources */,
 				FFAC546A1CB73AFD00DF4EF5 /* 50-c-noun_49693_cc.png in Resources */,
-				FF98DF4C1CB332E80085163D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +558,7 @@
 				FF45EECC1CC4629800B4C3BE /* UserProfileScreen.m in Sources */,
 				FF98DF431CB332E80085163D /* AppDelegate.m in Sources */,
 				FF98DF461CB332E80085163D /* ProgramsScreen.m in Sources */,
+				FF6EA1B61CC7FA01005D796A /* DisplayContentSegue.m in Sources */,
 				FF98DF401CB332E80085163D /* main.m in Sources */,
 				FFD019031CBB2C5700FB5E6E /* LinkSubmitScreen.m in Sources */,
 				FF45EEC91CC404DB00B4C3BE /* SuggestProgramScreen.m in Sources */,
@@ -591,14 +597,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FF98DF4A1CB332E80085163D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF98DF4B1CB332E80085163D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FF98DF4F1CB332E80085163D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
