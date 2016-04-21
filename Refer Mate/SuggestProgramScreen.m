@@ -8,9 +8,15 @@
 
 #import "SuggestProgramScreen.h"
 #import "Reachability.h"
+#import "MenuDrawer.h"
 
 
 @implementation SuggestProgramScreen
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+}
 
 //Method for creating Firebase suggestion entry
 -(void)logEntry{
@@ -103,6 +109,11 @@
     }
 }
 
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"segueToMenu"]){
+    }
+}
 
 
 @end

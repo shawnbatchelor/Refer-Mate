@@ -9,6 +9,8 @@
 #import "CustomCellClass.h"
 #import "CustomProgramObject.h"
 #import "DetailScreen.h"
+#import "MenuDrawer.h"
+
 
 
 @interface ProgramsScreen ()
@@ -16,6 +18,7 @@
 @end
 
 @implementation ProgramsScreen
+@synthesize barButtonItem;
 
 Firebase *ref;
 NSString* const categoryDidChange = @"categoryDidChange";
@@ -32,6 +35,10 @@ int currentIndex;
     categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
     ButtonImage = [UIImage imageNamed:@"rmlike-bw.png"];
     ButtonImageSelected = [UIImage imageNamed:@"rmlike-c.png"];
+    
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+
+
     
     [self callFirebase];
     
@@ -67,7 +74,6 @@ int currentIndex;
 }
 
 - (IBAction)segueToMenu:(id)sender {
-    
     [self performSegueWithIdentifier:@"segueToMenu" sender:nil];
 }
 
@@ -115,6 +121,11 @@ int currentIndex;
     [myTableView reloadData];
     [refreshControl endRefreshing];
 }
+
+
+//- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+//    return UIModalPresentationNone;
+//}
 
 
 
@@ -348,18 +359,30 @@ int currentIndex;
 
 //Pass data to details screen from cell clicked
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DetailScreen *detailController = segue. destinationViewController;
-    if (detailController != nil){
-        //UITableViewCell *clickedCell = (UITableViewCell*)sender;
-        NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
-        
-        detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
-        //NSLog (@"RESULT ROW %ld", (long)clickedIndex.row);
-        
-        detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
-        detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];
-        detailController.youGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"you_get"];
-        detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];
+    
+    
+    if ([[segue identifier] isEqualToString:@"segueToProgramDetail"]){
+    
+        DetailScreen *detailController = segue.destinationViewController;
+        if (detailController != nil){
+            //UITableViewCell *clickedCell = (UITableViewCell*)sender;
+            NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
+            
+            detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
+            
+            detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
+            detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];
+            detailController.youGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"you_get"];
+            detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];
+        }else if([[segue identifier] isEqualToString:@"segueToMenu"]){
+
+            //MenuDrawer *destination = segue.destinationViewController;
+//            UIPopoverPresentationController *controller = [destination popoverPresentationController];
+//            if (controller) {
+//                controller.sourceRect = CGRectMake(10,63,285,400);
+//                controller.delegate = self;
+//            }
+        }
     }
 }
 @end

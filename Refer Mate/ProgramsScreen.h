@@ -10,7 +10,7 @@
 
 
 
-@interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
 
 {
     IBOutlet UIButton *connectButton;
@@ -38,6 +38,7 @@
 }
 
 - (IBAction)changeFaveImage:(id)sender;
+@property(nonatomic, strong) UIBarButtonItem *barButtonItem;
 
 
 @end

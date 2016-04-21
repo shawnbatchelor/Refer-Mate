@@ -9,6 +9,7 @@
 #import "DetailScreen.h"
 #import "LinkSubmitScreen.h"
 #import "LinkReceiveScreen.h"
+#import "MenuDrawer.h"
 
 
 @implementation DetailScreen
@@ -34,6 +35,11 @@
     detailTextView.text = self.detailTextViewSegueString;
 }
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+}
+
 
 //Pass data to link submit screen from cell clicked
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -48,6 +54,9 @@
         LinkReceiveScreen *getController = segue.destinationViewController;
         if (getController != nil){
             getController.fromProgramLabelSegueString = self.programLabelSegueString;
+        }
+    }else if([[segue identifier] isEqualToString:@"segueToMenu"]){
+        
         }
     }
     

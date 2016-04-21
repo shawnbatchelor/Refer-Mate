@@ -7,11 +7,16 @@
 //
 
 #import "LinkReceiveScreen.h"
+#import "MenuDrawer.h"
 
 @implementation LinkReceiveScreen
 
 @synthesize fromProgramLabelSegueString;
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [self callFirebase];
@@ -34,6 +39,11 @@
             usernameLabel.text = [programLinksArray[random] valueForKey:@"user_ID"];
             linkText.text = [programLinksArray[random] valueForKey:@"referral_link"];
         }];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"segueToMenu"]){
+    }
 }
 
 

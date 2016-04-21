@@ -9,6 +9,7 @@
 #import "UserProfileScreen.h"
 #import "AppDelegate.h"
 #import "Reachability.h"
+#import "MenuDrawer.h"
 
 
 @implementation UserProfileScreen
@@ -26,6 +27,8 @@
     uploadProfilePicButton.hidden = 1;
     cameraProfilePicButton.hidden = 1;
     localImageReference = @"";
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+
 
     [self callFirebase];
 }
@@ -240,6 +243,11 @@
     
     uploadProfilePicButton.hidden = 1;
     cameraProfilePicButton.hidden = 1;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"segueToMenu"]){
+    }
 }
 
 

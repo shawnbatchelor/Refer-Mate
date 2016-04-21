@@ -8,11 +8,17 @@
 
 #import "LinkSubmitScreen.h"
 #import "Reachability.h"
+#import "MenuDrawer.h"
 
 
 @implementation LinkSubmitScreen
 
 @synthesize toProgramLabelSegueString;
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     userAutoID = [[NSString alloc] init];
@@ -174,5 +180,12 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"segueToMenu"]){
+    }
+}
+
 
 @end
