@@ -78,20 +78,51 @@ int currentIndex;
 }
 
 - (IBAction)changeFaveImage:(id)sender{
+    Firebase *favRef = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    NSString *programClickedTitle = [[NSString alloc] init];
     CGPoint touchPoint = [sender convertPoint:CGPointZero toView:myTableView];
     NSIndexPath *clickedButtonIndexPath = [myTableView indexPathForRowAtPoint:touchPoint];
     CustomCellClass *rowCell = [myTableView cellForRowAtIndexPath:clickedButtonIndexPath];
-    
+    programClickedTitle = rowCell.programNameString.text;
+
+    //If row is selected, unselect and remove favorite
     NSLog(@"index path.row ==%ld",(long)clickedButtonIndexPath.row);
     if (rowCell.faveButton.isSelected)
     {
         [rowCell.faveButton setSelected:false];
+        NSLog(@"%@ UNFAVORITED", programClickedTitle);
         NSLog(@"selected state %d", rowCell.faveButton.isSelected);
+        
+        //Remove from user_fovorites table
+        NSDictionary *usersDictionary = @{
+                                          programClickedTitle: @"false"
+                                          };
+        Firebase *usersRef = [favRef childByAppendingPath: @"user_favorites"];
+        Firebase *setUser = [usersRef childByAppendingPath: ref.authData.uid];
+        [setUser updateChildValues: usersDictionary];
+
+//        Firebase *setProgram = [setUser childByAppendingPath: programClickedTitle];
+//        [setProgram setValue: usersDictionary];
+        
     }
+    
+    //If row is unselected, select and add favorite
     else if (!rowCell.faveButton.isSelected)
     {
         [rowCell.faveButton setSelected:true];
+        NSLog(@"%@ FAVORITED", programClickedTitle);
         NSLog(@"selected state %d", rowCell.faveButton.isSelected);
+        
+        //Add to user_fovorites table
+        NSDictionary *usersDictionary = @{
+                                           programClickedTitle: @"true"
+                                          };
+        Firebase *usersRef = [favRef childByAppendingPath: @"user_favorites"];
+        Firebase *setUser = [usersRef childByAppendingPath: ref.authData.uid];
+        [setUser updateChildValues: usersDictionary];
+
+//        Firebase *setProgram = [setUser childByAppendingPath: programClickedTitle];
+//        [setProgram setValue: usersDictionary];
     }
 }
 
@@ -121,24 +152,6 @@ int currentIndex;
     [myTableView reloadData];
     [refreshControl endRefreshing];
 }
-
-/*
--(void)setFaveTable{
-    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
-    NSDictionary *usersDictionary = @{
-                                      @"firstname" : firstnameText.text,
-                                      @"lastname" : lastnameText.text,
-                                      @"displayName" : usernameText.text,
-                                      @"email" : emailText.text,
-                                      @"zip_code" : zipCode
-                                      };
-    Firebase *usersRef = [ref childByAppendingPath: @"user_favorites"];
-    Firebase *setUser = [usersRef childByAppendingPath: uid];
-    Firebase *setProgram = [setUser childByAppendingPath: uid];
-
-    [setUser setValue: usersDictionary];
-}
-*/
 
 
 
@@ -197,13 +210,6 @@ int currentIndex;
                     programCell.programDescriptionString = currentProgram.referralProgramDescription;
                     programCell.youGetAmount = currentProgram.referralProgramYouGet;
                     programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    
-                    
-                    [programCell.faveButton setImage:ButtonImage forState:UIControlStateNormal];
-                    [programCell.faveButton setImage:ButtonImageSelected forState:UIControlStateSelected];
-                    programCell.faveButton.tag = indexPath.row;
-                    [programCell.faveButton addTarget:self action:@selector(changeFaveImage:) forControlEvents:UIControlEventTouchUpInside];
                 }
                 break;
             case 1:

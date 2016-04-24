@@ -11,7 +11,6 @@
 @interface CustomCellClass : UITableViewCell
 
 {
-    //IBOutlet UIButton *faveButton;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *programNameString;

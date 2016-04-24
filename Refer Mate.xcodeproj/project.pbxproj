@@ -44,6 +44,7 @@
 		FFAC546F1CB73AFD00DF4EF5 /* 50-noun_59948_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC54671CB73AFD00DF4EF5 /* 50-noun_59948_cc.png */; };
 		FFAC54731CB73FEE00DF4EF5 /* LoginScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAC54721CB73FEE00DF4EF5 /* LoginScreen.m */; };
 		FFAC54751CB741F100DF4EF5 /* ReferMate-smile.png in Resources */ = {isa = PBXBuildFile; fileRef = FFAC54741CB741F100DF4EF5 /* ReferMate-smile.png */; };
+		FFB7050D1CCD1A4100BCA423 /* FavoritesCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB7050C1CCD1A4100BCA423 /* FavoritesCustomCell.m */; };
 		FFD018D91CBAE3AF00FB5E6E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD018D81CBAE3AF00FB5E6E /* Social.framework */; };
 		FFD018DB1CBAE3BF00FB5E6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD018DA1CBAE3BF00FB5E6E /* CoreLocation.framework */; };
 		FFD018DD1CBAE3C900FB5E6E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD018DC1CBAE3C900FB5E6E /* Security.framework */; };
@@ -153,6 +154,8 @@
 		FFAC54711CB73FEE00DF4EF5 /* LoginScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginScreen.h; sourceTree = "<group>"; };
 		FFAC54721CB73FEE00DF4EF5 /* LoginScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginScreen.m; sourceTree = "<group>"; };
 		FFAC54741CB741F100DF4EF5 /* ReferMate-smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReferMate-smile.png"; sourceTree = "<group>"; };
+		FFB7050B1CCD1A4100BCA423 /* FavoritesCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesCustomCell.h; sourceTree = "<group>"; };
+		FFB7050C1CCD1A4100BCA423 /* FavoritesCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesCustomCell.m; sourceTree = "<group>"; };
 		FFD018D61CBAE3A600FB5E6E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FFD018D81CBAE3AF00FB5E6E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FFD018DA1CBAE3BF00FB5E6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -336,6 +339,8 @@
 				FF1977F71CCA7CE9005ADB2C /* WebLinkViewerScreen.m */,
 				FFD019071CBB3F2400FB5E6E /* CustomCellClass.h */,
 				FFD019081CBB3F2400FB5E6E /* CustomCellClass.m */,
+				FFB7050B1CCD1A4100BCA423 /* FavoritesCustomCell.h */,
+				FFB7050C1CCD1A4100BCA423 /* FavoritesCustomCell.m */,
 				FFD0190A1CBB445000FB5E6E /* CustomProgramObject.h */,
 				FFD0190B1CBB445000FB5E6E /* CustomProgramObject.m */,
 				FFFFEDA91CBB8657007BBCBB /* TwitterAuthHelper.h */,
@@ -558,6 +563,7 @@
 			files = (
 				FF1977F81CCA7CE9005ADB2C /* WebLinkViewerScreen.m in Sources */,
 				FF933DA01CBDA614009739D7 /* Reachability.m in Sources */,
+				FFB7050D1CCD1A4100BCA423 /* FavoritesCustomCell.m in Sources */,
 				FF1977FB1CCAB7E3005ADB2C /* SettingsScreen.m in Sources */,
 				FF6EA1BB1CC92E6F005D796A /* MenuDrawer.m in Sources */,
 				FFAC54731CB73FEE00DF4EF5 /* LoginScreen.m in Sources */,

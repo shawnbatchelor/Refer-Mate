@@ -8,7 +8,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FavoritesScreen : UIViewController
+@interface FavoritesScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    NSMutableArray *favoritesFromFirebaseTable;
+    NSArray * resultArray;
+    IBOutlet UITableView *faveTableView;
+    NSString *userString;
+
+}
 
 
 @end
