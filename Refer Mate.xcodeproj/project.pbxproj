@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1977F81CCA7CE9005ADB2C /* WebLinkViewerScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1977F71CCA7CE9005ADB2C /* WebLinkViewerScreen.m */; };
+		FF1977FB1CCAB7E3005ADB2C /* SettingsScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1977FA1CCAB7E3005ADB2C /* SettingsScreen.m */; };
 		FF26A3051CB95B8C001544EA /* Harabara.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3041CB95B8C001544EA /* Harabara.ttf */; };
 		FF26A3071CB9678F001544EA /* nav_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3061CB9678F001544EA /* nav_arrow.png */; };
 		FF26A3091CB9685C001544EA /* nav_arrow-r.png in Resources */ = {isa = PBXBuildFile; fileRef = FF26A3081CB9685C001544EA /* nav_arrow-r.png */; };
@@ -98,6 +100,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF1977F61CCA7CE9005ADB2C /* WebLinkViewerScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLinkViewerScreen.h; sourceTree = "<group>"; };
+		FF1977F71CCA7CE9005ADB2C /* WebLinkViewerScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLinkViewerScreen.m; sourceTree = "<group>"; };
+		FF1977F91CCAB7E3005ADB2C /* SettingsScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScreen.h; sourceTree = "<group>"; };
+		FF1977FA1CCAB7E3005ADB2C /* SettingsScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsScreen.m; sourceTree = "<group>"; };
 		FF26A3041CB95B8C001544EA /* Harabara.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Harabara.ttf; sourceTree = "<group>"; };
 		FF26A3061CB9678F001544EA /* nav_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_arrow.png; sourceTree = "<group>"; };
 		FF26A3081CB9685C001544EA /* nav_arrow-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_arrow-r.png"; sourceTree = "<group>"; };
@@ -313,6 +319,8 @@
 				FF45EECB1CC4629800B4C3BE /* UserProfileScreen.m */,
 				FF6EA1B91CC92E6F005D796A /* MenuDrawer.h */,
 				FF6EA1BA1CC92E6F005D796A /* MenuDrawer.m */,
+				FF1977F91CCAB7E3005ADB2C /* SettingsScreen.h */,
+				FF1977FA1CCAB7E3005ADB2C /* SettingsScreen.m */,
 				FF6EA1B71CC7FE7C005D796A /* Main.storyboard */,
 				FF98DF4D1CB332E80085163D /* Assets.xcassets */,
 				FF98DF4F1CB332E80085163D /* LaunchScreen.storyboard */,
@@ -324,6 +332,8 @@
 				FFD019021CBB2C5700FB5E6E /* LinkSubmitScreen.m */,
 				FFD019041CBB2C6A00FB5E6E /* LinkReceiveScreen.h */,
 				FFD019051CBB2C6A00FB5E6E /* LinkReceiveScreen.m */,
+				FF1977F61CCA7CE9005ADB2C /* WebLinkViewerScreen.h */,
+				FF1977F71CCA7CE9005ADB2C /* WebLinkViewerScreen.m */,
 				FFD019071CBB3F2400FB5E6E /* CustomCellClass.h */,
 				FFD019081CBB3F2400FB5E6E /* CustomCellClass.m */,
 				FFD0190A1CBB445000FB5E6E /* CustomProgramObject.h */,
@@ -546,7 +556,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF1977F81CCA7CE9005ADB2C /* WebLinkViewerScreen.m in Sources */,
 				FF933DA01CBDA614009739D7 /* Reachability.m in Sources */,
+				FF1977FB1CCAB7E3005ADB2C /* SettingsScreen.m in Sources */,
 				FF6EA1BB1CC92E6F005D796A /* MenuDrawer.m in Sources */,
 				FFAC54731CB73FEE00DF4EF5 /* LoginScreen.m in Sources */,
 				FFD019091CBB3F2400FB5E6E /* CustomCellClass.m in Sources */,

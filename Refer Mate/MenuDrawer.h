@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+#import "WebLinkViewerScreen.h"
+
 
 @interface MenuDrawer : UIViewController
 
 {
+    IBOutlet UIImageView *profilePic;
     IBOutlet UIView *menuView;
-    IBOutlet UIViewController *clearView;
+    //IBOutlet UIViewController *clearView;
     IBOutlet UIButton *settingsButton;
     IBOutlet UIButton *helpButton;
     IBOutlet UIButton *privacyButton;
     IBOutlet UIButton *logoutButton;
+    NSArray *specifiedUserArray;
+    NSData *userPicData;
+    NSString *userString;
 }
 @end

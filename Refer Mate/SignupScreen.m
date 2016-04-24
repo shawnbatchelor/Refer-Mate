@@ -9,6 +9,7 @@
 #import "SignupScreen.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "Reachability.h"
+#import "SettingsScreen.h"
 
 
 
@@ -92,16 +93,28 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         
         //Signup successful
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Hooray!"
-                                                                       message:@"Your signup was successful. Please login with the credentials you just created."
+                                                                       message:@"Your signup was successful. We'll log you in automatically."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {
-                                                                  [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
+                                                                  
+                                                                  
+                                                                  [ref authUser:emailText.text password:passwordText.text
+                                                            withCompletionBlock:^(NSError *error, FAuthData *authData) {
+                                                                
+                                                                if (error) {
+                                                                    [self invalidAccountAlert];
+                                                                } else {
+                                                                    [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
+                                                                }
+                                                            }];
                                                               }];
         
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
+//        SettingsScreen * checkAutoLogon = [[SettingsScreen alloc] init];
+//        checkAutoLogon.autoLogonCheckState = true;
     }
 }];
     }
@@ -164,18 +177,34 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
 }
 
 
+-(void) invalidAccountAlert {
+    //Couldn't find that account
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"We couldn't find an account with the email address provided. Please retype your email address or try creating a new account."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Create user entry into Firebase database
 -(void)logUser{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
     NSDictionary *usersDictionary = @{
-                                    @"firstname" : firstnameText.text,
-                                    @"lastname" : lastnameText.text,
-                                    @"displayName" : usernameText.text,
-                                    @"email" : emailText.text,
-                                    @"zip_code" : zipCode
-                                    };
+                                      @"firstname" : firstnameText.text,
+                                      @"lastname" : lastnameText.text,
+                                      @"displayName" : usernameText.text,
+                                      @"email" : emailText.text,
+                                      @"zip_code" : zipCode
+                                      };
     Firebase *usersRef = [ref childByAppendingPath: @"users"];
     Firebase *setUser = [usersRef childByAppendingPath: uid];//usernameText.text];
     [setUser setValue: usersDictionary];
@@ -187,7 +216,7 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
 //Get users location for reverse zip code, city lookup
 - (void)getCurrentLocation{
     
-    if ([CLLocationManager /*locationServicesEnabled*/authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -195,11 +224,11 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         }
         [self.locationManager startUpdatingLocation];
         NSLog(@"Location services ARE enabled");
-
+        
     } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
         [self alertForNoGeolocation];
     } else {
-        NSLog(@"Location services are not enabled");
+        NSLog(@"Location services are NOT enabled");
         [self.locationManager requestWhenInUseAuthorization];
     }
 }

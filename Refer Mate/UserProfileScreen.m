@@ -39,10 +39,7 @@
     // Query Firebase database
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSArray *firstResults = [[NSArray arrayWithObject:snapshot.value] objectAtIndex:0];
-        
-        
         specifiedUserArray = [firstResults valueForKey:userString];
-        userPicData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[specifiedUserArray valueForKey:@"profilePicURL"]]];
         
         usernameLabel.text = [specifiedUserArray valueForKey:@"displayName"];
         firstnameLabel.text = [specifiedUserArray valueForKey:@"firstname"];
@@ -53,15 +50,13 @@
         oldUserEmail = [specifiedUserArray valueForKey:@"email"];
         
         
-        
-        
-        
         //Get pic from Provider for web logins
         if ([userString rangeOfString:@"twitter"].location != NSNotFound ||
             [userString rangeOfString:@"facebook"].location != NSNotFound)
         {
             editButton.hidden = 1;
             submitChangesButton.hidden = 1;
+            userPicData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[specifiedUserArray valueForKey:@"providerPicURL"]]];
             profilePic.image = [UIImage imageWithData:userPicData];
         }else if ([specifiedUserArray valueForKey:@"profilePicURL"] == nil || [[specifiedUserArray valueForKey:@"profilePicURL"]  isEqual: @""]){
             //Load placeholder image

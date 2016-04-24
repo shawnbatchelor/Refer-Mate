@@ -14,16 +14,23 @@
 #import "Reachability.h"
 #import "UserProfileScreen.h"
 #import "AppDelegate.h"
+#import "SettingsScreen.h"
+
 
 @implementation LoginScreen
 
 - (void)viewDidLoad {
-    
-    [super viewDidLoad];
+        [super viewDidLoad];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self checkUserAuth];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    long autoLogonState = [prefs integerForKey:@"autoLogin"];
+
+    if (autoLogonState == 1){
+        [self checkUserAuth];
+    }
+    NSLog(@"%ld",autoLogonState);
 }
 
 
@@ -46,6 +53,9 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
         }
     } else {
         // We are now logged in
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"] == 1){
+            [self saveSettings];
+        }
         userID = authData.uid;
         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         appDelegate.authenticatedUser = userID;
@@ -86,7 +96,7 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                                                @"fullname" : [authData.providerData objectForKey:@"displayName"],
                                                                                @"displayName" : [authData.providerData objectForKey:@"id"],
                                                                                @"email" : [authData.providerData objectForKey:@"email"],
-                                                                               @"profilePicURL" : [authData.providerData objectForKey:@"profileImageURL"]
+                                                                               @"providerPicURL" : [authData.providerData objectForKey:@"profileImageURL"]
                                                                                };
                                                            
                                                            userID = authData.uid;
@@ -94,7 +104,9 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                            appDelegate.authenticatedUser = userID;
                                                            [self logProviderUser];
                                                            [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
-                                                       }
+                                                           if ([[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"] == 1){
+                                                               [self saveSettings];
+                                                           }                                                       }
                                                    }];
                                         }
                                     }];
@@ -126,14 +138,16 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                         @"fullname" : [authData.providerData objectForKey:@"displayName"],
                                         @"displayName" : [authData.providerData objectForKey:@"username"],
                                         @"email" : [authData.providerData objectForKey:@"id"],
-                                        @"profilePicURL" : [authData.providerData objectForKey:@"profileImageURL"]
+                                        @"providerPicURL" : [authData.providerData objectForKey:@"profileImageURL"]
                                         };
                     userID = authData.uid;
                     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
                     appDelegate.authenticatedUser = userID;
                     [self logProviderUser];
                     [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
-                }
+                    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"autoLogin"] == 1){
+                        [self saveSettings];
+                    }                }
             }];
         }
     }];
@@ -331,4 +345,11 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
+
+-(void)saveSettings{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:1 forKey:@"autoLogin"];
+    [prefs synchronize];
+}
 @end

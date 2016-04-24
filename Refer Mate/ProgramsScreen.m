@@ -122,10 +122,23 @@ int currentIndex;
     [refreshControl endRefreshing];
 }
 
+/*
+-(void)setFaveTable{
+    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
+    NSDictionary *usersDictionary = @{
+                                      @"firstname" : firstnameText.text,
+                                      @"lastname" : lastnameText.text,
+                                      @"displayName" : usernameText.text,
+                                      @"email" : emailText.text,
+                                      @"zip_code" : zipCode
+                                      };
+    Firebase *usersRef = [ref childByAppendingPath: @"user_favorites"];
+    Firebase *setUser = [usersRef childByAppendingPath: uid];
+    Firebase *setProgram = [setUser childByAppendingPath: uid];
 
-//- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-//    return UIModalPresentationNone;
-//}
+    [setUser setValue: usersDictionary];
+}
+*/
 
 
 
@@ -160,10 +173,10 @@ int currentIndex;
     CustomCellClass *programCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     
     
-    [programCell.faveButton setImage:ButtonImage forState:UIControlStateNormal];
-    [programCell.faveButton setImage:ButtonImageSelected forState:UIControlStateSelected];
-    programCell.faveButton.tag = indexPath.row;
-    [programCell.faveButton addTarget:self action:@selector(changeFaveImage:) forControlEvents:UIControlEventTouchUpInside];
+//    [programCell.faveButton setImage:ButtonImage forState:UIControlStateNormal];
+//    [programCell.faveButton setImage:ButtonImageSelected forState:UIControlStateSelected];
+//    programCell.faveButton.tag = indexPath.row;
+//    [programCell.faveButton addTarget:self action:@selector(changeFaveImage:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -184,6 +197,13 @@ int currentIndex;
                     programCell.programDescriptionString = currentProgram.referralProgramDescription;
                     programCell.youGetAmount = currentProgram.referralProgramYouGet;
                     programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                    
+                    
+                    
+                    [programCell.faveButton setImage:ButtonImage forState:UIControlStateNormal];
+                    [programCell.faveButton setImage:ButtonImageSelected forState:UIControlStateSelected];
+                    programCell.faveButton.tag = indexPath.row;
+                    [programCell.faveButton addTarget:self action:@selector(changeFaveImage:) forControlEvents:UIControlEventTouchUpInside];
                 }
                 break;
             case 1:
@@ -376,12 +396,6 @@ int currentIndex;
             detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];
         }else if([[segue identifier] isEqualToString:@"segueToMenu"]){
 
-            //MenuDrawer *destination = segue.destinationViewController;
-//            UIPopoverPresentationController *controller = [destination popoverPresentationController];
-//            if (controller) {
-//                controller.sourceRect = CGRectMake(10,63,285,400);
-//                controller.delegate = self;
-//            }
         }
     }
 }
