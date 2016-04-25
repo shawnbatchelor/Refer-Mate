@@ -23,8 +23,17 @@
     userString = appDelegate.authenticatedUser;
     [super viewDidLoad];
     [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-    [self callFirebase];
     
+    // Initialize the refresh control.
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(pullRefresher:) forControlEvents:UIControlEventValueChanged];
+    [faveTableView addSubview:refreshControl];                  forControlEvents:UIControlEventValueChanged;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSUserDefaults *favPref = [NSUserDefaults standardUserDefaults];
+    favoritesFromDefaults = [[favPref objectForKey:@"fave_array"] mutableCopy];
+    [faveTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,55 +47,12 @@
 }
 
 
-
--(void) callFirebase {
-    favoritesFromFirebaseTable = [[NSMutableArray alloc] init];
-    NSString * URLString = [NSString stringWithFormat:@"%@%@", @"https://refer-mate.firebaseio.com/user_favorites/", userString];
-    
-    // Query Firebase database
-    Firebase *ref = [[Firebase alloc] initWithUrl: URLString];
-    
-    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
-//        resultArray = [[firstResults objectAtIndex:0] allObjects];
-//        resultArray = [firstResults objectAtIndex:0];
-        resultArray = [firstResults objectAtIndex:0];
-
-
-        
-        NSLog(@"%@", resultArray);
-        NSLog(@" result array count is %lu", (unsigned long)[resultArray count]);
-
-        
-        
-//        NSLog(@"%@", [resultArray ke]);
-//        NSLog(@"%@", resultArray [0]);
-
-        
-//for (int i=0; i < [resultArray count]; i++){
-//            CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
-//            program1.referralProgramName = [resultArray[i] valueForKey:@"program_name"];
-//            program1.referralProgramDescription = [resultArray[i] valueForKey:@"description"];
-//            program1.referralProgramFaves = [resultArray[i] valueForKey:@"faved"];
-//            program1.referralProgramYouGet = [resultArray[i] valueForKey:@"you_get"];
-//            program1.referralProgramTheyGet = [resultArray[i] valueForKey:@"they_get"];
-//            program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[i] valueForKey:@"logo_url"]]];
-//            
-//            [servicesArray addObject:program1];
-//        }
-        [faveTableView reloadData];
-    }];
-}
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Tableview delegate methods
 
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [resultArray count];
+    return [favoritesFromDefaults count];
 }
 
 
@@ -95,13 +61,33 @@
     FavoritesCustomCell *favoriteCells = [tableView dequeueReusableCellWithIdentifier:@"faveCell"];
     
     if(favoriteCells != nil) {
-        [favoriteCells refreshFaveCell:@"tempFave"];
+        [favoriteCells refreshFaveCell:[favoritesFromDefaults objectAtIndex:indexPath.row]];
     }else {
                 NSLog(@"favoriteCell is nil");
             }
 
     return favoriteCells;
 }
+
+//Pull to refresh
+- (void)pullRefresher:(UIRefreshControl *)refreshControl {
+    [faveTableView reloadData];
+    [refreshControl endRefreshing];
+}
+
+
+//Swipe to delete
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSUserDefaults *favPref = [NSUserDefaults standardUserDefaults];
+        
+        [favoritesFromDefaults removeObjectAtIndex:indexPath.row];
+        [favPref setObject:favoritesFromDefaults forKey:@"fave_array"];
+        [favPref synchronize];
+        [faveTableView reloadData];
+    }
+}
+
 
 
 @end

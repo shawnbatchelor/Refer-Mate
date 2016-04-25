@@ -30,11 +30,13 @@
     NSMutableArray *shoppingArray;
     NSMutableArray *bankingArray;
     NSMutableArray *fitnessArray;
+    NSMutableArray *favoritesArray;
+    NSMutableArray *favoritesFromDefaults;
     NSArray *categoriesArray;
     UIImage *ButtonImage;
     UIImage *ButtonImageSelected;
-    
-    
+    NSUserDefaults *favPref;
+    NSArray *faveResultArray;
 }
 
 - (IBAction)changeFaveImage:(id)sender;

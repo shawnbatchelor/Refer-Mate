@@ -12,19 +12,14 @@
 @synthesize helpURLString;
 @synthesize privacyURLString;
 @synthesize segueSenderID;
+@synthesize linkReceiveURLString;
 
 -(void)viewDidLoad{
         [super viewDidLoad];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"HELP STRING %@", self.helpURLString);
-    NSLog(@"PRIVACY STRING %@", self.privacyURLString);
-    NSLog(@"SENDER STRING %@", self.segueSenderID);
-
-    
     if ([self.segueSenderID  isEqual: @"HelpSentMe"]){
-        NSLog(@"help segue triggered");
         
         linkURL = [[NSURL alloc] initWithString:self.helpURLString];
         if(linkURL != nil){
@@ -32,11 +27,9 @@
             if(request != nil){
                 linkViewer.scalesPageToFit = 1;
                 [linkViewer loadRequest:request];
-                NSLog(@"help request loaded");
             }
         }
     }else if ([self.segueSenderID  isEqual: @"PrivacySentMe"]){
-        NSLog(@"privacy segue triggered");
         
         linkURL = [[NSURL alloc] initWithString:self.privacyURLString];
         if(linkURL != nil){
@@ -44,7 +37,16 @@
             if(request != nil){
                 linkViewer.scalesPageToFit = 1;
                 [linkViewer loadRequest:request];
-                NSLog(@"privacy request loaded");
+            }
+        }
+    }else if ([self.segueSenderID  isEqual: @"LinkReceiveSentMe"]){
+        
+        linkURL = [[NSURL alloc] initWithString:self.linkReceiveURLString];
+        if(linkURL != nil){
+            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:linkURL];
+            if(request != nil){
+                linkViewer.scalesPageToFit = 1;
+                [linkViewer loadRequest:request];
             }
         }
     }

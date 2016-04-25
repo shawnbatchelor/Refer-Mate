@@ -11,8 +11,6 @@
             <string>Harabara-Bold</string>
             <string>Harabara-Bold</string>
             <string>Harabara-Bold</string>
-            <string>Harabara-Bold</string>
-            <string>Harabara-Bold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -35,7 +33,7 @@
                                         <rect key="frame" x="65" y="0.0" width="285" height="44"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp6-2Y-K2j">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp6-2Y-K2j">
                                         <rect key="frame" x="376" y="8" width="30" height="30"/>
                                         <state key="normal" image="search.png"/>
                                     </button>
@@ -71,7 +69,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -80,16 +78,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9J-4h-8c0">
-                                <rect key="frame" x="85" y="109" width="250" height="77"/>
+                                <rect key="frame" x="85" y="109" width="250" height="89"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-zF-EnD">
-                                        <rect key="frame" x="8" y="18" width="234" height="51"/>
-                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="28"/>
-                                        <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="8" y="19" width="234" height="51"/>
+                                        <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="36"/>
+                                        <color key="textColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.65098039215686276" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -110,43 +108,43 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.20392156862745098" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="30" sectionFooterHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
-                                <rect key="frame" x="0.0" y="194" width="414" height="420"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="81" sectionHeaderHeight="30" sectionFooterHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="XXm-Jf-hEI">
+                                <rect key="frame" x="0.0" y="228" width="414" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="myCell" rowHeight="100" id="01l-Nm-Tf3" customClass="CustomCellClass">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="protoCell" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="myCell" rowHeight="81" id="01l-Nm-Tf3" customClass="CustomCellClass">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="01l-Nm-Tf3" id="M1Z-Th-WhU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-sn-b99">
                                                     <rect key="frame" x="152" y="0.0" width="262" height="44"/>
-                                                    <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="36"/>
+                                                    <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="28"/>
                                                     <color key="textColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="0.70328663793103452" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0B-gJ-beO">
-                                                    <rect key="frame" x="10" y="0.0" width="125" height="90"/>
+                                                    <rect key="frame" x="10" y="0.0" width="125" height="70"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999,999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-C7-Oic">
-                                                    <rect key="frame" x="270" y="53" width="102" height="38"/>
+                                                    <rect key="frame" x="272" y="52" width="102" height="19"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                     <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mates sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHo-l6-dio">
-                                                    <rect key="frame" x="152" y="52" width="113" height="38"/>
+                                                    <rect key="frame" x="151" y="52" width="113" height="18"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgw-xL-nVq">
-                                                    <rect key="frame" x="351" y="56" width="35" height="30"/>
+                                                    <rect key="frame" x="350" y="41" width="35" height="30"/>
                                                     <state key="normal" image="rmlike-bw.png"/>
                                                     <state key="selected" image="rmlike-c.png"/>
                                                     <state key="highlighted" image="rmlike-c.png"/>
@@ -161,6 +159,7 @@
                                             <outlet property="programFavesCount" destination="TFe-C7-Oic" id="6Ei-V3-vWa"/>
                                             <outlet property="programLogoURL" destination="J0B-gJ-beO" id="PAl-XL-L2h"/>
                                             <outlet property="programNameString" destination="Af0-sn-b99" id="iwk-1Y-e3E"/>
+                                            <segue destination="cMF-nN-tcY" kind="presentation" identifier="segueToProgramDetail" id="QPj-VW-Cva"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -169,23 +168,6 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="R26-6i-ETO"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-Sw-pfc">
-                                <rect key="frame" x="0.0" y="622" width="414" height="65"/>
-                                <color key="backgroundColor" red="0.074509803921568626" green="0.14117647058823529" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="CONNECT TO A REFER MATE">
-                                    <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="connectToReferral:" destination="9pv-A4-QxB" eventType="touchUpInside" id="kCj-nB-fYb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="share your code or find a code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nf-eW-fkb">
-                                <rect key="frame" x="87" y="661" width="250" height="18"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
-                                <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -197,14 +179,12 @@
                     <connections>
                         <outlet property="backButton" destination="jv3-g6-ChO" id="oPQ-bf-1uI"/>
                         <outlet property="categoryLabel" destination="4pb-zF-EnD" id="Cqp-Ik-FH9"/>
-                        <outlet property="connectButton" destination="gfO-Sw-pfc" id="NG7-uL-0Dg"/>
                         <outlet property="forwardButton" destination="wre-Xd-jQV" id="dIe-6u-eP0"/>
                         <outlet property="hamburger" destination="4lI-CE-SFY" id="CGL-QC-o0r"/>
                         <outlet property="myTableView" destination="XXm-Jf-hEI" id="5Xl-mF-d5M"/>
                         <outlet property="searchBar" destination="yEo-Tg-c9k" id="8kI-gb-Bb9"/>
                         <outlet property="searchGlass" destination="Fp6-2Y-K2j" id="bfO-o7-y1u"/>
-                        <outlet property="topBox" destination="2dV-qQ-0zd" id="JrM-ee-sEL"/>
-                        <segue destination="cMF-nN-tcY" kind="presentation" identifier="segueToProgramDetail" id="Fvh-45-Ub8"/>
+                        <outlet property="topBox" destination="W9J-4h-8c0" id="Uoq-yd-0CZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -562,88 +542,6 @@
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Sn-nwg">
-                                <rect key="frame" x="20" y="175" width="374" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HF-zP-VE9">
-                                        <rect key="frame" x="257" y="60" width="109" height="23"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="1">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="20" name="Harabara-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
-                                                <integer key="value" value="70"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ZD-ye-mdU">
-                                        <rect key="frame" x="8" y="60" width="120" height="23"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="1">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="20" name="Harabara-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
-                                                <integer key="value" value="70"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fyb-3N-JNE">
-                                        <rect key="frame" x="8" y="8" width="358" height="37"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SAVED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvg-S1-hDg">
-                                                <rect key="frame" x="8" y="8" width="94" height="24"/>
-                                                <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
-                                                <color key="textColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
-                                                        <integer key="value" value="70"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHARED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-fo-cWs">
-                                                <rect key="frame" x="256" y="7" width="94" height="26"/>
-                                                <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
-                                                <color key="textColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.characterSpacing">
-                                                        <integer key="value" value="70"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ReferMate-smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jg9-Fm-aEK">
                                 <rect key="frame" x="137" y="155" width="140" height="140"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -687,7 +585,7 @@
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sL-q0-ii9">
-                                <rect key="frame" x="182" y="545" width="50" height="50"/>
+                                <rect key="frame" x="182" y="585" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Back">
@@ -703,6 +601,40 @@
                                     <segue destination="aDP-Vo-aaQ" kind="unwind" unwindAction="unwindToDetails:" id="hRr-ON-tpv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhy-7e-C7d">
+                                <rect key="frame" x="289" y="476" width="48" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50980392159999999" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="GO">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadURL" destination="nf5-yd-zcb" eventType="touchUpInside" id="gRO-Km-bdI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thr-QF-jdK">
+                                <rect key="frame" x="60" y="476" width="177" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50980392159999999" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="COPY TO CLIPBOARD">
+                                    <color key="titleColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="copyText" destination="nf5-yd-zcb" eventType="touchUpInside" id="iIU-Bf-0VR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -710,11 +642,12 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="backButton" destination="1sL-q0-ii9" id="ROF-lB-0Rq"/>
+                        <outlet property="copyButton" destination="thr-QF-jdK" id="Yh9-bw-zHg"/>
                         <outlet property="linkText" destination="VEv-hJ-Anu" id="6sQ-aS-qLc"/>
-                        <outlet property="savedLabel" destination="3ZD-ye-mdU" id="lyQ-kz-3JR"/>
-                        <outlet property="sharedLabel" destination="6HF-zP-VE9" id="Qfy-jz-FGj"/>
+                        <outlet property="urlGOButton" destination="fhy-7e-C7d" id="8ZP-4E-7Ag"/>
                         <outlet property="userImage" destination="Jg9-Fm-aEK" id="TRn-6Y-pCg"/>
                         <outlet property="usernameLabel" destination="2Dx-x7-gB8" id="3eK-Rr-aBx"/>
+                        <segue destination="Ks8-87-kOz" kind="presentation" identifier="goToWebViewer" id="lre-p5-y3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYE-Qf-Mg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -760,22 +693,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mrN-Mf-UUY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mrN-Mf-UUY">
                                 <rect key="frame" x="0.0" y="162" width="414" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="0.65098039220000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="faveCell" id="Kt9-gw-Hx7" customClass="FavoritesCustomCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="faveCell" rowHeight="52" id="Kt9-gw-Hx7" customClass="FavoritesCustomCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kt9-gw-Hx7" id="F2R-6W-HyF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyZ-0t-piS">
-                                                    <rect key="frame" x="26" y="11" width="213" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="20"/>
+                                                    <rect key="frame" x="24" y="15" width="213" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="22"/>
                                                     <color key="textColor" red="1" green="0.59925805529999998" blue="0.2504002897" alpha="0.70328663790000001" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1683,10 +1616,10 @@
         <image name="twitter.png" width="37" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3L-8R-Pc8"/>
         <segue reference="G3k-zG-Gr3"/>
-        <segue reference="Smr-Xg-UEW"/>
-        <segue reference="kbZ-gn-RpN"/>
+        <segue reference="Ivc-ht-hq9"/>
         <segue reference="APu-Xe-ws7"/>
+        <segue reference="lre-p5-y3A"/>
+        <segue reference="c3L-8R-Pc8"/>
     </inferredMetricsTieBreakers>
 </document>

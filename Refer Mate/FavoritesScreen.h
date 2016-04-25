@@ -10,7 +10,7 @@
 
 @interface FavoritesScreen : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    NSMutableArray *favoritesFromFirebaseTable;
+    NSMutableArray *favoritesFromDefaults;
     NSArray * resultArray;
     IBOutlet UITableView *faveTableView;
     NSString *userString;

@@ -15,7 +15,6 @@
 -(void)viewDidLoad{
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     userString = appDelegate.authenticatedUser;
-    NSLog(@"USER ID PASSED %@", userString);
     [self callFirebase];
 
     

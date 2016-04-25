@@ -17,6 +17,7 @@
 
 @property(nonatomic, strong) NSString *helpURLString;
 @property(nonatomic, strong) NSString *privacyURLString;
+@property(nonatomic, strong) NSString *linkReceiveURLString;
 @property(nonatomic, strong) NSString *segueSenderID;
 
 -(IBAction)onClick:(id)sender;
