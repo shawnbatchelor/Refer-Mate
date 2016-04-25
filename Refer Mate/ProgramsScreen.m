@@ -448,13 +448,6 @@ int currentIndex;
 }
 
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CustomCellClass *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    self.supporterPass = cell.programFavesCount.text;
-//        [self performSegueWithIdentifier:@"segueToProgramDetail" sender:self];
-//
-//}
 
 
 
@@ -470,10 +463,8 @@ int currentIndex;
             NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
             CustomCellClass *cell = [myTableView cellForRowAtIndexPath:clickedIndex];
 
-            detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];
-            
+            detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];//cell.programNameString.text;//
             detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
-//            detailController.supporterLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"faved"];
             detailController.supporterLabelSegueString = cell.programFavesCount.text;
             detailController.youGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"you_get"];
             detailController.theyGetSegueInt = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"they_get"];

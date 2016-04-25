@@ -18,6 +18,9 @@
 		FF45EED01CC5AE9C00B4C3BE /* rmlike-c.png in Resources */ = {isa = PBXBuildFile; fileRef = FF45EECE1CC5AE9C00B4C3BE /* rmlike-c.png */; };
 		FF45EED71CC69A2100B4C3BE /* 50-c-noun_101501.png in Resources */ = {isa = PBXBuildFile; fileRef = FF45EED51CC69A2100B4C3BE /* 50-c-noun_101501.png */; };
 		FF45EED81CC69A2100B4C3BE /* 50-noun_101501.png in Resources */ = {isa = PBXBuildFile; fileRef = FF45EED61CC69A2100B4C3BE /* 50-noun_101501.png */; };
+		FF6CE4AE1CCDC76900DA3BD2 /* noun_42365_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6CE4AB1CCDC76900DA3BD2 /* noun_42365_cc.png */; };
+		FF6CE4AF1CCDC76900DA3BD2 /* noun_173856_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6CE4AC1CCDC76900DA3BD2 /* noun_173856_cc.png */; };
+		FF6CE4B01CCDC76900DA3BD2 /* noun_233300_cc.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6CE4AD1CCDC76900DA3BD2 /* noun_233300_cc.png */; };
 		FF6EA1A11CC6DDB6005D796A /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6EA19F1CC6DDB6005D796A /* camera.png */; };
 		FF6EA1A21CC6DDB6005D796A /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6EA1A01CC6DDB6005D796A /* library.png */; };
 		FF6EA1A41CC6F9AB005D796A /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6EA1A31CC6F9AB005D796A /* Photos.framework */; };
@@ -116,6 +119,9 @@
 		FF45EECE1CC5AE9C00B4C3BE /* rmlike-c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rmlike-c.png"; sourceTree = "<group>"; };
 		FF45EED51CC69A2100B4C3BE /* 50-c-noun_101501.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-c-noun_101501.png"; sourceTree = "<group>"; };
 		FF45EED61CC69A2100B4C3BE /* 50-noun_101501.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-noun_101501.png"; sourceTree = "<group>"; };
+		FF6CE4AB1CCDC76900DA3BD2 /* noun_42365_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_42365_cc.png; sourceTree = "<group>"; };
+		FF6CE4AC1CCDC76900DA3BD2 /* noun_173856_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_173856_cc.png; sourceTree = "<group>"; };
+		FF6CE4AD1CCDC76900DA3BD2 /* noun_233300_cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noun_233300_cc.png; sourceTree = "<group>"; };
 		FF6EA19F1CC6DDB6005D796A /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		FF6EA1A01CC6DDB6005D796A /* library.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library.png; sourceTree = "<group>"; };
 		FF6EA1A31CC6F9AB005D796A /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
@@ -393,6 +399,9 @@
 				FFAC54651CB73AFD00DF4EF5 /* 50-noun_13006_cc.png */,
 				FFAC54661CB73AFD00DF4EF5 /* 50-noun_49693_cc.png */,
 				FFAC54671CB73AFD00DF4EF5 /* 50-noun_59948_cc.png */,
+				FF6CE4AB1CCDC76900DA3BD2 /* noun_42365_cc.png */,
+				FF6CE4AC1CCDC76900DA3BD2 /* noun_173856_cc.png */,
+				FF6CE4AD1CCDC76900DA3BD2 /* noun_233300_cc.png */,
 				FFEE53861CB778920062CA39 /* facebook.png */,
 				FFEE53871CB778920062CA39 /* twitter.png */,
 				FFF565A61CB860C500137858 /* hamburger.png */,
@@ -527,13 +536,16 @@
 				FFAC54751CB741F100DF4EF5 /* ReferMate-smile.png in Resources */,
 				FF6EA1A21CC6DDB6005D796A /* library.png in Resources */,
 				FFAC546F1CB73AFD00DF4EF5 /* 50-noun_59948_cc.png in Resources */,
+				FF6CE4B01CCDC76900DA3BD2 /* noun_233300_cc.png in Resources */,
 				FF6EA1A11CC6DDB6005D796A /* camera.png in Resources */,
 				FF45EED81CC69A2100B4C3BE /* 50-noun_101501.png in Resources */,
 				FF26A3091CB9685C001544EA /* nav_arrow-r.png in Resources */,
+				FF6CE4AF1CCDC76900DA3BD2 /* noun_173856_cc.png in Resources */,
 				FFAC54691CB73AFD00DF4EF5 /* 50-c-noun_13006_cc.png in Resources */,
 				FFAC546B1CB73AFD00DF4EF5 /* 50-c-noun_59948_cc.png in Resources */,
 				FFEE53891CB778920062CA39 /* twitter.png in Resources */,
 				FF26A3071CB9678F001544EA /* nav_arrow.png in Resources */,
+				FF6CE4AE1CCDC76900DA3BD2 /* noun_42365_cc.png in Resources */,
 				FFF565A81CB860C500137858 /* hamburger.png in Resources */,
 				FF45EED71CC69A2100B4C3BE /* 50-c-noun_101501.png in Resources */,
 				FFAC546A1CB73AFD00DF4EF5 /* 50-c-noun_49693_cc.png in Resources */,

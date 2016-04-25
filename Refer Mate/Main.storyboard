@@ -898,10 +898,10 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVm-Ir-JdI">
                                 <rect key="frame" x="0.0" y="63" width="285" height="624"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCo-C6-nIh">
-                                        <rect key="frame" x="8" y="255" width="198" height="35"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCo-C6-nIh">
+                                        <rect key="frame" x="20" y="255" width="198" height="20"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Settings" image="first">
+                                        <state key="normal" title="Settings" image="noun_233300_cc.png">
                                             <color key="titleColor" red="0.50196078431372548" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -909,9 +909,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAm-x0-v53">
-                                        <rect key="frame" x="8" y="308" width="198" height="35"/>
+                                        <rect key="frame" x="20" y="308" width="198" height="20"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Help" image="second">
+                                        <state key="normal" title="Help" image="noun_173856_cc.png">
                                             <color key="titleColor" red="0.50196078430000002" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -919,9 +919,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPt-fq-zf8">
-                                        <rect key="frame" x="8" y="359" width="198" height="35"/>
+                                        <rect key="frame" x="20" y="359" width="198" height="20"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Privacy Policy" image="second">
+                                        <state key="normal" title="Privacy Policy" image="noun_42365_cc.png">
                                             <color key="titleColor" red="0.50196078430000002" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -929,9 +929,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eib-Pa-drc">
-                                        <rect key="frame" x="8" y="493" width="198" height="35"/>
+                                        <rect key="frame" x="14" y="493" width="198" height="35"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Logout" image="second">
+                                        <state key="normal" title="Logout">
                                             <color key="titleColor" red="0.50196078430000002" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1604,22 +1604,23 @@
         <image name="ReferMate-smile.png" width="167" height="140"/>
         <image name="camera.png" width="50" height="41"/>
         <image name="facebook.png" width="16" height="30"/>
-        <image name="first" width="30" height="30"/>
         <image name="hamburger.png" width="35" height="29"/>
         <image name="library.png" width="50" height="41"/>
         <image name="nav_arrow-r.png" width="15" height="27"/>
         <image name="nav_arrow.png" width="15" height="27"/>
+        <image name="noun_173856_cc.png" width="20" height="20"/>
+        <image name="noun_233300_cc.png" width="20" height="20"/>
+        <image name="noun_42365_cc.png" width="20" height="20"/>
         <image name="rmlike-bw.png" width="35" height="30"/>
         <image name="rmlike-c.png" width="35" height="30"/>
         <image name="search.png" width="35" height="35"/>
-        <image name="second" width="30" height="30"/>
         <image name="twitter.png" width="37" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="G3k-zG-Gr3"/>
         <segue reference="Ivc-ht-hq9"/>
         <segue reference="APu-Xe-ws7"/>
-        <segue reference="lre-p5-y3A"/>
+        <segue reference="kbZ-gn-RpN"/>
         <segue reference="c3L-8R-Pc8"/>
     </inferredMetricsTieBreakers>
 </document>
