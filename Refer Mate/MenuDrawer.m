@@ -65,22 +65,18 @@
 //Pass info to web viewer
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"goToHelp"]){
-        NSLog(@"SENDING HELP");
         WebLinkViewerScreen *helpString = segue.destinationViewController;
         if (helpString != nil){
             helpString.segueSenderID = @"HelpSentMe";
-            helpString.helpURLString = @"http://www.refermateapp.com/faq/";
+            helpString.helpURLString = @"http://www.refermateapp.com";
         }else{
-            NSLog(@"HELP PROPERTY DOESN'T EXIST");
         }
     }else if ([[segue identifier] isEqualToString:@"goToPrivacy"]){
-        NSLog(@"SENDING PRIVATE");
         WebLinkViewerScreen *privacyString = segue.destinationViewController;
         if (privacyString != nil){
             privacyString.segueSenderID = @"PrivacySentMe";
             privacyString.privacyURLString = @"http://www.refermateapp.com/privacy-policy/";
         }else{
-            NSLog(@"PRIVACY PROPERTY DOESN'T EXIST");
         }
     }
 }

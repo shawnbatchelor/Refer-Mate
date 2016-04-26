@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Firebase/Firebase.h>
+
 
 
 @interface SettingsScreen : UIViewController<CLLocationManagerDelegate>
@@ -17,6 +19,6 @@
     IBOutlet UISwitch *autoLogonSwitch;
 }
 
-@property(nonatomic)CLLocationManager *locationManager;
+@property(nonatomic)CLLocationManager *settingsLocationManager;
 
 @end

@@ -30,7 +30,6 @@
     if (autoLogonState == 1){
         [self checkUserAuth];
     }
-    NSLog(@"%ld",autoLogonState);
 }
 
 
@@ -77,10 +76,8 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                     handler:^(FBSDKLoginManagerLoginResult *facebookResult, NSError *facebookError){
                                         
                                         if (facebookError) {
-                                            // NSLog(@"Facebook login failed. Error: %@", facebookError);
                                             [self facebookFailAlert];
                                         } else if (facebookResult.isCancelled) {
-                                            //NSLog(@"Facebook login got cancelled.");
                                             [self facebookFailAlert];
                                         } else {
                                             NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
@@ -89,7 +86,6 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                    withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                        
                                                        if (error) {
-                                                           //NSLog(@"Login failed. %@", error);
                                                            [self facebookFailAlert];
                                                        } else {
                                                            usersDictionary = @{
@@ -121,17 +117,14 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
                                                                                    apiKey:@"iKUxdxzv2SQJzxt1VM5aJzzAH"];
     [twitterAuthHelper selectTwitterAccountWithCallback:^(NSError *error, NSArray *accounts) {
         if (error) {
-            //NSLog(@"Error retrieving Twitter accounts");
             [self twitterFailAlert];
         } else if ([accounts count] == 0) {
-            //NSLog(@"No Twitter accounts found on device");
             [self twitterFailAlert];
         } else {
             // Select an account. Here we pick the first one for simplicity
             ACAccount *account = [accounts firstObject];
             [twitterAuthHelper authenticateAccount:account withCallback:^(NSError *error, FAuthData *authData) {
                 if (error) {
-                    //NSLog(@"Error authenticating account");
                     [self twitterFailAlert];
                 } else {
                     usersDictionary = @{
@@ -169,7 +162,6 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
             }
             
         } else {
-            //NSLog(@"We sent an email with reset instructions.");
             // Password reset sent successfully
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Success!"
                                                                            message:@"We sent an email to your address on file. Please follow the instructions in order to reset your password."
@@ -258,14 +250,12 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     if (ref.authData) {
         // user authenticated
-        //NSLog(@"%@", ref.authData);
         userID = ref.authData.uid;
         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         appDelegate.authenticatedUser = userID;
         [self performSegueWithIdentifier:@"segueToTabControl" sender:nil];
     } else {
         // No user is signed in
-        NSLog(@"No user is signed in");
     }
 }
 

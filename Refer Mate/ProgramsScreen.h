@@ -10,7 +10,7 @@
 
 
 
-@interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate>
+@interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchBarDelegate>
 
 {
     IBOutlet UIButton *connectButton;
@@ -23,9 +23,9 @@
     IBOutlet UIButton *faveButton;
     IBOutlet UIButton *hamburger;
     IBOutlet UIButton *searchGlass;
-    IBOutlet UISearchBar *searchBar;
+    IBOutlet UISearchBar *searchBarBar;
 
-    
+    NSMutableArray *searchArray;
     NSMutableArray *servicesArray;
     NSMutableArray *shoppingArray;
     NSMutableArray *bankingArray;
@@ -37,6 +37,8 @@
     UIImage *ButtonImageSelected;
     NSUserDefaults *favPref;
     NSArray *faveResultArray;
+    NSString *searchTerm;
+    long myCellCount;
 }
 
 - (IBAction)changeFaveImage:(id)sender;

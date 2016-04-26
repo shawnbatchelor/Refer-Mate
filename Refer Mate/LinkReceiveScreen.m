@@ -14,6 +14,7 @@
 
 @synthesize fromProgramLabelSegueString;
 
+
 -(void)viewDidLoad{
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     userString = appDelegate.authenticatedUser;
@@ -33,43 +34,51 @@
     copyButton.hidden = true;
     urlGOButton.hidden = true;
     [self callFirebase];
-    
 }
+
 
 
 //Query Firebase database and handle JSON for tableview
 -(void) callFirebase {
     //Handle array of links
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-        
-        // Query Firebase database
-        [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSArray *firstResults = [[NSArray arrayWithObject:snapshot.value] objectAtIndex:0];
-            allLinksArray = [NSArray arrayWithObject: [firstResults valueForKey:self.fromProgramLabelSegueString]];
-           
-            
-            programLinksArray = [[allLinksArray objectAtIndex:0] allObjects];
-            int random = arc4random()%[programLinksArray count];
-            usernameLabel.text = [programLinksArray[random] valueForKey:@"user_ID"];
-            linkText.text = [programLinksArray[random] valueForKey:@"referral_link"];
-        }];
     
-    NSURL *url = [NSURL URLWithString:linkText.text];
-    if (url && url.scheme && url.host)
-    {
-        //the url is valid
-        NSLog(@"the url is valid");
-        receivedURLString = linkText.text;
-        copyButton.hidden = true;
-        urlGOButton.hidden = false;
-
-    }else if (linkText.text != nil || ![linkText.text  isEqual: @""]){
+    // Query Firebase database
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSArray *firstResults = [[NSArray arrayWithObject:snapshot.value] objectAtIndex:0];
+        allLinksArray = [NSArray arrayWithObject: [firstResults valueForKey:self.fromProgramLabelSegueString]];
+        programLinksArray = [[allLinksArray objectAtIndex:0] allObjects];
         
-        //The url is not valid
-        NSLog(@"the url NOT valid");
-        urlGOButton.hidden = true;
-        copyButton.hidden = false;
-    }
+        
+        int random = arc4random()%[programLinksArray count];
+        usernameLabel.text = [programLinksArray[random] valueForKey:@"user_ID"];
+        pulledText = [programLinksArray[random] valueForKey:@"referral_link"];
+        
+        NSURL *url = [NSURL URLWithString:pulledText];//linkText.text];
+        if (url && url.scheme && url.host)
+        {
+            //the url is valid
+            receivedURLString = pulledText;
+            LONG_URL =  pulledText;
+            NSString *apiEndpoint = [NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@",LONG_URL];
+            NSString *shortenedURL = [NSString stringWithContentsOfURL:[NSURL URLWithString:apiEndpoint]
+                                                              encoding:NSUTF8StringEncoding
+                                                                 error:nil];
+            copyButton.hidden = true;
+            urlGOButton.hidden = false;
+            linkText.text = shortenedURL;
+            dynamicLabel.text = @"Click GO to open your referral link";
+            
+            
+        }else if (linkText.text != nil || ![linkText.text  isEqual: @""]){
+            
+            //The url is not valid
+            urlGOButton.hidden = true;
+            copyButton.hidden = false;
+            linkText.text = pulledText;
+            dynamicLabel.text = @"Click COPY to save code to clipboard";
+        }
+    }];
 }
 
 

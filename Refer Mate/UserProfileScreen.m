@@ -135,7 +135,6 @@
     uploadProfilePicButton.hidden = 1;
     cameraProfilePicButton.hidden = 1;
     [picker dismissViewControllerAnimated:true completion:NULL];
-    //NSLog(@"image info %@", info);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

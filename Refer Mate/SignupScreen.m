@@ -238,14 +238,11 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
 {
     CLLocation *location = [locations lastObject];
     // Reverse Geocoding city and zip code
-    NSLog(@"Resolving the Address");
     geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
         if (error == nil && [placemarks count] > 0) {
             placemark = [placemarks lastObject];
             zipCode = [NSString stringWithFormat:@"%@",placemark.postalCode];
-            NSLog(@"Zip Code is %.@", zipCode);
         } else {
             NSLog(@"%@", error.debugDescription);
         }
@@ -290,7 +287,6 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         UIAlertAction *defaultAction = alert.actions.lastObject;
         defaultAction.enabled = zipField.text.length == 5;
         zipCode = zipField.text;
-        NSLog(@"Zip Code is %.@", zipCode);
     }
 }
 

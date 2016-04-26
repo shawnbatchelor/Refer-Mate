@@ -148,7 +148,6 @@
                 }
             }];
         } else {
-            NSLog (@"No user is signed in");
         }
         
     }

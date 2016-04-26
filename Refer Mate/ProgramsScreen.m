@@ -22,6 +22,7 @@
 
 Firebase *ref;
 Firebase *ref2;
+Firebase *searchRef;
 NSString* const categoryDidChange = @"categoryDidChange";
 
 
@@ -33,8 +34,6 @@ int currentIndex;
     
     topBox.layer.borderWidth = 5.0f;
     topBox.layer.borderColor = [UIColor colorWithRed:255/255.0 green:166/255.0 blue:38/255.0 alpha: 1.0].CGColor;
-    //    categoryLabel.shadowColor = [UIColor grayColor];
-    //    categoryLabel.shadowOffset = CGSizeMake(1, 1);
     
     
     categoriesArray = [[NSArray alloc] initWithObjects:@"services", @"shopping", @"banking", @"fitness", nil];
@@ -59,6 +58,7 @@ int currentIndex;
 -(void)viewWillAppear:(BOOL)animated{
     NSUserDefaults *favPref = [NSUserDefaults standardUserDefaults];
     favoritesFromDefaults = [[favPref objectForKey:@"fave_array"] mutableCopy];
+    searchBarBar.hidden = 1;
     [myTableView reloadData];
 }
 
@@ -70,10 +70,6 @@ int currentIndex;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Actions for buttons
-//- (IBAction)connectToReferral:(id)sender {
-//    [self performSegueWithIdentifier:@"segueToProgramDetail" sender:nil];
-//}
 
 - (IBAction)categoryBack:(id)sender {
     [self categoryMinus];
@@ -117,7 +113,11 @@ int currentIndex;
         [favPref setObject:favoritesArray forKey:@"fave_array"];
         [favPref synchronize];
     }
-    
+}
+
+-(IBAction)searchGlassClick{
+    searchBarBar.hidden = 0;
+    [searchGlass setHidden:YES];
 }
 
 
@@ -148,30 +148,49 @@ int currentIndex;
 }
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Searchbar delegate methods
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+    [searchGlass setHidden:YES];
+}
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    searchBarBar.hidden = 1;
+    [searchGlass setHidden:NO];
+}
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    searchTerm = searchBar.text;
+    categoryLabel.text = @"search results";
+    [self firebaseSearch];
+    [searchBar resignFirstResponder];
+    searchBarBar.hidden = 1;
+    [searchGlass setHidden:NO];
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Tableview delegate methods
 
 //Set number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (currentIndex)
-    {
-        case 0:
-            return [servicesArray count];
-            break;
-        case 1:
-            return [shoppingArray count];
-            break;
-        case 2:
-            return [bankingArray count];
-            break;
-        case 3:
-            return [fitnessArray count];
-            break;
-        default:
-            return [servicesArray count];
-            break;
+    if ([categoryLabel.text  isEqual: @"search results"]){
+        myCellCount = [searchArray count];
+    }else if (currentIndex == 0){
+        myCellCount = [servicesArray count];
+    }else if (currentIndex == 1){
+        myCellCount = [shoppingArray count];
+    }else if (currentIndex == 2){
+        myCellCount = [bankingArray count];
+    }else if (currentIndex == 3){
+        myCellCount = [fitnessArray count];
     }
+    return myCellCount;
 }
 
 
@@ -185,150 +204,177 @@ int currentIndex;
     {
         CustomProgramObject *currentProgram;
         
-        switch (currentIndex)
-        {
-            case 0:
-                if(servicesArray == 0){
-                    
-                }else{
-                    [programCell.faveButton setSelected:false];
-                    currentProgram = [servicesArray objectAtIndex:indexPath.row];
-                    programCell.programNameString.text = currentProgram.referralProgramName;
-                    programCell.programFavesCount.text = currentProgram.referralProgramFaves;
-                    programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
-                    programCell.programDescriptionString = currentProgram.referralProgramDescription;
-                    programCell.youGetAmount = currentProgram.referralProgramYouGet;
-                    programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    //Set fave button icon state
-                    if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
-                        [programCell.faveButton setSelected:true];
-                    }
-                    
-                    //Get the faves count from programs added
-                    ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-                    [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                        NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
-                        faveResultArray = [thisResult objectAtIndex:0];
-                        NSLog(@"current program name %@", currentProgram.referralProgramName);
-                        long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
-                        NSLog(@"current program name %lu", shareCount);
-                        programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
-                    }];
+        if ([categoryLabel.text  isEqual: @"search results"]){
+            if(searchArray == 0){
+                
+            }else{
+                [programCell.faveButton setSelected:false];
+                currentProgram = [searchArray objectAtIndex:indexPath.row];
+                programCell.programNameString.text = currentProgram.referralProgramName;
+                programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                
+                //Set fave button icon state
+                if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                    [programCell.faveButton setSelected:true];
                 }
-                break;
-            case 1:
-                if(shoppingArray == 0){
-                    
-                }else{
-                    [programCell.faveButton setSelected:false];
-                    currentProgram = [shoppingArray objectAtIndex:indexPath.row];
-                    programCell.programNameString.text = currentProgram.referralProgramName;
-                    programCell.programFavesCount.text = currentProgram.referralProgramFaves;
-                    programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
-                    programCell.programDescriptionString = currentProgram.referralProgramDescription;
-                    programCell.youGetAmount = currentProgram.referralProgramYouGet;
-                    programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    //Set fave button icon state
-                    if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
-                        [programCell.faveButton setSelected:true];
+                
+                //Get the faves count from programs added
+                ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                    NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                    faveResultArray = [thisResult objectAtIndex:0];
+                    long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                    programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                }];
+            }
+        }else{
+            switch (currentIndex)
+            {
+                case 0:
+                    if(servicesArray == 0){
+                        
+                    }else{
+                        [programCell.faveButton setSelected:false];
+                        currentProgram = [servicesArray objectAtIndex:indexPath.row];
+                        programCell.programNameString.text = currentProgram.referralProgramName;
+                        programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                        programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                        programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                        programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                        programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                        
+                        //Set fave button icon state
+                        if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                            [programCell.faveButton setSelected:true];
+                        }
+                        
+                        //Get the faves count from programs added
+                        ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                        [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                            NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                            faveResultArray = [thisResult objectAtIndex:0];
+                            long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                            programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                        }];
                     }
-                    
-                    //Get the faves count from programs added
-                    ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-                    [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                        NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
-                        faveResultArray = [thisResult objectAtIndex:0];
-                        long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
-                        programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
-                    }];
-                }
-                break;
-            case 2:
-                if(bankingArray == 0){
-                    
-                }else{
-                    [programCell.faveButton setSelected:false];
-                    currentProgram = [bankingArray objectAtIndex:indexPath.row];
-                    programCell.programNameString.text = currentProgram.referralProgramName;
-                    programCell.programFavesCount.text = currentProgram.referralProgramFaves;
-                    programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
-                    programCell.programDescriptionString = currentProgram.referralProgramDescription;
-                    programCell.youGetAmount = currentProgram.referralProgramYouGet;
-                    programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    //Set fave button icon state
-                    if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
-                        [programCell.faveButton setSelected:true];
+                    break;
+                case 1:
+                    if(shoppingArray == 0){
+                        
+                    }else{
+                        [programCell.faveButton setSelected:false];
+                        currentProgram = [shoppingArray objectAtIndex:indexPath.row];
+                        programCell.programNameString.text = currentProgram.referralProgramName;
+                        programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                        programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                        programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                        programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                        programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                        
+                        //Set fave button icon state
+                        if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                            [programCell.faveButton setSelected:true];
+                        }
+                        
+                        //Get the faves count from programs added
+                        ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                        [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                            NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                            faveResultArray = [thisResult objectAtIndex:0];
+                            long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                            programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                        }];
                     }
-                    
-                    //Get the faves count from programs added
-                    ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-                    [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                        NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
-                        faveResultArray = [thisResult objectAtIndex:0];
-                        long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
-                        programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
-                    }];
-                }
-                break;
-            case 3:
-                if(fitnessArray == 0){
-                    
-                }else{
-                    [programCell.faveButton setSelected:false];
-                    currentProgram = [fitnessArray objectAtIndex:indexPath.row];
-                    programCell.programNameString.text = currentProgram.referralProgramName;
-                    programCell.programFavesCount.text = currentProgram.referralProgramFaves;
-                    programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
-                    programCell.programDescriptionString = currentProgram.referralProgramDescription;
-                    programCell.youGetAmount = currentProgram.referralProgramYouGet;
-                    programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    //Set fave button icon state
-                    if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
-                        [programCell.faveButton setSelected:true];
+                    break;
+                case 2:
+                    if(bankingArray == 0){
+                        
+                    }else{
+                        [programCell.faveButton setSelected:false];
+                        currentProgram = [bankingArray objectAtIndex:indexPath.row];
+                        programCell.programNameString.text = currentProgram.referralProgramName;
+                        programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                        programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                        programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                        programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                        programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                        
+                        //Set fave button icon state
+                        if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                            [programCell.faveButton setSelected:true];
+                        }
+                        
+                        //Get the faves count from programs added
+                        ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                        [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                            NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                            faveResultArray = [thisResult objectAtIndex:0];
+                            long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                            programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                        }];
                     }
-                    
-                    //Get the faves count from programs added
-                    ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-                    [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                        NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
-                        faveResultArray = [thisResult objectAtIndex:0];
-                        long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
-                        programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
-                    }];
-                }
-                break;
-            default:
-                if(servicesArray == 0){
-                    
-                }else{
-                    [programCell.faveButton setSelected:false];
-                    currentProgram = [servicesArray objectAtIndex:indexPath.row];
-                    programCell.programNameString.text = currentProgram.referralProgramName;
-                    programCell.programFavesCount.text = currentProgram.referralProgramFaves;
-                    programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
-                    programCell.programDescriptionString = currentProgram.referralProgramDescription;
-                    programCell.youGetAmount = currentProgram.referralProgramYouGet;
-                    programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
-                    
-                    //Set fave button icon state
-                    if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
-                        [programCell.faveButton setSelected:true];
+                    break;
+                case 3:
+                    if(fitnessArray == 0){
+                        
+                    }else{
+                        [programCell.faveButton setSelected:false];
+                        currentProgram = [fitnessArray objectAtIndex:indexPath.row];
+                        programCell.programNameString.text = currentProgram.referralProgramName;
+                        programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                        programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                        programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                        programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                        programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                        
+                        //Set fave button icon state
+                        if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                            [programCell.faveButton setSelected:true];
+                        }
+                        
+                        //Get the faves count from programs added
+                        ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                        [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                            NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                            faveResultArray = [thisResult objectAtIndex:0];
+                            long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                            programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                        }];
                     }
-                    
-                    //Get the faves count from programs added
-                    ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
-                    [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-                        NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
-                        faveResultArray = [thisResult objectAtIndex:0];
-                        long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
-                        programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
-                    }];
-                }
-                break;
+                    break;
+                default:
+                    if(servicesArray == 0){
+                        
+                    }else{
+                        [programCell.faveButton setSelected:false];
+                        currentProgram = [servicesArray objectAtIndex:indexPath.row];
+                        programCell.programNameString.text = currentProgram.referralProgramName;
+                        programCell.programFavesCount.text = currentProgram.referralProgramFaves;
+                        programCell.programLogoURL.image = [UIImage imageWithData:currentProgram.referralProgramLogo];
+                        programCell.programDescriptionString = currentProgram.referralProgramDescription;
+                        programCell.youGetAmount = currentProgram.referralProgramYouGet;
+                        programCell.theyGetAmount = currentProgram.referralProgramTheyGet;
+                        
+                        //Set fave button icon state
+                        if([favoritesFromDefaults containsObject:programCell.programNameString.text]){
+                            [programCell.faveButton setSelected:true];
+                        }
+                        
+                        //Get the faves count from programs added
+                        ref2 = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/program_links"];
+                        [ref2 observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+                            NSArray *thisResult = [NSArray arrayWithObject:snapshot.value];
+                            faveResultArray = [thisResult objectAtIndex:0];
+                            long shareCount = [[faveResultArray valueForKey:currentProgram.referralProgramName] count];
+                            programCell.programFavesCount.text = [NSString stringWithFormat:@"%lu", shareCount];
+                        }];
+                    }
+                    break;
+            }
         }
     }else {
         NSLog(@"program cell is nil");
@@ -451,6 +497,42 @@ int currentIndex;
 
 
 
+//Query Firebase database and handle JSON for tableview
+-(void) firebaseSearch {
+    searchArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i<[categoriesArray count]; i++){
+        NSString *searchURLString = [NSString stringWithFormat:@"https://refer-mate.firebaseio.com/programs/%@",categoriesArray[i]];
+        searchRef = [[Firebase alloc] initWithUrl:searchURLString];
+        
+        [searchRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSArray *firstResults = [NSArray arrayWithObject:snapshot.value];
+            resultArray = [[firstResults objectAtIndex:0] allObjects];
+            
+            for (int n; n<[resultArray count]; n++){
+                
+                if([[resultArray[n] valueForKey:@"program_name"] lowercaseString] == [searchTerm lowercaseString]){
+                    
+                    CustomProgramObject *program1 = [[CustomProgramObject alloc] init];
+                    program1.referralProgramName = [resultArray[n] valueForKey:@"program_name"];
+                    program1.referralProgramDescription = [resultArray[n] valueForKey:@"description"];
+                    program1.referralProgramFaves = [resultArray[n] valueForKey:@"faved"];
+                    program1.referralProgramYouGet = [resultArray[n] valueForKey:@"you_get"];
+                    program1.referralProgramTheyGet = [resultArray[n] valueForKey:@"they_get"];
+                    program1.referralProgramLogo = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[resultArray[n] valueForKey:@"logo_url"]]];
+                    
+                    [searchArray addObject:program1];
+                    NSLog(@"search item found was %@", searchArray);
+                }
+            }
+            [myTableView reloadData];
+        }];
+    }
+}
+
+
+
+
 //Pass data to details screen from cell clicked
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -462,7 +544,7 @@ int currentIndex;
         if (detailController != nil){
             NSIndexPath *clickedIndex = [myTableView indexPathForSelectedRow];
             CustomCellClass *cell = [myTableView cellForRowAtIndexPath:clickedIndex];
-
+            
             detailController.programLabelSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"program_name"];//cell.programNameString.text;//
             detailController.detailTextViewSegueString = [[resultArray objectAtIndex:clickedIndex.row]valueForKey:@"description"];
             detailController.supporterLabelSegueString = cell.programFavesCount.text;

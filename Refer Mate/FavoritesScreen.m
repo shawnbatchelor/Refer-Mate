@@ -63,7 +63,6 @@
     if(favoriteCells != nil) {
         [favoriteCells refreshFaveCell:[favoritesFromDefaults objectAtIndex:indexPath.row]];
     }else {
-                NSLog(@"favoriteCell is nil");
             }
 
     return favoriteCells;

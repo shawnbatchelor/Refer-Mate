@@ -21,6 +21,7 @@
     IBOutlet UILabel *linkText;
     IBOutlet UIButton *copyButton;
     IBOutlet UIButton *urlGOButton;
+    IBOutlet UILabel *dynamicLabel;
     
     NSArray *programLinksArray;
     NSArray * allLinksArray;
@@ -30,7 +31,8 @@
     NSData *userPicData;
     UIPasteboard *pastyBoard;
     NSString *receivedURLString;
-
+    NSString *pulledText;
+    NSString *LONG_URL;
 }
 
 @property(nonatomic, strong)NSString *fromProgramLabelSegueString;

@@ -7,12 +7,10 @@
 //
 
 #import "SettingsScreen.h"
-#import <Firebase/Firebase.h>
-//#import "LoginScreen.h"
 
 @implementation SettingsScreen
 
-CLLocationManager *locationManager;
+CLLocationManager *settingsLocationManager;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -43,22 +41,22 @@ CLLocationManager *locationManager;
 //Geolocation action
 -(IBAction)geolocationToggle{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
+    self.settingsLocationManager = [[CLLocationManager alloc] init];
+    self.settingsLocationManager.delegate = self;
     
     //If the switch is off
     if(![geolocationSwitch isOn]){
-        [self.locationManager stopUpdatingLocation];
+        [self.settingsLocationManager stopUpdatingLocation];
         [prefs setInteger:0 forKey:@"geoState"];
         [prefs synchronize];
         
     //If the switch is on
     }else if ([geolocationSwitch isOn]){
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined){
-            [self.locationManager requestWhenInUseAuthorization];
-            [self.locationManager startUpdatingLocation];
+            [self.settingsLocationManager requestWhenInUseAuthorization];
+            [self.settingsLocationManager startUpdatingLocation];
         } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
-            [self.locationManager startUpdatingLocation];
+            [self.settingsLocationManager startUpdatingLocation];
         }
         [prefs setInteger:1 forKey:@"geoState"];
         [prefs synchronize];
