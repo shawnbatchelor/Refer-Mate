@@ -113,8 +113,8 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-Xd-w13">
                                 <rect key="frame" x="0.0" y="63" width="414" height="64"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="choose a program to find a promo code and earn or share your own code and earn" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3l-tN-EVT">
-                                        <rect key="frame" x="8" y="8" width="398" height="57"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="select a program below. you'll be able to share your code or find a code someone shared. either way, you earn!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3l-tN-EVT">
+                                        <rect key="frame" x="8" y="0.0" width="398" height="64"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
@@ -186,9 +186,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Programs" image="50-noun_59948_cc.png" selectedImage="50-c-noun_59948_cc.png" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Programs" image="50-noun_59948_cc.png" id="XWg-wr-RON"/>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
@@ -257,8 +257,8 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VNN-Q9-WTQ">
                                 <rect key="frame" x="82" y="86" width="250" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-8l-wdu">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="81"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="supporters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-zX-gj2">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
                                         <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -268,8 +268,14 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="supporters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-zX-gj2">
-                                        <rect key="frame" x="0.0" y="82" width="250" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mates sharing referrals for" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFL-Ve-mqg">
+                                        <rect key="frame" x="8" y="47" width="234" height="21"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="program name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbo-8l-wdu">
+                                        <rect key="frame" x="0.0" y="61" width="250" height="81"/>
                                         <fontDescription key="fontDescription" name="Harabara-Bold" family="Harabara" pointSize="24"/>
                                         <color key="textColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -289,10 +295,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmj-TC-bJj">
-                                <rect key="frame" x="82" y="220" width="125" height="50"/>
+                                <rect key="frame" x="82" y="220" width="143" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.50980392159999999" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="ADD">
+                                <state key="normal" title="SHARE MY CODE">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -300,10 +306,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKz-ca-zgb">
-                                <rect key="frame" x="207" y="220" width="125" height="50"/>
+                                <rect key="frame" x="224" y="220" width="108" height="50"/>
                                 <color key="backgroundColor" red="0.074509803920000006" green="0.14117647059999999" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="CONNECT">
+                                <state key="normal" title="GET A CODE">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -390,7 +396,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-Pe-3lB">
                                         <rect key="frame" x="8" y="8" width="398" height="78"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text"> paste your referral link below to connect directly with a refer mate. tap the Facebook and twitter icons for even more exposure</string>
+                                        <string key="text"> paste your referral link or code below to connect directly with a refer mate. tap the Facebook and twitter icons for even more exposure</string>
                                         <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -461,7 +467,7 @@
                                     <action selector="facebookShare:" destination="CTo-yl-ReX" eventType="touchUpInside" id="wVr-gc-lwc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="paste your referral link here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xkH-cd-g1T">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="paste your link or code here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xkH-cd-g1T">
                                 <rect key="frame" x="57" y="309" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50980392156862742" blue="0.90980392156862744" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -751,7 +757,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="50-noun_101501.png" selectedImage="50-c-noun_101501.png" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="50-noun_101501.png" id="cPa-gy-q4n"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
@@ -1475,7 +1481,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="50-noun_49693_cc.png" selectedImage="50-c-noun_49693_cc.png" id="Xax-KW-eAH"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="50-noun_49693_cc.png" id="Xax-KW-eAH"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
@@ -1517,7 +1523,7 @@
             </objects>
             <point key="canvasLocation" x="674" y="488"/>
         </scene>
-        <!--Suggest-->
+        <!--Suggestion-->
         <scene sceneID="Sbb-5T-dFK">
             <objects>
                 <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="QUJ-6m-5Pz" customClass="SuggestProgramScreen" sceneMemberID="viewController">
@@ -1555,7 +1561,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="enter the name of the program" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DyB-Mc-U2s">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="what program would you like us to add?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DyB-Mc-U2s">
                                 <rect key="frame" x="39" y="225" width="333" height="30"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
@@ -1582,8 +1588,8 @@
                                     <segue destination="14t-VJ-VYp" kind="unwind" unwindAction="unwindToPrograms:" id="Hxy-lL-ewi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="now, tell us what you know about it" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDC-cp-ewj">
-                                <rect key="frame" x="39" y="298" width="233" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="what kind of referral rewards do they offer?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDC-cp-ewj">
+                                <rect key="frame" x="39" y="298" width="333" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.21176470589999999" green="0.20392156859999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1622,7 +1628,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Suggest" image="50-noun_13006_cc.png" selectedImage="50-c-noun_13006_cc.png" id="k1W-PY-amO"/>
+                    <tabBarItem key="tabBarItem" title="Suggestion" image="50-noun_13006_cc.png" id="k1W-PY-amO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
@@ -1640,10 +1646,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="50-c-noun_101501.png" width="35" height="35"/>
-        <image name="50-c-noun_13006_cc.png" width="35" height="35"/>
-        <image name="50-c-noun_49693_cc.png" width="35" height="35"/>
-        <image name="50-c-noun_59948_cc.png" width="35" height="35"/>
         <image name="50-noun_101501.png" width="30" height="30"/>
         <image name="50-noun_13006_cc.png" width="30" height="30"/>
         <image name="50-noun_49693_cc.png" width="30" height="30"/>
@@ -1667,7 +1669,7 @@
         <segue reference="u7Y-xg-7CH"/>
         <segue reference="c3L-8R-Pc8"/>
         <segue reference="G3k-zG-Gr3"/>
-        <segue reference="FlU-n2-lT6"/>
+        <segue reference="Smr-Xg-UEW"/>
         <segue reference="kbZ-gn-RpN"/>
     </inferredMetricsTieBreakers>
 </document>
