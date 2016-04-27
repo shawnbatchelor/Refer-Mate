@@ -118,6 +118,7 @@ int currentIndex;
 -(IBAction)searchGlassClick{
     searchBarBar.hidden = 0;
     [searchGlass setHidden:YES];
+    
 }
 
 
