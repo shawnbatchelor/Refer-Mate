@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-416" y="484"/>
+            <point key="canvasLocation" x="928" y="1460"/>
         </scene>
         <!--Program Detail Scene-->
         <scene sceneID="pbC-W4-Cwd">
@@ -955,7 +955,7 @@
                                         <rect key="frame" x="14" y="493" width="198" height="35"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Logout">
-                                            <color key="titleColor" red="0.50196078430000002" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="logOutOfApp:" destination="ybY-4v-vSC" eventType="touchUpInside" id="wWh-El-hhy"/>
@@ -1434,6 +1434,18 @@
                                 <state key="normal" image="camera.png">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
+                                        <point key="value" x="5" y="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cameraProfilePic" destination="uGB-VB-W7G" eventType="touchUpInside" id="zhc-pm-bRw"/>
                                 </connections>
@@ -1444,6 +1456,18 @@
                                 <state key="normal" image="library.png">
                                     <color key="titleColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="layer.shadowOffset">
+                                        <point key="value" x="5" y="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="albumProfilePic" destination="uGB-VB-W7G" eventType="touchUpInside" id="9vW-t1-OHR"/>
                                 </connections>
@@ -1491,9 +1515,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666" y="500"/>
+            <point key="canvasLocation" x="674" y="488"/>
         </scene>
-        <!--Add-->
+        <!--Suggest-->
         <scene sceneID="Sbb-5T-dFK">
             <objects>
                 <viewController definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="QUJ-6m-5Pz" customClass="SuggestProgramScreen" sceneMemberID="viewController">
@@ -1598,7 +1622,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add" image="50-noun_13006_cc.png" selectedImage="50-c-noun_13006_cc.png" id="k1W-PY-amO"/>
+                    <tabBarItem key="tabBarItem" title="Suggest" image="50-noun_13006_cc.png" selectedImage="50-c-noun_13006_cc.png" id="k1W-PY-amO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
@@ -1620,10 +1644,10 @@
         <image name="50-c-noun_13006_cc.png" width="35" height="35"/>
         <image name="50-c-noun_49693_cc.png" width="35" height="35"/>
         <image name="50-c-noun_59948_cc.png" width="35" height="35"/>
-        <image name="50-noun_101501.png" width="35" height="35"/>
-        <image name="50-noun_13006_cc.png" width="35" height="35"/>
-        <image name="50-noun_49693_cc.png" width="35" height="35"/>
-        <image name="50-noun_59948_cc.png" width="35" height="35"/>
+        <image name="50-noun_101501.png" width="30" height="30"/>
+        <image name="50-noun_13006_cc.png" width="30" height="30"/>
+        <image name="50-noun_49693_cc.png" width="30" height="30"/>
+        <image name="50-noun_59948_cc.png" width="30" height="30"/>
         <image name="ReferMate-smile.png" width="167" height="140"/>
         <image name="camera.png" width="50" height="41"/>
         <image name="facebook.png" width="16" height="30"/>
@@ -1640,10 +1664,10 @@
         <image name="twitter.png" width="37" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="APu-Xe-ws7"/>
-        <segue reference="FlU-n2-lT6"/>
-        <segue reference="G3k-zG-Gr3"/>
+        <segue reference="u7Y-xg-7CH"/>
         <segue reference="c3L-8R-Pc8"/>
-        <segue reference="lre-p5-y3A"/>
+        <segue reference="G3k-zG-Gr3"/>
+        <segue reference="FlU-n2-lT6"/>
+        <segue reference="kbZ-gn-RpN"/>
     </inferredMetricsTieBreakers>
 </document>

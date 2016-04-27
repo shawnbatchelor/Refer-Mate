@@ -32,6 +32,8 @@
 
     [self callFirebase];
 }
+
+
 -(void) callFirebase {
     //Handle array of links
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://refer-mate.firebaseio.com/users"];
@@ -124,7 +126,6 @@
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [searchPaths objectAtIndex:0];
     NSString *profilePicPath = [documentsPath stringByAppendingPathComponent:@"pickedImage.png"];
-//  [theData writeToFile:profilePicPath atomically:YES];
     
     //Write image to path for retrieval later
     [UIImagePNGRepresentation(pickedImage) writeToFile:profilePicPath atomically:YES];
