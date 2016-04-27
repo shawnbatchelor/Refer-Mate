@@ -33,6 +33,10 @@
     NSString *receivedURLString;
     NSString *pulledText;
     NSString *LONG_URL;
+    NSUserDefaults *linksFavPref;
+    NSMutableArray *getDefaultFavoritesArray;
+
+
 }
 
 @property(nonatomic, strong)NSString *fromProgramLabelSegueString;

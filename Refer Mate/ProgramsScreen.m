@@ -69,7 +69,6 @@ int currentIndex;
     favPref = [NSUserDefaults standardUserDefaults];
     favoritesFromDefaults = [[favPref objectForKey:@"fave_array"] mutableCopy];
     searchBarBar.hidden = 1;
-//    [self checkConnection];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -209,43 +208,6 @@ int currentIndex;
     
     [self presentViewController:alert animated:YES completion:nil];
 }
-
-
-////No Internet Alert
-//-(void) noInternetAlert {
-//    //Not connected to the Intenet
-//    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
-//                                                                   message:@"Looks like you have no Internet connection. Connect and try again"
-//                                                            preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                          handler:^(UIAlertAction * action) {}];
-//    
-//    [alert addAction:defaultAction];
-//    [self presentViewController:alert animated:YES completion:nil];
-//}
-
-
-
-////Internet online boolean
-//- (BOOL)connected
-//{
-//    initialCheck = [Reachability reachabilityForInternetConnection];
-//    NetworkStatus networkOnline = [reachability currentReachabilityStatus];
-//    return !(networkOnline == NotReachable);
-//}
-
-
-////Check Internet connection method
-//-(void)checkConnection{
-//    if (![self connected])
-//    {
-//        [self noInternetAlert];
-//    } else {
-//        [myTableView reloadData];
-//    }
-//}
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////

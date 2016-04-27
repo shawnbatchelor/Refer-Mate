@@ -20,7 +20,7 @@
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     userString = appDelegate.authenticatedUser;
     
-    NSLog(@"USER ID PASSED %@", userString);
+//    NSLog(@"USER ID PASSED %@", userString);
 
     [super viewDidLoad];
     submitChangesButton.hidden = 1;
@@ -28,10 +28,48 @@
     cameraProfilePicButton.hidden = 1;
     localImageReference = @"";
     [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
-
-
-    [self callFirebase];
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    getDefaultFavesArray = [[NSMutableArray alloc] init];
+    userFavPref = [NSUserDefaults standardUserDefaults];
+    getDefaultFavesArray = [[userFavPref objectForKey:@"user_pref_array"] mutableCopy];
+    
+    if (![self checkConnect])
+    {
+        [self noInternetAlert];
+        [self loadFieldsWithoutInternet];
+    } else {
+        [self callFirebase];
+    }
+}
+
+
+//Check Internet connection
+- (BOOL)checkConnect{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
+}
+
+
+-(void)loadFieldsWithoutInternet{
+    NSLog(@"%@", [getDefaultFavesArray[0] valueForKey:@"profilePicURL"]);
+    usernameLabel.text = [getDefaultFavesArray[0] valueForKey:@"displayName"];
+    firstnameLabel.text = [getDefaultFavesArray[0] valueForKey:@"firstname"];
+    lastnameLabel.text = [getDefaultFavesArray[0] valueForKey:@"lastname"];
+    emailLabel.text = [getDefaultFavesArray[0] valueForKey:@"email"];
+    locationLabel.text = [getDefaultFavesArray[0] valueForKey:@"zip_code"];
+    username.text = usernameLabel.text;
+    oldUserEmail = [getDefaultFavesArray[0] valueForKey:@"email"];
+    NSData *getData = [NSData dataWithContentsOfFile:[getDefaultFavesArray[0] valueForKey:@"profilePicURL"]];
+    if(getData != nil)
+    {
+        profilePic.image = [UIImage imageWithData:getData];
+    }
+}
+
 
 
 -(void) callFirebase {
@@ -52,6 +90,7 @@
         oldUserEmail = [specifiedUserArray valueForKey:@"email"];
         
         
+        
         //Get pic from Provider for web logins
         if ([userString rangeOfString:@"twitter"].location != NSNotFound ||
             [userString rangeOfString:@"facebook"].location != NSNotFound)
@@ -70,6 +109,21 @@
                 profilePic.image = [UIImage imageWithData:getData];
             }
         }
+        
+        //Log the data to user prefs
+        NSDictionary *usersDictionary = @{
+                                          @"firstname" : firstnameLabel.text,
+                                          @"lastname" : lastnameLabel.text,
+                                          @"displayName" : usernameLabel.text,
+                                          @"email" : oldUserEmail,
+                                          @"zip_code" : locationLabel.text,
+                                          @"profilePicURL" : [specifiedUserArray valueForKey:@"profilePicURL"]
+                                          };
+        
+        getDefaultFavesArray = [NSMutableArray arrayWithObject:usersDictionary];
+        [userFavPref setObject:getDefaultFavesArray forKey:@"user_pref_array"];
+        [userFavPref synchronize];
+        
     }];
 }
 
@@ -216,6 +270,10 @@
         Firebase *setUser = [usersRef childByAppendingPath: userString];
         [setUser setValue: usersDictionary];
         
+        getDefaultFavesArray = [NSMutableArray arrayWithObject:usersDictionary];
+        [userFavPref setObject:getDefaultFavesArray forKey:@"user_pref_array"];
+        [userFavPref synchronize];
+        
         submitChangesButton.hidden = 1;
         [self disableUserEditing];
         username.text = usernameLabel.text;
@@ -244,6 +302,8 @@
     if([[segue identifier] isEqualToString:@"segueToMenu"]){
     }
 }
+
+
 
 
 @end

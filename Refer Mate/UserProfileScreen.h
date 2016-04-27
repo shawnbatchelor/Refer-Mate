@@ -38,6 +38,8 @@
     NSString *localImageReference;
     NSURL *localImageURL;
     NSData *theData;
+    NSUserDefaults *userFavPref;
+    NSMutableArray *getDefaultFavesArray;
 }
 
 @property(nonatomic, strong)NSString *authenticatedUIDForProfileScreen;

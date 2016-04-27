@@ -27,14 +27,17 @@
     
     [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
-    
+//    NSLog(@"property passed %@", self.fromProgramLabelSegueString);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     copyButton.hidden = true;
     urlGOButton.hidden = true;
     [self callFirebase];
+    linksFavPref = [NSUserDefaults standardUserDefaults];
+    getDefaultFavoritesArray = [[linksFavPref objectForKey:@"fave_array"] mutableCopy];
 }
+
 
 
 
@@ -117,10 +120,24 @@
 
 -(IBAction)copyText{
     pastyBoard.string = linkText.text;
+    if ([getDefaultFavoritesArray containsObject: self.fromProgramLabelSegueString]){
+        //It's already a favorite, so no need to add it again
+    }else{
+        [getDefaultFavoritesArray addObject:self.fromProgramLabelSegueString];
+        [linksFavPref setObject:getDefaultFavoritesArray forKey:@"fave_array"];
+        [linksFavPref synchronize];
+    }
 }
 
 
 -(IBAction)loadURL{
+    if ([getDefaultFavoritesArray containsObject: self.fromProgramLabelSegueString]){
+        //It's already a favorite, so no need to add it again
+    }else{
+        [getDefaultFavoritesArray addObject:self.fromProgramLabelSegueString];
+        [linksFavPref setObject:getDefaultFavoritesArray forKey:@"fave_array"];
+        [linksFavPref synchronize];
+    }
     [self performSegueWithIdentifier:@"goToWebViewer" sender:nil];
 }
 
