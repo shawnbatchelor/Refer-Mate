@@ -129,6 +129,10 @@ int currentIndex;
         currentIndex++;
         categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
         [self callFirebase];
+    }else if([categoriesArray lastObject]){
+        currentIndex = 0;
+        categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
+        [self callFirebase];
     }
 }
 
@@ -136,6 +140,10 @@ int currentIndex;
 -(void)categoryMinus {
     if (currentIndex > 0){
         currentIndex--;
+        categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
+        [self callFirebase];
+    }else if ([categoriesArray firstObject]){
+        currentIndex = (int)[categoriesArray count]-1;
         categoryLabel.text = [categoriesArray objectAtIndex:currentIndex];
         [self callFirebase];
     }
