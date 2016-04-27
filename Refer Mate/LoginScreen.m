@@ -20,15 +20,20 @@
 @implementation LoginScreen
 
 - (void)viewDidLoad {
-        [super viewDidLoad];
+    [super viewDidLoad];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     long autoLogonState = [prefs integerForKey:@"autoLogin"];
-
-    if (autoLogonState == 1){
-        [self checkUserAuth];
+    
+    if (![self connected])
+    {
+        [self noInternetAlert];
+    } else {
+        if (autoLogonState == 1){
+            [self checkUserAuth];
+        }
     }
 }
 

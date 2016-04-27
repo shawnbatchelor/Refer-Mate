@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
-
+#import "Reachability.h"
 
 
 @interface ProgramsScreen : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, UISearchBarDelegate>
@@ -39,11 +39,15 @@
     NSArray *faveResultArray;
     NSString *searchTerm;
     long myCellCount;
+    
+    Reachability *reachability;
+    Reachability *initialCheck;
+
 }
 
 - (IBAction)changeFaveImage:(id)sender;
 @property(nonatomic, strong) UIBarButtonItem *barButtonItem;
-
+@property  BOOL internetActive;
 
 @end
 

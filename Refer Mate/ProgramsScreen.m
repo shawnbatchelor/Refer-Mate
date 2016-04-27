@@ -10,6 +10,8 @@
 #import "CustomProgramObject.h"
 #import "DetailScreen.h"
 #import "MenuDrawer.h"
+#import "Reachability.h"
+#import "AppDelegate.h"
 
 
 
@@ -19,6 +21,8 @@
 
 @implementation ProgramsScreen
 @synthesize barButtonItem;
+@synthesize internetActive;
+
 
 Firebase *ref;
 Firebase *ref2;
@@ -31,6 +35,12 @@ int currentIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(checkNetworkStatus)
+                                                 name:kReachabilityChangedNotification object:nil];
+    reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
     
     topBox.layer.borderWidth = 5.0f;
     topBox.layer.borderColor = [UIColor colorWithRed:255/255.0 green:166/255.0 blue:38/255.0 alpha: 1.0].CGColor;
@@ -56,10 +66,10 @@ int currentIndex;
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSUserDefaults *favPref = [NSUserDefaults standardUserDefaults];
+    favPref = [NSUserDefaults standardUserDefaults];
     favoritesFromDefaults = [[favPref objectForKey:@"fave_array"] mutableCopy];
     searchBarBar.hidden = 1;
-    [myTableView reloadData];
+//    [self checkConnection];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -155,6 +165,87 @@ int currentIndex;
     [myTableView reloadData];
     [refreshControl endRefreshing];
 }
+
+
+//Check Internet connection
+- (void)checkNetworkStatus{
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    
+    switch (networkStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            self.internetActive = NO;
+            [self internetGone];
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            self.internetActive = YES;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [myTableView reloadData];
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            self.internetActive = YES;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [myTableView reloadData];
+            break;
+        }
+    }
+}
+
+
+//Internet went down alert
+-(void) internetGone {
+    //Not connected to the Intenet
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+                                                                   message:@"Looks like you lost your Internet connection. Restore your connection to proceed."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+////No Internet Alert
+//-(void) noInternetAlert {
+//    //Not connected to the Intenet
+//    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry!"
+//                                                                   message:@"Looks like you have no Internet connection. Connect and try again"
+//                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action) {}];
+//    
+//    [alert addAction:defaultAction];
+//    [self presentViewController:alert animated:YES completion:nil];
+//}
+
+
+
+////Internet online boolean
+//- (BOOL)connected
+//{
+//    initialCheck = [Reachability reachabilityForInternetConnection];
+//    NetworkStatus networkOnline = [reachability currentReachabilityStatus];
+//    return !(networkOnline == NotReachable);
+//}
+
+
+////Check Internet connection method
+//-(void)checkConnection{
+//    if (![self connected])
+//    {
+//        [self noInternetAlert];
+//    } else {
+//        [myTableView reloadData];
+//    }
+//}
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -563,6 +654,11 @@ int currentIndex;
             
         }
     }
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

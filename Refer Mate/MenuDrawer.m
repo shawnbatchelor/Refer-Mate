@@ -33,6 +33,10 @@
     [self.view addGestureRecognizer:singleFingerTap];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
 -(IBAction)logOutOfApp:(id)sender{
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://refer-mate.firebaseio.com"];
     [ref unauth];

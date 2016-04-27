@@ -113,8 +113,6 @@ withValueCompletionBlock:^(NSError *error, NSDictionary *result) {
         
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
-//        SettingsScreen * checkAutoLogon = [[SettingsScreen alloc] init];
-//        checkAutoLogon.autoLogonCheckState = true;
     }
 }];
     }
