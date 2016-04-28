@@ -61,7 +61,8 @@ int currentIndex;
     // Initialize the refresh control.
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(pullRefresher:) forControlEvents:UIControlEventValueChanged];
-    [myTableView addSubview:refreshControl];                  forControlEvents:UIControlEventValueChanged;
+    [myTableView addSubview:refreshControl];
+//forControlEvents:UIControlEventValueChanged;
 }
 
 

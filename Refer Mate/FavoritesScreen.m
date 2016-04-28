@@ -27,7 +27,8 @@
     // Initialize the refresh control.
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(pullRefresher:) forControlEvents:UIControlEventValueChanged];
-    [faveTableView addSubview:refreshControl];                  forControlEvents:UIControlEventValueChanged;
+    [faveTableView addSubview:refreshControl];
+//forControlEvents:UIControlEventValueChanged;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
