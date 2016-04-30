@@ -80,7 +80,8 @@
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSArray *firstResults = [[NSArray arrayWithObject:snapshot.value] objectAtIndex:0];
         specifiedUserArray = [firstResults valueForKey:userString];
-        
+        NSLog(@"%@",specifiedUserArray);
+
         usernameLabel.text = [specifiedUserArray valueForKey:@"displayName"];
         firstnameLabel.text = [specifiedUserArray valueForKey:@"firstname"];
         lastnameLabel.text = [specifiedUserArray valueForKey:@"lastname"];
@@ -108,22 +109,21 @@
             {
                 profilePic.image = [UIImage imageWithData:getData];
             }
+            
+            //Log the data to user prefs
+            NSDictionary *thisDictionary = @{
+                                             @"firstname" : [specifiedUserArray valueForKey:@"firstname"],
+                                             @"lastname" : [specifiedUserArray valueForKey:@"lastname"],
+                                             @"displayName" : [specifiedUserArray valueForKey:@"displayName"],
+                                             @"email" : [specifiedUserArray valueForKey:@"email"],
+                                             @"zip_code" : [specifiedUserArray valueForKey:@"zip_code"],
+                                             @"profilePicURL" : [specifiedUserArray valueForKey:@"profilePicURL"]
+                                             };
+            
+            getDefaultFavesArray = [NSMutableArray arrayWithObject:thisDictionary];
+            [userFavPref setObject:getDefaultFavesArray forKey:@"user_pref_array"];
+            [userFavPref synchronize];
         }
-        
-        //Log the data to user prefs
-        NSDictionary *usersDictionary = @{
-                                          @"firstname" : firstnameLabel.text,
-                                          @"lastname" : lastnameLabel.text,
-                                          @"displayName" : usernameLabel.text,
-                                          @"email" : oldUserEmail,
-                                          @"zip_code" : locationLabel.text,
-                                          @"profilePicURL" : [specifiedUserArray valueForKey:@"profilePicURL"]
-                                          };
-        
-        getDefaultFavesArray = [NSMutableArray arrayWithObject:usersDictionary];
-        [userFavPref setObject:getDefaultFavesArray forKey:@"user_pref_array"];
-        [userFavPref synchronize];
-        
     }];
 }
 
